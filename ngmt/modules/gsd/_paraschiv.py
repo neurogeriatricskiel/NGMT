@@ -228,16 +228,14 @@ class ParaschivIonescuGaitSequenceDetection:
             ]
 
             # Calculate the data adaptive threshold using the 5th percentile of the combined peaks
-            try:
-                threshold = np.percentile(combined_peaks, 5)
-
-            except IndexError:
-                # If combined_peaks is empty, set threshold to default value
-                threshold = 0.15
-                selected_signal = smoothed_wavelet_result
+            threshold = np.percentile(combined_peaks, 5)
 
             # Set selected_signal to detected_activity_signal
             selected_signal = detected_activity_signal
+
+        else:
+            threshold = 0.15
+            selected_signal = smoothed_wavelet_result
 
         # Detect mid-swing peaks
         min_peaks, max_peaks = preprocessing.find_local_min_max(

@@ -848,8 +848,8 @@ def max_peaks_between_zc(input_signal):
     # Calculate the number of peaks.
     number_of_peaks = len(zero_crossings_locations) - 1
 
-    def imax(input_signal):
-        return np.argmax(input_signal)
+    def imax(signal_segment):
+        return np.argmax(signal_segment)
 
     # Find the indices of the maximum values within each peak region.
     ipk = np.array(
@@ -857,18 +857,19 @@ def max_peaks_between_zc(input_signal):
             imax(
                 np.abs(
                     input_signal[
-                        zero_crossings_locations[i] : zero_crossings_locations[i + 1]
+                        zero_crossings_locations[i]:zero_crossings_locations[i + 1]
                     ]
                 )
             )
             for i in range(number_of_peaks)
         ]
     )
+
+    # Compute the locations of the peaks in the original signal.
     ipks = zero_crossings_locations[:number_of_peaks] + ipk
-    ipks = ipks + 1
 
     # Retrieve the signed max/min values at the peak locations.
-    pks = input_signal[ipks - 1]
+    pks = input_signal[ipks]
 
     return pks, ipks
 
@@ -975,8 +976,8 @@ def signal_decomposition_algorithm(
     # Apply continuous wavelet transform
     accVLPIntCwt2 = apply_continuous_wavelet_transform(
         smoothed_wavelet_result,
-        scales=9,
-        desired_scale=9,
+        scales=8,
+        desired_scale=8,
         wavelet="gaus2",
         sampling_frequency=target_sampling_frequency,
     )
@@ -986,9 +987,9 @@ def signal_decomposition_algorithm(
     accVLPIntCwt2 = np.array(accVLPIntCwt2)
 
     # Apply max_peaks_between_zc funtion to find peaks and their locations.
-    pks2, ipks2 = max_peaks_between_zc(accVLPIntCwt2)
+    pks2, ipks2 = max_peaks_between_zc(accVLPIntCwt2.T)
 
-    # Calculate indx1 (logical indices of negative elements)
+    # Calculate indx2 (logical indices of negative elements)
     indx2 = pks2 > 0
 
     # Extract IC (indices of negative peaks)
@@ -996,6 +997,18 @@ def signal_decomposition_algorithm(
 
     # Extract Foot-off Contact (FC) timings in seconds
     FC_seconds = final_contact / target_sampling_frequency
+    
+    # Plot IC_seconds (with circles) on smoothed_wavelet_result (solid line) signal and also plot FC_seconds (crosses) on accVLPIntCwt2 signal (dashed line)
+    plt.figure(figsize=(12, 6))
+    plt.plot(smoothed_wavelet_result, label='Smoothed Wavelet Result')
+    plt.plot(accVLPIntCwt2, '--', label='Wavelet Transform (Second Pass)')
+    plt.scatter(indices_of_negative_peaks, smoothed_wavelet_result[indices_of_negative_peaks], marker='o', color='red', label='IC Seconds')
+    plt.scatter(final_contact, accVLPIntCwt2[final_contact], marker='x', color='green', label='FC Seconds')
+    plt.title('Initial Contact (IC) and Foot-off Contact (FC) Detection')
+    plt.xlabel('Samples')
+    plt.ylabel('Amplitude')
+    plt.legend()
+    plt.show()
 
     return IC_seconds, FC_seconds
 

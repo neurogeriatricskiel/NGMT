@@ -1,5 +1,5 @@
 # Import libraries
-from typing import Optional
+from typing import Optional, Literal, Union, TypeVar
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -8,6 +8,7 @@ import scipy.signal
 from ngmt.utils import preprocessing
 from ngmt.config import cfg_colors
 
+Self = TypeVar("Self", bound="ParaschivIonescuInitialContactDetection")
 
 class ParaschivIonescuInitialContactDetection:
     """
@@ -37,6 +38,14 @@ class ParaschivIonescuInitialContactDetection:
             0   5       initial contact  0          SU
             1   5.6     initial contact  0          SU
 
+        Calculate temporal parameters
+
+        >>> icd.calculate_temporal_parameters()
+        >>> print(icd.parameters_)
+                stride time [s]  swing time [s]  stance time [s]
+            0   1.2              0.4             0.8
+            1   1.1              0.3             0.8
+
     References:
         [1] Paraschiv-Ionescu et al. (2019). Locomotion and cadence detection using a single trunk-fixed accelerometer...
 
@@ -59,7 +68,7 @@ class ParaschivIonescuInitialContactDetection:
         gait_sequences: Optional[pd.DataFrame] = None,
         dt_data: Optional[pd.Series] = None,
         tracking_system: Optional[str] = None,
-    ) -> pd.DataFrame:
+    ) -> Self:
         """
         Detects initial contacts based on the input accelerometer data.
 
@@ -107,6 +116,9 @@ class ParaschivIonescuInitialContactDetection:
 
         # Initialize an empty list to store all onsets
         all_onsets = []
+        
+        # Initialize an empty list to store event types
+        event_types = []
 
         # Process each gait sequence
         if gait_sequences is None:
@@ -116,22 +128,36 @@ class ParaschivIonescuInitialContactDetection:
         for _, gait_seq in gait_sequences.iterrows():
             # Calculate start and stop indices for the current gait sequence
             start_index = int(sampling_freq_Hz * gait_seq["onset"])
-            stop_index = int(
-                sampling_freq_Hz * (gait_seq["onset"] + gait_seq["duration"])
-            )
-            accv_gait_seq = acc_vertical[start_index:stop_index].to_numpy()
+            stop_index = int(sampling_freq_Hz * (gait_seq["onset"] + gait_seq["duration"]))
+            accv_gait_seq = acc_vertical[start_index:stop_index + 2].to_numpy()
 
             try:
-                # Perform Signal Decomposition Algorithm for Initial Contacts (ICs)
-                initial_contacts_rel, _ = preprocessing.signal_decomposition_algorithm(
+                # Perform Signal Decomposition Algorithm for Initial Contacts (ICs) and Final Contacts (FCs)
+                initial_contacts_rel, final_contacts_rel = preprocessing.signal_decomposition_algorithm(
                     accv_gait_seq, sampling_freq_Hz
                 )
                 initial_contacts = gait_seq["onset"] + initial_contacts_rel
+                final_contacts = gait_seq["onset"] + final_contacts_rel
 
-                gait_seq["IC"] = initial_contacts.tolist()
+                # Combine and sort initial and final contacts
+                all_contacts = np.sort(np.concatenate((initial_contacts, final_contacts)))
+                all_event_types = ["initial contact"] * len(initial_contacts) + ["final contact"] * len(final_contacts)
+                all_event_types = [x for _, x in sorted(zip(np.concatenate((initial_contacts, final_contacts)), all_event_types))]
 
-                # Append onsets to the all_onsets list
-                all_onsets.extend(initial_contacts)
+                # Ensure first and last elements are initial contacts
+                if all_event_types[0] != "initial contact":
+                    all_contacts = all_contacts[1:]
+                    all_event_types = all_event_types[1:]
+                if all_event_types[-1] != "initial contact":
+                    all_contacts = all_contacts[:-1]
+                    all_event_types = all_event_types[:-1]
+
+                gait_seq["IC"] = [all_contacts[i] for i in range(len(all_contacts)) if all_event_types[i] == "initial contact"]
+                gait_seq["FC"] = [all_contacts[i] for i in range(len(all_contacts)) if all_event_types[i] == "final contact"]
+
+                # Append onsets and event types to the lists
+                all_onsets.extend(all_contacts)
+                event_types.extend(all_event_types)
 
             except Exception as e:
                 print(
@@ -156,7 +182,7 @@ class ParaschivIonescuInitialContactDetection:
         self.initial_contacts_ = pd.DataFrame(
             {
                 "onset": all_onsets,
-                "event_type": "initial contact",
+                "event_type": event_types,
                 "duration": 0,
                 "tracking_systems": tracking_system,
             }
@@ -179,5 +205,46 @@ class ParaschivIonescuInitialContactDetection:
 
             # Update the 'onset' column
             self.initial_contacts_["onset"] = valid_dt_data.reset_index(drop=True)
+
+        return self
+
+
+    def calculate_temporal_parameters(self: Self) -> Self:
+        """
+        Calculate temporal parameters based on detected initial and final contacts.
+
+        Returns:
+            ParaschivIonescuInitialContactDetection: Returns an instance of the class.
+                The temporal parameters information is stored in the 'parameters_' attribute,
+                which is a pandas DataFrame with the following columns:
+                    - stride time [s]: Time for one stride [s].
+                    - swing time [s]: Time for the swing phase [s].
+                    - stance time [s]: Time for the stance phase [s].
+        """
+        if self.initial_contacts_ is None or self.initial_contacts_.empty:
+            raise ValueError("No initial contacts detected. Please run the detect method first.")
+
+        # Extract initial contacts and final contacts
+        ic_onsets = self.initial_contacts_.loc[self.initial_contacts_["event_type"] == "initial contact", "onset"].values
+        fc_onsets = self.initial_contacts_.loc[self.initial_contacts_["event_type"] == "final contact", "onset"].values
+
+        # Ensure that there are enough IC and FC events to compute parameters
+        if len(ic_onsets) < 3 or len(fc_onsets) < 2:
+            raise ValueError("Not enough initial and final contacts to calculate temporal parameters.")
+
+        # Calculate stride time, stance time, and swing time based on the provided formulas
+        stride_time = ic_onsets[2:] - ic_onsets[:-2]
+        stance_time = fc_onsets[1:] - ic_onsets[:-2]
+        swing_time = stride_time - stance_time
+
+        # Create a DataFrame with the calculated temporal parameters
+        self.parameters_ = pd.DataFrame({
+            "stride time [s]": stride_time,
+            "swing time [s]": swing_time,
+            "stance time [s]": stance_time
+        })
+
+        # Set the index name to 'stride id'
+        self.parameters_.index.name = "stride id"
 
         return self
