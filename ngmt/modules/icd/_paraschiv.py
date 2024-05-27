@@ -20,8 +20,10 @@ class ParaschivIonescuInitialContactDetection:
     specified gait sequence independently. The signal is first detrended and then low-pass filtered. The resulting
     signal is numerically integrated and differentiated using a Gaussian continuous wavelet transformation. The
     initial contact (IC) events are identified as the positive maximal peaks between successive zero-crossings.
+    In addition, final contacts (FC) events are also identified as times of the maxima of the signal obtained from 
+    a further continuous wavelet transformation differentiation. 
 
-    Finally, initial contacts information is provided as a DataFrame with columns `onset`, `event_type`, and
+    Finally, initial contacts and final contacts information are provided as a DataFrame with columns `onset`, `event_type`, and
     `tracking_systems`.
 
     Methods:
@@ -36,11 +38,11 @@ class ParaschivIonescuInitialContactDetection:
         >>> print(icd.initial_contacts_)
                 onset   event_type       duration   tracking_systems
             0   5       initial contact  0          SU
-            1   5.6     initial contact  0          SU
+            1   5.6     final   contact  0          SU
 
         Calculate temporal parameters
 
-        >>> icd.calculate_temporal_parameters()
+        >>> icd.temporal_parameters()
         >>> print(icd.parameters_)
                 stride time [s]  swing time [s]  stance time [s]
             0   1.2              0.4             0.8
@@ -50,6 +52,8 @@ class ParaschivIonescuInitialContactDetection:
         [1] Paraschiv-Ionescu et al. (2019). Locomotion and cadence detection using a single trunk-fixed accelerometer...
 
         [2] Paraschiv-Ionescu et al. (2020). Real-world speed estimation using single trunk IMU: methodological challenges...
+
+        [3] McCamley et al. (2012). An enhanced estimate of initial contact and final contact instants of time using...
     """
 
     def __init__(
@@ -84,8 +88,8 @@ class ParaschivIonescuInitialContactDetection:
             ParaschivIonescuInitialContactDetection: Returns an instance of the class.
                 The initial contacts information is stored in the 'initial_contacts_' attribute,
                 which is a pandas DataFrame in BIDS format with the following columns:
-                    - onset: Initial contacts.
-                    - event_type: Type of the event (default is 'Inital contact').
+                    - onset: initial contact and final contact events onset
+                    - event_type: Type of the event (initial contact or final contact).
                     - tracking_system: Tracking systems used the events are derived from.
         """
         # Check if data is empty
@@ -209,7 +213,7 @@ class ParaschivIonescuInitialContactDetection:
         return self
 
 
-    def calculate_temporal_parameters(self: Self) -> Self:
+    def temporal_parameters(self: Self) -> Self:
         """
         Calculate temporal parameters based on detected initial and final contacts.
 
