@@ -998,17 +998,17 @@ def signal_decomposition_algorithm(
     # Extract Foot-off Contact (FC) timings in seconds
     FC_seconds = final_contact / target_sampling_frequency
     
-    # Plot IC_seconds (with circles) on smoothed_wavelet_result (solid line) signal and also plot FC_seconds (crosses) on accVLPIntCwt2 signal (dashed line)
-    plt.figure(figsize=(12, 6))
-    plt.plot(smoothed_wavelet_result, label='Smoothed Wavelet Result')
-    plt.plot(accVLPIntCwt2, '--', label='Wavelet Transform (Second Pass)')
-    plt.scatter(indices_of_negative_peaks, smoothed_wavelet_result[indices_of_negative_peaks], marker='o', color='red', label='IC Seconds')
-    plt.scatter(final_contact, accVLPIntCwt2[final_contact], marker='x', color='green', label='FC Seconds')
-    plt.title('Initial Contact (IC) and Foot-off Contact (FC) Detection')
-    plt.xlabel('Samples')
-    plt.ylabel('Amplitude')
-    plt.legend()
-    plt.show()
+    # Plot
+    # plt.figure(figsize=(12, 6))
+    # plt.plot(smoothed_wavelet_result, label='Smoothed Wavelet Transformed Vertical Acc')
+    # plt.plot(accVLPIntCwt2, '--', label='Second Wavelet Transform')
+    # plt.scatter(indices_of_negative_peaks, smoothed_wavelet_result[indices_of_negative_peaks], marker='o', color='red', label='IC Seconds')
+    # plt.scatter(final_contact, accVLPIntCwt2[final_contact], marker='x', color='green', label='FC Seconds')
+    # plt.title('Initial Contact (IC) and Final Contact (FC) Detection')
+    # plt.xlabel('Samples')
+    # plt.ylabel('Amplitude')
+    # plt.legend()
+    # plt.show()
 
     return IC_seconds, FC_seconds
 
