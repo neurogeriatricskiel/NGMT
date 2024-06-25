@@ -1,0 +1,1558 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.27">
+    
+    
+      
+        <title>Tutorial: the basics of NGMT - NeuroGeriatricsMotionToolbox</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6543a935.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../style.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-green" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tutorial-the-basics-of-ngmt" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="NeuroGeriatricsMotionToolbox" class="md-header__button md-logo" aria-label="NeuroGeriatricsMotionToolbox" data-md-component="logo">
+      
+  <img src="../../ngmt_logo_transBG.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            NeuroGeriatricsMotionToolbox
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Tutorial: the basics of NGMT
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="light-green" data-md-color-accent="purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="blue-grey"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../" class="md-tabs__link">
+          
+  
+  Examples
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../modules/" class="md-tabs__link">
+          
+  
+  Modules
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../dataclass/" class="md-tabs__link">
+        
+  
+    
+  
+  Dataclass
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../datasets/" class="md-tabs__link">
+          
+  
+  Datasets
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../utils/" class="md-tabs__link">
+          
+  
+  Utilities
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../contributing/" class="md-tabs__link">
+          
+  
+  Contributing
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="NeuroGeriatricsMotionToolbox" class="md-nav__button md-logo" aria-label="NeuroGeriatricsMotionToolbox" data-md-component="logo">
+      
+  <img src="../../ngmt_logo_transBG.png" alt="logo">
+
+    </a>
+    NeuroGeriatricsMotionToolbox
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Examples
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Examples
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basic_00_intro_ngmt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tutorial basics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basic_01_load_Data/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Load data into NGMT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basic_02_events/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Events in dataclass
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modules_01_gsd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gait Sequence Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modules_02_icd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Initial Contact Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_tutorial_physical_activity_monitoring/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Physical Activity Monitoring
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05_tutorial_sit_to_stand_stand_to_sit_detection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sit to Stand and Stand to Sit Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Modules
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Modules
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/gsd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gait Sequence Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/icd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Initial Contact Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/pam/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Physical Activity Monitoring
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/ssd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sit to Stand and Stand to Sit Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dataclass/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Dataclass
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Datasets
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Datasets
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../datasets/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../datasets/keepcontrol/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    KeepControl
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../datasets/mobilised/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mobilise-D
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Utilities
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Utilities
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utils/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Index
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utils/preprocessing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data Preprocessing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utils/importers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data Import
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utils/orientation_estimation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Orientation Estimation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Contributing
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Contributing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contributing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning objectives
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#imports" class="md-nav__link">
+    <span class="md-ellipsis">
+      Imports
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#import-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Import data
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="tutorial-the-basics-of-ngmt">Tutorial: the basics of NGMT</h1>
+<p><strong>Author:</strong> Robbin Romijnders<br />
+<strong>Last update:</strong> Tue 16 Jan 2024</p>
+<h2 id="learning-objectives">Learning objectives</h2>
+<p>By the end of this tutorial:
+- you can load data from a recording that belongs to one of the available datasets,
+- you know which attributes are available for an instance of the <code>NGMTRecording</code>
+- you can do some basic selecting and slicing of data</p>
+<h2 id="imports">Imports</h2>
+<p>We start by importing some Python libraries. You should be familiar with most of them, and we will not discuss them here.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">ngmt.datasets</span> <span class="kn">import</span> <span class="n">mobilised</span>
+</code></pre></div>
+<h2 id="import-data">Import data</h2>
+<p>Let us consider a single recording, namely of the randomly selected subject <code>sub-3011</code> from the <code>Mobilise-D</code> dataset, and load the data. For that we use the <code>load_recording()</code> function that is available in the <code>ngmt.datasets.mobilised</code> module.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Set the filepath</span>
+<span class="n">file_path</span> <span class="o">=</span> <span class="s2">&quot;Z:</span><span class="se">\\</span><span class="s2">Mobilise-D</span><span class="se">\\</span><span class="s2">rawdata</span><span class="se">\\</span><span class="s2">sub-3011</span><span class="se">\\</span><span class="s2">Free-living</span><span class="se">\\</span><span class="s2">data.mat&quot;</span>
+
+<span class="c1"># Load the recording</span>
+<span class="n">recording</span> <span class="o">=</span> <span class="n">mobilised</span><span class="o">.</span><span class="n">load_recording</span><span class="p">(</span>
+    <span class="n">file_name</span><span class="o">=</span><span class="n">file_path</span><span class="p">,</span> <span class="n">tracking_systems</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;SU&quot;</span><span class="p">,</span> <span class="s2">&quot;SU_INDIP&quot;</span><span class="p">],</span> 
+    <span class="n">tracked_points</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;LowerBack&quot;</span><span class="p">,</span> <span class="s2">&quot;LeftFoot&quot;</span><span class="p">,</span> <span class="s2">&quot;RightFoot&quot;</span><span class="p">]</span>
+<span class="p">)</span>
+</code></pre></div>
+<p>We have loaded the data for two tracking systems, <code>SU</code> and <code>SU_INDIP</code>, and we have specified three tracked points. The data is assigned to the variable <code>recording</code>, so let us take a look at what we have got.</p>
+<div class="highlight"><pre><span></span><code><span class="n">recording</span><span class="o">.</span><span class="vm">__dict__</span>
+</code></pre></div>
+<pre><code>{'data': {'SU':         LowerBack_ACCEL_x  LowerBack_ACCEL_y  LowerBack_ACCEL_z  \
+  0                0.967784           0.045886          -0.260760   
+  1                0.969667           0.044949          -0.256890   
+  2                0.968848           0.045823          -0.259559   
+  3                0.968601           0.045996          -0.260772   
+  4                0.970748           0.044825          -0.259930   
+  ...                   ...                ...                ...   
+  993019           0.966575          -0.062226           0.273807   
+  993020           0.968330          -0.065081           0.268255   
+  993021           0.971785          -0.068572           0.269635   
+  993022           0.970579          -0.069420           0.269644   
+  993023           0.960542          -0.069657           0.270160
+
+          LowerBack_ANGVEL_x  LowerBack_ANGVEL_y  LowerBack_ANGVEL_z  \
+  0                -2.566851           -2.177240            0.297938   
+  1                -2.429344           -2.188699            0.034383   
+  2                -2.521010           -2.051195           -0.320841   
+  3                -2.532473           -2.028272           -0.366690   
+  4                -2.085604           -2.108478           -0.000031   
+  ...                    ...                 ...                 ...   
+  993019            0.011351           -1.021059           -0.011785   
+  993020            0.000108           -1.142992           -0.044537   
+  993021            0.010811           -0.836410            0.089080   
+  993022           -0.058050           -0.824628           -0.183023   
+  993023           -0.136219           -0.771909           -0.147571
+
+          LowerBack_MAGN_x  LowerBack_MAGN_y  LowerBack_MAGN_z  \
+  0               5.491000         11.878000          4.327000   
+  1               5.490000         11.881000          4.331000   
+  2               5.490000         11.881000          4.334000   
+  3               5.491000         11.879000          4.337000   
+  4               5.493000         11.875000          4.339000   
+  ...                  ...               ...               ...   
+  993019          4.118991          7.638019          1.819981   
+  993020          4.117991          7.640009          1.817943   
+  993021          4.116991          7.641000          1.811906   
+  993022          4.115981          7.641000          1.801868   
+  993023          4.075389          7.569287          1.771219
+
+          LowerBack_BARO_n/a  
+  0              1011.628100  
+  1              1011.628400  
+  2              1011.628800  
+  3              1011.629200  
+  4              1011.629600  
+  ...                    ...  
+  993019         1012.077903  
+  993020         1012.078202  
+  993021         1012.078403  
+  993022         1012.078703  
+  993023         1002.580321
+
+  [993024 rows x 10 columns],
+  'SU_INDIP':         LowerBack_ACCEL_x  LowerBack_ACCEL_y  LowerBack_ACCEL_z  \
+  0                0.967986           0.074256          -0.227576   
+  1                0.963671           0.072786          -0.222888   
+  2                0.967964           0.076218          -0.229266   
+  3                0.964173           0.080834          -0.225058   
+  4                0.968537           0.073739          -0.224440   
+  ...                   ...                ...                ...   
+  993019           0.952616          -0.036956           0.276052   
+  993020           0.950713          -0.039025           0.274731   
+  993021           0.951084          -0.041569           0.273339   
+  993022           0.951656          -0.043793           0.273537   
+  993023           0.955107          -0.043583           0.274676
+
+          LowerBack_ANGVEL_x  LowerBack_ANGVEL_y  LowerBack_ANGVEL_z  \
+  0                 2.112411            0.790947            0.541712   
+  1              -132.991561          -72.074004          104.116796   
+  2                40.206686           20.650084          -16.748853   
+  3                37.499673           18.407235          -17.670796   
+  4                 6.486804            2.543410           -3.971685   
+  ...                    ...                 ...                 ...   
+  993019            0.874026           -0.039631           -0.363585   
+  993020            0.736097           -0.079306           -0.373310   
+  993021            0.592863           -0.078105           -0.326287   
+  993022            0.483162            0.062394           -0.319518   
+  993023            0.449540            0.202463           -0.350353
+
+          LowerBack_MAGN_x  LowerBack_MAGN_y  LowerBack_MAGN_z  \
+  0              -9.285130         75.022617         -5.902833   
+  1             -11.966959         18.729473          9.501037   
+  2             -11.456134         18.993760          9.626272   
+  3             -11.839253         19.390191          9.751507   
+  4             -11.456134         19.522334          9.375802   
+  ...                  ...               ...               ...   
+  993019         -0.345702          0.335094        -18.075647   
+  993020         -0.396785          0.361523        -17.449474   
+  993021         -0.757200          0.875414        -17.521831   
+  993022         -1.111939          0.757953        -17.987983   
+  993023         -1.048086          0.361523        -18.050600
+
+          LeftFoot_ACCEL_x  ...  LeftFoot_MAGN_z  RightFoot_ACCEL_x  \
+  0               0.934771  ...        -3.994010           0.910403   
+  1               0.933119  ...        -3.994010           0.905757   
+  2               0.933472  ...        -4.007887           0.908215   
+  3               0.930711  ...        -4.132780           0.907955   
+  4               0.929001  ...        -4.105026           0.907808   
+  ...                  ...  ...              ...                ...   
+  993019          0.849485  ...       -20.058072           0.894927   
+  993020          0.850188  ...       -20.252351           0.895039   
+  993021          0.850738  ...       -20.230148           0.895129   
+  993022          0.850454  ...       -20.417488           0.895036   
+  993023          0.848690  ...       -20.264840           0.893635
+
+          RightFoot_ACCEL_y  RightFoot_ACCEL_z  RightFoot_ANGVEL_x  \
+  0               -0.213594          -0.360157            0.199539   
+  1               -0.213015          -0.358808            0.160327   
+  2               -0.214753          -0.358071            0.164578   
+  3               -0.216700          -0.357703            0.127464   
+  4               -0.217405          -0.354327            0.053191   
+  ...                   ...                ...                 ...   
+  993019          -0.232745          -0.385142           -0.273263   
+  993020          -0.230868          -0.385270           -0.244655   
+  993021          -0.230846          -0.384043           -0.215061   
+  993022          -0.232099          -0.384561           -0.236093   
+  993023          -0.231213          -0.385298           -0.240081
+
+          RightFoot_ANGVEL_y  RightFoot_ANGVEL_z  RightFoot_MAGN_x  \
+  0                 0.415360            1.012113        -14.106638   
+  1                 0.559909            1.031959        -13.982228   
+  2                 0.862008            0.954256        -14.202222   
+  3                 0.794218            0.781762        -14.270497   
+  4                 0.623394            0.505714        -14.407045   
+  ...                    ...                 ...               ...   
+  993019            0.091395           -0.207776        -23.842547   
+  993020            0.139509           -0.200464        -23.938131   
+  993021            0.168476           -0.226669        -23.866822   
+  993022            0.147898           -0.208713        -23.828892   
+  993023            0.144888           -0.270695        -23.828892
+
+          RightFoot_MAGN_y  RightFoot_MAGN_z  
+  0              23.532360         10.766563  
+  1              23.576285         10.871915  
+  2              23.278221         10.724733  
+  3              23.278221         10.585297  
+  4              23.490003         10.445862  
+  ...                  ...               ...  
+  993019         23.334696         -2.884172  
+  993020         23.292340         -2.912059  
+  993021         23.532360         -3.246704  
+  993022         23.726886         -3.519378  
+  993023         23.670411         -3.296281
+
+  [993024 rows x 27 columns]},
+ 'channels': {'SU':                  name type component tracked_point  units  sampling_frequency
+  0   LowerBack_ACCEL_x  Acc         x     LowerBack      g               100.0
+  1   LowerBack_ACCEL_y  Acc         y     LowerBack      g               100.0
+  2   LowerBack_ACCEL_z  Acc         z     LowerBack      g               100.0
+  3  LowerBack_ANGVEL_x  Gyr         x     LowerBack  deg/s               100.0
+  4  LowerBack_ANGVEL_y  Gyr         y     LowerBack  deg/s               100.0
+  5  LowerBack_ANGVEL_z  Gyr         z     LowerBack  deg/s               100.0
+  6    LowerBack_MAGN_x  Mag         x     LowerBack     µT               100.0
+  7    LowerBack_MAGN_y  Mag         y     LowerBack     µT               100.0
+  8    LowerBack_MAGN_z  Mag         z     LowerBack     µT               100.0
+  9  LowerBack_BARO_n/a  Bar       n/a     LowerBack    hPa               100.0,
+  'SU_INDIP':                   name type component tracked_point  units  sampling_frequency
+  0    LowerBack_ACCEL_x  Acc         x     LowerBack      g               100.0
+  1    LowerBack_ACCEL_y  Acc         y     LowerBack      g               100.0
+  2    LowerBack_ACCEL_z  Acc         z     LowerBack      g               100.0
+  3   LowerBack_ANGVEL_x  Gyr         x     LowerBack  deg/s               100.0
+  4   LowerBack_ANGVEL_y  Gyr         y     LowerBack  deg/s               100.0
+  5   LowerBack_ANGVEL_z  Gyr         z     LowerBack  deg/s               100.0
+  6     LowerBack_MAGN_x  Mag         x     LowerBack     µT               100.0
+  7     LowerBack_MAGN_y  Mag         y     LowerBack     µT               100.0
+  8     LowerBack_MAGN_z  Mag         z     LowerBack     µT               100.0
+  9     LeftFoot_ACCEL_x  Acc         x      LeftFoot      g               100.0
+  10    LeftFoot_ACCEL_y  Acc         y      LeftFoot      g               100.0
+  11    LeftFoot_ACCEL_z  Acc         z      LeftFoot      g               100.0
+  12   LeftFoot_ANGVEL_x  Gyr         x      LeftFoot  deg/s               100.0
+  13   LeftFoot_ANGVEL_y  Gyr         y      LeftFoot  deg/s               100.0
+  14   LeftFoot_ANGVEL_z  Gyr         z      LeftFoot  deg/s               100.0
+  15     LeftFoot_MAGN_x  Mag         x      LeftFoot     µT               100.0
+  16     LeftFoot_MAGN_y  Mag         y      LeftFoot     µT               100.0
+  17     LeftFoot_MAGN_z  Mag         z      LeftFoot     µT               100.0
+  18   RightFoot_ACCEL_x  Acc         x     RightFoot      g               100.0
+  19   RightFoot_ACCEL_y  Acc         y     RightFoot      g               100.0
+  20   RightFoot_ACCEL_z  Acc         z     RightFoot      g               100.0
+  21  RightFoot_ANGVEL_x  Gyr         x     RightFoot  deg/s               100.0
+  22  RightFoot_ANGVEL_y  Gyr         y     RightFoot  deg/s               100.0
+  23  RightFoot_ANGVEL_z  Gyr         z     RightFoot  deg/s               100.0
+  24    RightFoot_MAGN_x  Mag         x     RightFoot     µT               100.0
+  25    RightFoot_MAGN_y  Mag         y     RightFoot     µT               100.0
+  26    RightFoot_MAGN_z  Mag         z     RightFoot     µT               100.0},
+ 'info': None,
+ 'events': None,
+ 'events_info': None}
+</code></pre>
+<p>That is a whole lot of output, so let us take a look at the attributes of instance one by one. First, print a list of all available attributes.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">recording</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+</code></pre></div>
+<pre><code>dict_keys(['data', 'channels', 'info', 'events', 'events_info'])
+</code></pre>
+<p>The contents of any individual attribute can be accessed in two ways, namely via the <code>__dict__</code> or with <code>dot</code> indexing.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">recording</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>  <span class="c1"># print(recording.__dict__[&quot;data&quot;])</span>
+</code></pre></div>
+<pre><code>{'SU':         LowerBack_ACCEL_x  LowerBack_ACCEL_y  LowerBack_ACCEL_z  \
+0                0.967784           0.045886          -0.260760   
+1                0.969667           0.044949          -0.256890   
+2                0.968848           0.045823          -0.259559   
+3                0.968601           0.045996          -0.260772   
+4                0.970748           0.044825          -0.259930   
+...                   ...                ...                ...   
+993019           0.966575          -0.062226           0.273807   
+993020           0.968330          -0.065081           0.268255   
+993021           0.971785          -0.068572           0.269635   
+993022           0.970579          -0.069420           0.269644   
+993023           0.960542          -0.069657           0.270160
+
+        LowerBack_ANGVEL_x  LowerBack_ANGVEL_y  LowerBack_ANGVEL_z  \
+0                -2.566851           -2.177240            0.297938   
+1                -2.429344           -2.188699            0.034383   
+2                -2.521010           -2.051195           -0.320841   
+3                -2.532473           -2.028272           -0.366690   
+4                -2.085604           -2.108478           -0.000031   
+...                    ...                 ...                 ...   
+993019            0.011351           -1.021059           -0.011785   
+993020            0.000108           -1.142992           -0.044537   
+993021            0.010811           -0.836410            0.089080   
+993022           -0.058050           -0.824628           -0.183023   
+993023           -0.136219           -0.771909           -0.147571
+
+        LowerBack_MAGN_x  LowerBack_MAGN_y  LowerBack_MAGN_z  \
+0               5.491000         11.878000          4.327000   
+1               5.490000         11.881000          4.331000   
+2               5.490000         11.881000          4.334000   
+3               5.491000         11.879000          4.337000   
+4               5.493000         11.875000          4.339000   
+...                  ...               ...               ...   
+993019          4.118991          7.638019          1.819981   
+993020          4.117991          7.640009          1.817943   
+993021          4.116991          7.641000          1.811906   
+993022          4.115981          7.641000          1.801868   
+993023          4.075389          7.569287          1.771219
+
+        LowerBack_BARO_n/a  
+0              1011.628100  
+1              1011.628400  
+2              1011.628800  
+3              1011.629200  
+4              1011.629600  
+...                    ...  
+993019         1012.077903  
+993020         1012.078202  
+993021         1012.078403  
+993022         1012.078703  
+993023         1002.580321
+
+[993024 rows x 10 columns], 'SU_INDIP':         LowerBack_ACCEL_x  LowerBack_ACCEL_y  LowerBack_ACCEL_z  \
+0                0.967986           0.074256          -0.227576   
+1                0.963671           0.072786          -0.222888   
+2                0.967964           0.076218          -0.229266   
+3                0.964173           0.080834          -0.225058   
+4                0.968537           0.073739          -0.224440   
+...                   ...                ...                ...   
+993019           0.952616          -0.036956           0.276052   
+993020           0.950713          -0.039025           0.274731   
+993021           0.951084          -0.041569           0.273339   
+993022           0.951656          -0.043793           0.273537   
+993023           0.955107          -0.043583           0.274676
+
+        LowerBack_ANGVEL_x  LowerBack_ANGVEL_y  LowerBack_ANGVEL_z  \
+0                 2.112411            0.790947            0.541712   
+1              -132.991561          -72.074004          104.116796   
+2                40.206686           20.650084          -16.748853   
+3                37.499673           18.407235          -17.670796   
+4                 6.486804            2.543410           -3.971685   
+...                    ...                 ...                 ...   
+993019            0.874026           -0.039631           -0.363585   
+993020            0.736097           -0.079306           -0.373310   
+993021            0.592863           -0.078105           -0.326287   
+993022            0.483162            0.062394           -0.319518   
+993023            0.449540            0.202463           -0.350353
+
+        LowerBack_MAGN_x  LowerBack_MAGN_y  LowerBack_MAGN_z  \
+0              -9.285130         75.022617         -5.902833   
+1             -11.966959         18.729473          9.501037   
+2             -11.456134         18.993760          9.626272   
+3             -11.839253         19.390191          9.751507   
+4             -11.456134         19.522334          9.375802   
+...                  ...               ...               ...   
+993019         -0.345702          0.335094        -18.075647   
+993020         -0.396785          0.361523        -17.449474   
+993021         -0.757200          0.875414        -17.521831   
+993022         -1.111939          0.757953        -17.987983   
+993023         -1.048086          0.361523        -18.050600
+
+        LeftFoot_ACCEL_x  ...  LeftFoot_MAGN_z  RightFoot_ACCEL_x  \
+0               0.934771  ...        -3.994010           0.910403   
+1               0.933119  ...        -3.994010           0.905757   
+2               0.933472  ...        -4.007887           0.908215   
+3               0.930711  ...        -4.132780           0.907955   
+4               0.929001  ...        -4.105026           0.907808   
+...                  ...  ...              ...                ...   
+993019          0.849485  ...       -20.058072           0.894927   
+993020          0.850188  ...       -20.252351           0.895039   
+993021          0.850738  ...       -20.230148           0.895129   
+993022          0.850454  ...       -20.417488           0.895036   
+993023          0.848690  ...       -20.264840           0.893635
+
+        RightFoot_ACCEL_y  RightFoot_ACCEL_z  RightFoot_ANGVEL_x  \
+0               -0.213594          -0.360157            0.199539   
+1               -0.213015          -0.358808            0.160327   
+2               -0.214753          -0.358071            0.164578   
+3               -0.216700          -0.357703            0.127464   
+4               -0.217405          -0.354327            0.053191   
+...                   ...                ...                 ...   
+993019          -0.232745          -0.385142           -0.273263   
+993020          -0.230868          -0.385270           -0.244655   
+993021          -0.230846          -0.384043           -0.215061   
+993022          -0.232099          -0.384561           -0.236093   
+993023          -0.231213          -0.385298           -0.240081
+
+        RightFoot_ANGVEL_y  RightFoot_ANGVEL_z  RightFoot_MAGN_x  \
+0                 0.415360            1.012113        -14.106638   
+1                 0.559909            1.031959        -13.982228   
+2                 0.862008            0.954256        -14.202222   
+3                 0.794218            0.781762        -14.270497   
+4                 0.623394            0.505714        -14.407045   
+...                    ...                 ...               ...   
+993019            0.091395           -0.207776        -23.842547   
+993020            0.139509           -0.200464        -23.938131   
+993021            0.168476           -0.226669        -23.866822   
+993022            0.147898           -0.208713        -23.828892   
+993023            0.144888           -0.270695        -23.828892
+
+        RightFoot_MAGN_y  RightFoot_MAGN_z  
+0              23.532360         10.766563  
+1              23.576285         10.871915  
+2              23.278221         10.724733  
+3              23.278221         10.585297  
+4              23.490003         10.445862  
+...                  ...               ...  
+993019         23.334696         -2.884172  
+993020         23.292340         -2.912059  
+993021         23.532360         -3.246704  
+993022         23.726886         -3.519378  
+993023         23.670411         -3.296281
+
+[993024 rows x 27 columns]}
+</code></pre>
+<p>We see that that <code>data</code> attribute is in the form of a Python <code>dict</code>, where the keys correspond to the tracking systems that we have requested when calling the <code>load_recording()</code> function. NGMT is setup so that the keys of the <code>channels</code> attribute match with these keys, so that the channel descriptions are availbale per tracking system.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">recording</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span> <span class="n">recording</span><span class="o">.</span><span class="n">channels</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+</code></pre></div>
+<pre><code>dict_keys(['SU', 'SU_INDIP']) dict_keys(['SU', 'SU_INDIP'])
+</code></pre>
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.ad660dcc.min.js"></script>
+      
+    
+  </body>
+</html>
