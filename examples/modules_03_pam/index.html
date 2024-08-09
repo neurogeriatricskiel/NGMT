@@ -1,0 +1,1248 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.31">
+    
+    
+      
+        <title>Tutorial: Physical Activity Monitoring - KielMotionAnalysisToolbox</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.3cba04c6.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../style.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-green" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tutorial-physical-activity-monitoring" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="KielMotionAnalysisToolbox" class="md-header__button md-logo" aria-label="KielMotionAnalysisToolbox" data-md-component="logo">
+      
+  <img src="../../kielmat_logo_transBG.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            KielMotionAnalysisToolbox
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Tutorial: Physical Activity Monitoring
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="light-green" data-md-color-accent="purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="blue-grey"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../" class="md-tabs__link">
+          
+  
+  Examples
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../modules/" class="md-tabs__link">
+          
+  
+  Modules
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../dataclass/" class="md-tabs__link">
+        
+  
+    
+  
+  Dataclass
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../datasets/" class="md-tabs__link">
+          
+  
+  Datasets
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../utils/" class="md-tabs__link">
+          
+  
+  Utilities
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../contributing/" class="md-tabs__link">
+          
+  
+  Contributing
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="KielMotionAnalysisToolbox" class="md-nav__button md-logo" aria-label="KielMotionAnalysisToolbox" data-md-component="logo">
+      
+  <img src="../../kielmat_logo_transBG.png" alt="logo">
+
+    </a>
+    KielMotionAnalysisToolbox
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Examples
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Examples
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basic_00_intro_kielmat/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tutorial basics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basic_01_load_Data/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Load data into KielMAT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basic_02_events/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Events in dataclass
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modules_01_gsd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gait Sequence Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modules_02_icd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Initial Contact Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Modules
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Modules
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/gsd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gait Sequence Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/icd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Initial Contact Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/pam/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Physical Activity Monitoring
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/ptd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Postural Transition Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/td/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Turn Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dataclass/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Dataclass
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Datasets
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Datasets
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../datasets/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../datasets/keepcontrol/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    KeepControl
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../datasets/mobilised/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mobilise-D
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Utilities
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Utilities
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utils/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Index
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utils/preprocessing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data Preprocessing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utils/importers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data Import
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utils/orientation_estimation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Orientation Estimation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Contributing
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Contributing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contributing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning objectives
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="tutorial-physical-activity-monitoring">Tutorial: Physical Activity Monitoring</h1>
+<p><strong>Author:</strong> Masoud Abedinifar</p>
+<p><strong>Last update:</strong> Fri 09 August 2024</p>
+<h2 id="learning-objectives">Learning objectives</h2>
+<p>By the end of this tutorial, you will be able to:  </p>
+<ul>
+<li>Load accelerometer data from a raw recording</li>
+<li>Apply the Physical Activity Monitoring algorithm to classify activity intensity levels.  </li>
+<li>Interpret the results of activity classification.  </li>
+</ul>
+<h1 id="pam-physical-activity-monitoring">Pam Physical Activity Monitoring</h1>
+<p>This example serves as a reference on how to use the physical activity monitoring algorithm. This example can be cited by referencing the package.</p>
+<p>The example illustrates how the physical activity monitoring algorithm determines the intensity level of sedentary, light, moderate, and vigorous physical activities using body acceleration recorded with a triaxial accelerometer worn on the lowerback. The physical activity monitoring algorithm is implemented in the main module <a href="https://github.com/neurogeriatricskiel/KielMAT/tree/main/kielmat/modules/pam/_pam.py"><code>kielmat.modules.pam._pam</code></a>.</p>
+<p>The algorithm determines the intensity level of physical activities based on the following steps:</p>
+<ol>
+<li>
+<p><strong>Loading Data:</strong> Start by loading the data, including a time index along with accelerometer data (N, 3) for x, y, and z axes. The other inputs are the sampling frequency of the data (sampling_freq_Hz), defaulting to 100 Hz, and thresholds (thresholds_mg), provided as a dictionary containing threshold values for physical activity detection in mg unit. Another input is the epoch duration (epoch_duration_sec) in seconds, defaulting to 5 seconds. The last input, plot_results, when set to True, generates a plot showing the average Euclidean Norm Minus One (ENMO) per hour for each date, with a default of True.</p>
+</li>
+<li>
+<p><strong>Preprocessing:</strong> The input signal is preprocessed by calculating the sample-level Euclidean norm (EN) of the acceleration signal across the x, y, and z axes. A fourth-order Butterworth low-pass filter with a cut-off frequency of 20Hz is then applied to remove noise. This filter is applied to the vector magnitude scores. The ENMO index is calculated to separate the activity-related component of the acceleration signal. Negative ENMO values are truncated to zero. Finally, the indices are multiplied by 1000 to convert units from g to mg.</p>
+</li>
+<li>
+<p><strong>Classification:</strong> The algorithm classifies the intensity of physical activities based on the calculated ENMO values. The activity_classification function expresses the ENMO time-series data in 5-second epochs for summarizing the data. Thresholds for categorization are as follows: sedentary activity &lt; 45 mg, light activity 45–100 mg, moderate activity 100–400 mg, vigorous activity &gt; 400 mg.</p>
+</li>
+<li>
+<p><strong>Results:</strong> The algorithm classifies different levels of activities along with the time spent on each activity level for each day. If <code>plot_results</code> is set to True, the function generates a plot showing the averaged ENMO values for each day.</p>
+</li>
+</ol>
+<h4 id="references">References</h4>
+<p>[<code>1</code>] Doherty, Aiden, et al. (2017). Large scale population assessment of physical activity using wrist-worn accelerometers: the UK biobank study. PloS one 12.2. <a href="https://doi.org/10.1371/journal.pone.0169649">https://doi.org/10.1371/journal.pone.0169649</a></p>
+<p>[<code>2</code>] Van Hees, Vincent T., et al. (2013). Separating movement and gravity components in an acceleration signal and implications for the assessment of human daily physical activity. PloS one 8.4. <a href="https://doi.org/10.1371/journal.pone.0061691">https://doi.org/10.1371/journal.pone.0061691</a></p>
+<h2 id="import-libraries">Import Libraries</h2>
+<p>The necessary libraries such as pandas, physical activity monitoring and mobilised dataset are imported. Make sure that you have all the required libraries and modules installed before running this code. You may also need to install the <code>kielmat</code> library and its dependencies if you haven't already.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span> <span class="nn">kielmat.modules.pam</span> <span class="kn">import</span> <span class="n">PhysicalActivityMonitoring</span>
+<span class="kn">from</span> <span class="nn">kielmat.datasets</span> <span class="kn">import</span> <span class="n">mobilised</span>
+</code></pre></div>
+<h2 id="data-preparation">Data Preparation</h2>
+<p>To implement the physical activity monitoring algorithm, we load example data from a participant who has worn a LowerBack IMU sensor for several hours during a day while performing daily life activities at home.</p>
+<p>The accelerometer data (N, 3) for the x, y, and z axes, is loaded as a pandas DataFrame.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Set the dataset path</span>
+<span class="n">dataset_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">())</span> <span class="o">/</span> <span class="s2">&quot;_mobilised&quot;</span>
+
+<span class="c1"># Fetch and load the dataset</span>
+<span class="n">mobilised</span><span class="o">.</span><span class="n">fetch_dataset</span><span class="p">(</span><span class="n">dataset_path</span><span class="o">=</span><span class="n">dataset_path</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># In this example, we use &quot;SU&quot; as tracking_system and &quot;LowerBack&quot; as tracked points.</span>
+<span class="n">tracking_sys</span> <span class="o">=</span> <span class="s2">&quot;SU&quot;</span>
+<span class="n">tracked_points</span> <span class="o">=</span> <span class="p">{</span><span class="n">tracking_sys</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;LowerBack&quot;</span><span class="p">]}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># The &#39;mobilised.load_recording&#39; function is used to load the data from the specified file_path</span>
+<span class="n">recording</span> <span class="o">=</span> <span class="n">mobilised</span><span class="o">.</span><span class="n">load_recording</span><span class="p">(</span>
+    <span class="n">cohort</span><span class="o">=</span><span class="s2">&quot;PFF&quot;</span><span class="p">,</span>  <span class="c1"># Choose the cohort</span>
+    <span class="n">file_name</span><span class="o">=</span><span class="s2">&quot;data.mat&quot;</span><span class="p">,</span> 
+    <span class="n">dataset_path</span><span class="o">=</span><span class="n">dataset_path</span><span class="p">)</span>
+
+<span class="c1"># Load lower back acceleration data</span>
+<span class="n">accel_data</span> <span class="o">=</span> <span class="n">recording</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">tracking_sys</span><span class="p">][</span>
+    <span class="p">[</span><span class="s2">&quot;LowerBack_ACCEL_x&quot;</span><span class="p">,</span> <span class="s2">&quot;LowerBack_ACCEL_y&quot;</span><span class="p">,</span> <span class="s2">&quot;LowerBack_ACCEL_z&quot;</span><span class="p">]</span>
+<span class="p">]</span>
+
+<span class="c1"># Get the corresponding sampling frequency directly from the recording</span>
+<span class="n">sampling_frequency</span> <span class="o">=</span> <span class="n">recording</span><span class="o">.</span><span class="n">channels</span><span class="p">[</span><span class="n">tracking_sys</span><span class="p">][</span>
+    <span class="n">recording</span><span class="o">.</span><span class="n">channels</span><span class="p">[</span><span class="n">tracking_sys</span><span class="p">][</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;LowerBack_ACCEL_x&quot;</span>
+<span class="p">][</span><span class="s2">&quot;sampling_frequency&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Get the acceleration data unit from the recording</span>
+<span class="n">acceleration_unit</span> <span class="o">=</span> <span class="n">recording</span><span class="o">.</span><span class="n">channels</span><span class="p">[</span><span class="n">tracking_sys</span><span class="p">][</span>
+    <span class="n">recording</span><span class="o">.</span><span class="n">channels</span><span class="p">[</span><span class="n">tracking_sys</span><span class="p">][</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;LowerBack_ACCEL_x&quot;</span>
+<span class="p">][</span><span class="s2">&quot;units&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</code></pre></div>
+<h2 id="apply-physical-activity-monitoring-algorithm">Apply Physical Activity Monitoring Algorithm</h2>
+<p>Now, we are running the physical activity monitoring algorithm from the main module <a href="https://github.com/neurogeriatricskiel/KielMAT/tree/main/kielmat/modules/pam/_pam.py"><code>kielmat.modules.pam._pam</code></a>. The inputs of the algorithm are as follows:</p>
+<ul>
+<li><strong>Input Data:</strong> <code>data</code> Includes data with a time index along with accelerometer data (N, 3) for x, y, and z axes in pandas Dataframe format.</li>
+<li><strong>Acceleration Unit:</strong> <code>acceleration_unit</code> is the unit of the acceleration data.</li>
+<li><strong>Sampling Frequency:</strong> <code>sampling_freq_Hz</code> is the sampling frequency of the acceleration data, defined in Hz, with a default value of 100 Hz.</li>
+<li><strong>Thresholds:</strong> <code>thresholds_mg</code> are provided as a dictionary containing threshold values for physical activity detection in mili-g.</li>
+<li><strong>Epoch Duration:</strong> <code>epoch_duration_sec</code> is the epoch length in seconds, with a default value of 5 seconds.</li>
+<li><strong>Plot Results:</strong> <code>plot_results</code>, if set to True, generates a plot showing the average Euclidean Norm Minus One (ENMO) per hour for each day.</li>
+</ul>
+<p>To apply the physical activity monitoring algorithm, an instance of the PhysicalActivityMonitoring class is created using the constructor, <code>PhysicalActivityMonitoring()</code>. The <code>pam</code> variable holds the instance, allowing us to access its methods. The output of the algorithm includes information regarding physical activity levels and the time spent on each activity for the provided date, including the mean of sedentary time, light, moderate, and vigorous activities, along with the time spent for each of them.</p>
+<p><div class="highlight"><pre><span></span><code><span class="c1"># Initialize the PhysicalActivityMonitoring class</span>
+<span class="n">pam</span> <span class="o">=</span> <span class="n">PhysicalActivityMonitoring</span><span class="p">()</span>
+
+<span class="c1"># Detect physical activity</span>
+<span class="n">pam</span><span class="o">.</span><span class="n">detect</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">accel_data</span><span class="p">,</span>
+    <span class="n">acceleration_unit</span><span class="o">=</span><span class="n">acceleration_unit</span><span class="p">,</span>
+    <span class="n">sampling_freq_Hz</span><span class="o">=</span><span class="n">sampling_frequency</span><span class="p">,</span>
+    <span class="n">thresholds_mg</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;sedentary_threshold&quot;</span><span class="p">:</span> <span class="mi">45</span><span class="p">,</span>
+        <span class="s2">&quot;light_threshold&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+        <span class="s2">&quot;moderate_threshold&quot;</span><span class="p">:</span> <span class="mi">400</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="n">epoch_duration_sec</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">plot</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+
+<span class="c1"># Print detected physical activities</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pam</span><span class="o">.</span><span class="n">physical_activities_</span><span class="p">)</span>
+</code></pre></div>
+        date        sedentary_mean_enmo  sedentary_time_min  light_mean_enmo     light_time_min  moderate_mean_enmo  moderate_time_min      vigorous_time_min  vigorous_mean_enmo<br />
+    0  2023-01-01   0.824444             115.583333          NaN                 0               NaN                 0                      NaN                0           </p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,2473 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../icd/">
+      
+      
+        <link rel="next" href="../ptd/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.31">
+    
+    
+      
+        <title>Physical Activity Monitoring - KielMotionAnalysisToolbox</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.3cba04c6.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../style.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-green" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#physical-activity-monitoring" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="KielMotionAnalysisToolbox" class="md-header__button md-logo" aria-label="KielMotionAnalysisToolbox" data-md-component="logo">
+      
+  <img src="../../kielmat_logo_transBG.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            KielMotionAnalysisToolbox
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Physical Activity Monitoring
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="light-green" data-md-color-accent="purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="blue-grey"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../examples/" class="md-tabs__link">
+          
+  
+  Examples
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  Modules
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../dataclass/" class="md-tabs__link">
+        
+  
+    
+  
+  Dataclass
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../datasets/" class="md-tabs__link">
+          
+  
+  Datasets
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../utils/" class="md-tabs__link">
+          
+  
+  Utilities
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../contributing/" class="md-tabs__link">
+          
+  
+  Contributing
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="KielMotionAnalysisToolbox" class="md-nav__button md-logo" aria-label="KielMotionAnalysisToolbox" data-md-component="logo">
+      
+  <img src="../../kielmat_logo_transBG.png" alt="logo">
+
+    </a>
+    KielMotionAnalysisToolbox
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Examples
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Examples
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/basic_00_intro_kielmat/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tutorial basics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/basic_01_load_Data/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Load data into KielMAT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/basic_02_events/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Events in dataclass
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/modules_01_gsd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gait Sequence Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/modules_02_icd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Initial Contact Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Modules
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Modules
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gsd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gait Sequence Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../icd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Initial Contact Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Physical Activity Monitoring
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Physical Activity Monitoring
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#physical-activity-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Physical Activity Monitoring
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modules.pam._pam.PhysicalActivityMonitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      PhysicalActivityMonitoring
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modules.pam._pam.PhysicalActivityMonitoring.__init__" class="md-nav__link">
+    <span class="md-ellipsis">
+      __init__
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modules.pam._pam.PhysicalActivityMonitoring.detect" class="md-nav__link">
+    <span class="md-ellipsis">
+      detect
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ptd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Postural Transition Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../td/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Turn Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dataclass/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Dataclass
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Datasets
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Datasets
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../datasets/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../datasets/keepcontrol/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    KeepControl
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../datasets/mobilised/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mobilise-D
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Utilities
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Utilities
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utils/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Index
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utils/preprocessing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data Preprocessing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utils/importers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data Import
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utils/orientation_estimation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Orientation Estimation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Contributing
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Contributing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contributing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#physical-activity-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Physical Activity Monitoring
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modules.pam._pam.PhysicalActivityMonitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      PhysicalActivityMonitoring
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modules.pam._pam.PhysicalActivityMonitoring.__init__" class="md-nav__link">
+    <span class="md-ellipsis">
+      __init__
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modules.pam._pam.PhysicalActivityMonitoring.detect" class="md-nav__link">
+    <span class="md-ellipsis">
+      detect
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  <h1>Physical Activity Monitoring</h1>
+
+<h2 id="physical-activity-monitoring">Physical Activity Monitoring</h2>
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<a id="modules.pam._pam.PhysicalActivityMonitoring"></a>
+    <div class="doc doc-contents first">
+
+
+      <p>The algortihm monitors physical activity levels based on accelerometer data. It determines the
+intensity level of physical activities based on accelerometer signals using the following steps:</p>
+<ul>
+<li>
+<p>Load Data: Includes a time index and accelerometer data (N, 3) for x, y, and z axes. The
+    sampling frequency (sampling_freq_Hz) is in Hz, with a default value of 100. Thresholds
+    (thresholds_mg) are provided as a dictionary containing threshold values for physical
+    activity detection in mg unit. The epoch duration (epoch_duration_sec) is defined in
+    seconds, with a default of 5 seconds. The last input is plot, which, if set to
+    True, generates a plot showing the average Euclidean Norm Minus One (ENMO) per hour for
+    each date. The default is True.</p>
+</li>
+<li>
+<p>Preprocess Signal: Calculate the sample-level Euclidean norm (EN) of the acceleration
+    signal. Apply a fourth-order Butterworth low-pass filter with a cut-off frequency of 20Hz
+    to remove noise. Calculate the Euclidean Norm Minus One (ENMO) index and truncate negative
+    values to zero. Convert the indices by multiplying them by 1000 to convert units from g to
+    mg.</p>
+</li>
+<li>
+<p>Classify Intensity: Classify the intensity of physical activities based on the calculated
+    ENMO values using 5-second epochs. Thresholds for categorization are as follows: sedentary
+    activity &lt; 45 mg, light activity 45–100 mg, moderate activity 100–400 mg, vigorous activity
+    &gt; 400 mg.</p>
+</li>
+<li>
+<p>Classify Activities: Classify different levels of activities and calculate the time spent
+    on each activity level for each day. If <code>plot</code> is True, the function generates a
+    plot showing the averaged ENMO values for each day.</p>
+</li>
+</ul>
+
+
+<p><span class="doc-section-title">Attributes:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><span title="modules.pam._pam.PhysicalActivityMonitoring.physical_activities_">physical_activities_</span></code></td>
+            <td>
+                  <code><span title="pandas.DataFrame">DataFrame</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>DataFrame containing physical activity information for each day.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Methods:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="modules.pam._pam.PhysicalActivityMonitoring.detect" href="#modules.pam._pam.PhysicalActivityMonitoring.detect">detect</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Detects gait sequences on the accelerometer signal.</p>
+                </div>
+              </td>
+            </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Examples:</span></p>
+    <div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">pam</span> <span class="o">=</span> <span class="n">PhysicalActivityMonitoring</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pam</span><span class="o">.</span><span class="n">detect</span><span class="p">(</span>
+<span class="go">        data=acceleration_data,</span>
+<span class="go">        acceleration_unit:&quot;m/s^2&quot;,</span>
+<span class="go">        sampling_freq_Hz=100,</span>
+<span class="go">        thresholds_mg={</span>
+<span class="go">            &quot;sedentary_threshold&quot;: 45,</span>
+<span class="go">            &quot;light_threshold&quot;: 100,</span>
+<span class="go">            &quot;moderate_threshold&quot;: 400,</span>
+<span class="go">        },</span>
+<span class="go">        epoch_duration_sec=5,</span>
+<span class="go">        plot=True)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">pam</span><span class="o">.</span><span class="n">physical_activities_</span><span class="p">)</span>
+<span class="go">                sedentary_mean_mg  sedentary_time_min  light_mean_mg  light_time_min  moderate_mean_mg  moderate_time_min  vigorous_mean_mg  vigorous_time_min</span>
+<span class="go">3/19/2018       23.48              733.08              60.78          72              146.2             21.58              730.34            0.58</span>
+<span class="go">3/20/2018       27.16              753.83              57.06          102.25          137.26            7.92               737.9             0.42</span>
+</code></pre></div>
+
+
+<details class="references" open>
+  <summary>References</summary>
+  <p>[1] Doherty, Aiden, et al. (2017). Large scale population assessment of physical activity using wrist-worn accelerometers...</p>
+<p>[2] Van Hees, Vincent T., et al. (2013). Separating movement and gravity components in an acceleration signal and implications...</p>
+</details>
+              <details class="quote">
+                <summary>Source code in <code>kielmat/modules/pam/_pam.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">  7</span>
+<span class="normal">  8</span>
+<span class="normal">  9</span>
+<span class="normal"> 10</span>
+<span class="normal"> 11</span>
+<span class="normal"> 12</span>
+<span class="normal"> 13</span>
+<span class="normal"> 14</span>
+<span class="normal"> 15</span>
+<span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span>
+<span class="normal">234</span>
+<span class="normal">235</span>
+<span class="normal">236</span>
+<span class="normal">237</span>
+<span class="normal">238</span>
+<span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span>
+<span class="normal">242</span>
+<span class="normal">243</span>
+<span class="normal">244</span>
+<span class="normal">245</span>
+<span class="normal">246</span>
+<span class="normal">247</span>
+<span class="normal">248</span>
+<span class="normal">249</span>
+<span class="normal">250</span>
+<span class="normal">251</span>
+<span class="normal">252</span>
+<span class="normal">253</span>
+<span class="normal">254</span>
+<span class="normal">255</span>
+<span class="normal">256</span>
+<span class="normal">257</span>
+<span class="normal">258</span>
+<span class="normal">259</span>
+<span class="normal">260</span>
+<span class="normal">261</span>
+<span class="normal">262</span>
+<span class="normal">263</span>
+<span class="normal">264</span>
+<span class="normal">265</span>
+<span class="normal">266</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">PhysicalActivityMonitoring</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The algortihm monitors physical activity levels based on accelerometer data. It determines the</span>
+<span class="sd">    intensity level of physical activities based on accelerometer signals using the following steps:</span>
+
+<span class="sd">    - Load Data: Includes a time index and accelerometer data (N, 3) for x, y, and z axes. The</span>
+<span class="sd">        sampling frequency (sampling_freq_Hz) is in Hz, with a default value of 100. Thresholds</span>
+<span class="sd">        (thresholds_mg) are provided as a dictionary containing threshold values for physical</span>
+<span class="sd">        activity detection in mg unit. The epoch duration (epoch_duration_sec) is defined in</span>
+<span class="sd">        seconds, with a default of 5 seconds. The last input is plot, which, if set to</span>
+<span class="sd">        True, generates a plot showing the average Euclidean Norm Minus One (ENMO) per hour for</span>
+<span class="sd">        each date. The default is True.</span>
+
+<span class="sd">    - Preprocess Signal: Calculate the sample-level Euclidean norm (EN) of the acceleration</span>
+<span class="sd">        signal. Apply a fourth-order Butterworth low-pass filter with a cut-off frequency of 20Hz</span>
+<span class="sd">        to remove noise. Calculate the Euclidean Norm Minus One (ENMO) index and truncate negative</span>
+<span class="sd">        values to zero. Convert the indices by multiplying them by 1000 to convert units from g to</span>
+<span class="sd">        mg.</span>
+
+<span class="sd">    - Classify Intensity: Classify the intensity of physical activities based on the calculated</span>
+<span class="sd">        ENMO values using 5-second epochs. Thresholds for categorization are as follows: sedentary</span>
+<span class="sd">        activity &lt; 45 mg, light activity 45–100 mg, moderate activity 100–400 mg, vigorous activity</span>
+<span class="sd">        &gt; 400 mg.</span>
+
+<span class="sd">    - Classify Activities: Classify different levels of activities and calculate the time spent</span>
+<span class="sd">        on each activity level for each day. If `plot` is True, the function generates a</span>
+<span class="sd">        plot showing the averaged ENMO values for each day.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        physical_activities_ (pd.DataFrame): DataFrame containing physical activity information for each day.</span>
+
+<span class="sd">    Methods:</span>
+<span class="sd">        detect(data, sampling_freq_Hz, thresholds_mg, epoch_duration_sec, plot):</span>
+<span class="sd">            Detects gait sequences on the accelerometer signal.</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; pam = PhysicalActivityMonitoring()</span>
+<span class="sd">        &gt;&gt;&gt; pam.detect(</span>
+<span class="sd">                data=acceleration_data,</span>
+<span class="sd">                acceleration_unit:&quot;m/s^2&quot;,</span>
+<span class="sd">                sampling_freq_Hz=100,</span>
+<span class="sd">                thresholds_mg={</span>
+<span class="sd">                    &quot;sedentary_threshold&quot;: 45,</span>
+<span class="sd">                    &quot;light_threshold&quot;: 100,</span>
+<span class="sd">                    &quot;moderate_threshold&quot;: 400,</span>
+<span class="sd">                },</span>
+<span class="sd">                epoch_duration_sec=5,</span>
+<span class="sd">                plot=True)</span>
+<span class="sd">        &gt;&gt;&gt; print(pam.physical_activities_)</span>
+<span class="sd">                        sedentary_mean_mg  sedentary_time_min  light_mean_mg  light_time_min  moderate_mean_mg  moderate_time_min  vigorous_mean_mg  vigorous_time_min</span>
+<span class="sd">        3/19/2018       23.48              733.08              60.78          72              146.2             21.58              730.34            0.58</span>
+<span class="sd">        3/20/2018       27.16              753.83              57.06          102.25          137.26            7.92               737.9             0.42</span>
+
+<span class="sd">    References:</span>
+<span class="sd">        [1] Doherty, Aiden, et al. (2017). Large scale population assessment of physical activity using wrist-worn accelerometers...</span>
+
+<span class="sd">        [2] Van Hees, Vincent T., et al. (2013). Separating movement and gravity components in an acceleration signal and implications...</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initializes the physical activity instance.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">physical_activities_</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">detect</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">data</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+        <span class="n">acceleration_unit</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">sampling_freq_Hz</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+        <span class="n">thresholds_mg</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;sedentary_threshold&quot;</span><span class="p">:</span> <span class="mi">45</span><span class="p">,</span>
+            <span class="s2">&quot;light_threshold&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+            <span class="s2">&quot;moderate_threshold&quot;</span><span class="p">:</span> <span class="mi">400</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="n">epoch_duration_sec</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+        <span class="n">plot</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Detects and classifies physical activity levels.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            data (pd.DataFrame): Input data with time index and accelerometer data (N, 3) for x, y, and z axes.</span>
+<span class="sd">            acceleration_unit (str): Unit of input acceleration data.</span>
+<span class="sd">            sampling_freq_Hz (float): Sampling frequency of the accelerometer data (in Hertz).</span>
+<span class="sd">            thresholds_mg (dict): Dictionary containing threshold values for physical activity detection.</span>
+<span class="sd">            epoch_duration_sec (int): Duration of each epoch in seconds.</span>
+<span class="sd">            plot (bool): If True, generates a plot showing the average Euclidean Norm Minus One (ENMO). Default is True.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            pd.DataFrame: Contains date, sedentary_mean_mg, sedentary_time_min, light_mean_mg, light_time_min,</span>
+<span class="sd">                          moderate_mean_mg, moderate_time_min, vigorous_mean_mg, vigorous_time_min</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Error handling for invalid input data</span>
+
+        <span class="c1"># Check if data is a DataFrame</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Input data must be a DataFrame.&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Check if data has at least 3 columns</span>
+        <span class="k">if</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Input data must have at least 3 columns.&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Create a time index if data does not have a timestamp column</span>
+        <span class="k">if</span> <span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">!=</span> <span class="s2">&quot;timestamp&quot;</span> <span class="ow">or</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span>
+            <span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DatetimeIndex</span>
+        <span class="p">):</span>
+            <span class="c1"># Create a timestamp index with the correct frequency if not already present</span>
+            <span class="n">data</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span>
+                <span class="n">start</span><span class="o">=</span><span class="s2">&quot;2023-01-01 00:00:00&quot;</span><span class="p">,</span>
+                <span class="n">periods</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">),</span>
+                <span class="n">freq</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="mi">1</span><span class="o">/</span><span class="n">sampling_freq_Hz</span><span class="si">}</span><span class="s2">s&quot;</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;timestamp&quot;</span>
+
+        <span class="c1"># check if index column in named timestamp</span>
+        <span class="k">if</span> <span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">!=</span> <span class="s2">&quot;timestamp&quot;</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Index column must be named timestamp.&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">sampling_freq_Hz</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">))</span> <span class="ow">or</span> <span class="n">sampling_freq_Hz</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Sampling frequency must be a positive float.&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">thresholds_mg</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Thresholds must be a dictionary.&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">epoch_duration_sec</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">or</span> <span class="n">epoch_duration_sec</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Epoch duration must be a positive integer.&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">plot</span><span class="p">,</span> <span class="nb">bool</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Plot results must be a boolean (True or False).&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Check unit of acceleration data if it is in g or m/s^2</span>
+        <span class="k">if</span> <span class="n">acceleration_unit</span> <span class="o">==</span> <span class="s2">&quot;m/s^2&quot;</span><span class="p">:</span>
+            <span class="c1"># Convert acceleration data from m/s^2 to g (if not already is in g)</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+            <span class="n">data</span> <span class="o">/=</span> <span class="mf">9.81</span>
+
+        <span class="c1"># Calculate Euclidean Norm (EN)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">data</span><span class="p">[</span><span class="s2">&quot;en&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="c1"># Apply 4th order low-pass Butterworth filter with the cutoff frequency of 20Hz</span>
+        <span class="n">data</span><span class="p">[</span><span class="s2">&quot;en&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">lowpass_filter</span><span class="p">(</span>
+            <span class="n">data</span><span class="p">[</span><span class="s2">&quot;en&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
+            <span class="n">method</span><span class="o">=</span><span class="s2">&quot;butter&quot;</span><span class="p">,</span>
+            <span class="n">order</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+            <span class="n">cutoff_freq_hz</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+            <span class="n">sampling_rate_hz</span><span class="o">=</span><span class="n">sampling_freq_Hz</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Calculate Euclidean Norm Minus One (ENMO) value</span>
+        <span class="n">data</span><span class="p">[</span><span class="s2">&quot;enmo&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;en&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span>
+
+        <span class="c1"># Set negative values of ENMO to zero</span>
+        <span class="n">data</span><span class="p">[</span><span class="s2">&quot;truncated_enmo&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;enmo&quot;</span><span class="p">],</span> <span class="mi">0</span><span class="p">)</span>
+
+        <span class="c1"># Convert ENMO from g to milli-g</span>
+        <span class="n">data</span><span class="p">[</span><span class="s2">&quot;enmo&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;truncated_enmo&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">1000</span>
+
+        <span class="c1"># Create a final DataFrame with time index and processed ENMO values</span>
+        <span class="n">processed_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;enmo&quot;</span><span class="p">:</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;enmo&quot;</span><span class="p">]},</span> <span class="n">index</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+
+        <span class="c1"># Classify activities based on thresholds using activity_classification</span>
+        <span class="n">classified_processed_data</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">classify_physical_activity</span><span class="p">(</span>
+            <span class="n">processed_data</span><span class="p">,</span>
+            <span class="n">time_column_name</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+            <span class="n">sedentary_threshold</span><span class="o">=</span><span class="n">thresholds_mg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;sedentary_threshold&quot;</span><span class="p">),</span>
+            <span class="n">light_threshold</span><span class="o">=</span><span class="n">thresholds_mg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;light_threshold&quot;</span><span class="p">),</span>
+            <span class="n">moderate_threshold</span><span class="o">=</span><span class="n">thresholds_mg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;moderate_threshold&quot;</span><span class="p">),</span>
+            <span class="n">epoch_duration</span><span class="o">=</span><span class="n">epoch_duration_sec</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Extract date from the datetime index</span>
+        <span class="n">classified_processed_data</span><span class="p">[</span><span class="s2">&quot;date&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">classified_processed_data</span><span class="p">[</span>
+            <span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span>
+        <span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">date</span>
+
+        <span class="c1"># Calculate time spent in each activity level for each epoch</span>
+        <span class="n">classified_processed_data</span><span class="p">[</span><span class="s2">&quot;sedentary_time_min&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">classified_processed_data</span><span class="p">[</span><span class="s2">&quot;sedentary&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">epoch_duration_sec</span>
+        <span class="p">)</span> <span class="o">/</span> <span class="mi">60</span>
+        <span class="n">classified_processed_data</span><span class="p">[</span><span class="s2">&quot;light_time_min&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">classified_processed_data</span><span class="p">[</span><span class="s2">&quot;light&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">epoch_duration_sec</span>
+        <span class="p">)</span> <span class="o">/</span> <span class="mi">60</span>
+        <span class="n">classified_processed_data</span><span class="p">[</span><span class="s2">&quot;moderate_time_min&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">classified_processed_data</span><span class="p">[</span><span class="s2">&quot;moderate&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">epoch_duration_sec</span>
+        <span class="p">)</span> <span class="o">/</span> <span class="mi">60</span>
+        <span class="n">classified_processed_data</span><span class="p">[</span><span class="s2">&quot;vigorous_time_min&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">classified_processed_data</span><span class="p">[</span><span class="s2">&quot;vigorous&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">epoch_duration_sec</span>
+        <span class="p">)</span> <span class="o">/</span> <span class="mi">60</span>
+
+        <span class="c1"># Group by date and calculate mean and total time spent in each activity level</span>
+        <span class="n">physical_activities_</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">classified_processed_data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;date&quot;</span><span class="p">)</span>
+            <span class="o">.</span><span class="n">agg</span><span class="p">(</span>
+                <span class="n">sedentary_mean_enmo</span><span class="o">=</span><span class="p">(</span>
+                    <span class="s2">&quot;enmo&quot;</span><span class="p">,</span>
+                    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span>
+                        <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span>
+                            <span class="n">classified_processed_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="s2">&quot;sedentary&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span>
+                            <span class="n">x</span><span class="p">,</span>
+                            <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span>
+                        <span class="p">)</span>
+                    <span class="p">),</span>
+                <span class="p">),</span>
+                <span class="n">sedentary_time_min</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;sedentary_time_min&quot;</span><span class="p">,</span> <span class="s2">&quot;sum&quot;</span><span class="p">),</span>
+                <span class="n">light_mean_enmo</span><span class="o">=</span><span class="p">(</span>
+                    <span class="s2">&quot;enmo&quot;</span><span class="p">,</span>
+                    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span>
+                        <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span>
+                            <span class="n">classified_processed_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="s2">&quot;light&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span>
+                            <span class="n">x</span><span class="p">,</span>
+                            <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span>
+                        <span class="p">)</span>
+                    <span class="p">),</span>
+                <span class="p">),</span>
+                <span class="n">light_time_min</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;light_time_min&quot;</span><span class="p">,</span> <span class="s2">&quot;sum&quot;</span><span class="p">),</span>
+                <span class="n">moderate_mean_enmo</span><span class="o">=</span><span class="p">(</span>
+                    <span class="s2">&quot;enmo&quot;</span><span class="p">,</span>
+                    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span>
+                        <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span>
+                            <span class="n">classified_processed_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="s2">&quot;moderate&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span>
+                            <span class="n">x</span><span class="p">,</span>
+                            <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span>
+                        <span class="p">)</span>
+                    <span class="p">),</span>
+                <span class="p">),</span>
+                <span class="n">moderate_time_min</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;moderate_time_min&quot;</span><span class="p">,</span> <span class="s2">&quot;sum&quot;</span><span class="p">),</span>
+                <span class="n">vigorous_mean_enmo</span><span class="o">=</span><span class="p">(</span>
+                    <span class="s2">&quot;enmo&quot;</span><span class="p">,</span>
+                    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span>
+                        <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span>
+                            <span class="n">classified_processed_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="s2">&quot;vigorous&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span>
+                            <span class="n">x</span><span class="p">,</span>
+                            <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span>
+                        <span class="p">)</span>
+                    <span class="p">),</span>
+                <span class="p">),</span>
+                <span class="n">vigorous_time_min</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;vigorous_time_min&quot;</span><span class="p">,</span> <span class="s2">&quot;sum&quot;</span><span class="p">),</span>
+            <span class="p">)</span>
+            <span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Return physical activities as an output</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">physical_activities_</span> <span class="o">=</span> <span class="n">physical_activities_</span>
+
+        <span class="c1"># Group by date and hour to calculate the average ENMO for each hour</span>
+        <span class="n">hourly_average_data</span> <span class="o">=</span> <span class="n">processed_data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span>
+            <span class="p">[</span><span class="n">processed_data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">date</span><span class="p">,</span> <span class="n">processed_data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">hour</span><span class="p">]</span>
+        <span class="p">)[</span><span class="s2">&quot;enmo&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+        <span class="c1"># Reshape the data to have dates as rows, hours as columns, and average ENMO as values</span>
+        <span class="n">hourly_average_data</span> <span class="o">=</span> <span class="n">hourly_average_data</span><span class="o">.</span><span class="n">unstack</span><span class="p">()</span>
+
+        <span class="c1"># Plot if set to true</span>
+        <span class="k">if</span> <span class="n">plot</span><span class="p">:</span>
+
+            <span class="n">viz_utils</span><span class="o">.</span><span class="n">plot_pam</span><span class="p">(</span><span class="n">hourly_average_data</span><span class="p">,</span> <span class="n">thresholds_mg</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span>
+</code></pre></div></td></tr></table></div>
+              </details>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="modules.pam._pam.PhysicalActivityMonitoring.__init__" class="doc doc-heading">
+            <code class="highlight language-python"><span class="fm">__init__</span><span class="p">()</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+      <p>Initializes the physical activity instance.</p>
+
+            <details class="quote">
+              <summary>Source code in <code>kielmat/modules/pam/_pam.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Initializes the physical activity instance.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">physical_activities_</span> <span class="o">=</span> <span class="kc">None</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="modules.pam._pam.PhysicalActivityMonitoring.detect" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">detect</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">acceleration_unit</span><span class="p">,</span> <span class="n">sampling_freq_Hz</span><span class="p">,</span> <span class="n">thresholds_mg</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;sedentary_threshold&#39;</span><span class="p">:</span> <span class="mi">45</span><span class="p">,</span> <span class="s1">&#39;light_threshold&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="s1">&#39;moderate_threshold&#39;</span><span class="p">:</span> <span class="mi">400</span><span class="p">},</span> <span class="n">epoch_duration_sec</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">plot</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+      <p>Detects and classifies physical activity levels.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code>data</code></td>
+            <td>
+                  <code><span title="pandas.DataFrame">DataFrame</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Input data with time index and accelerometer data (N, 3) for x, y, and z axes.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code>acceleration_unit</code></td>
+            <td>
+                  <code>str</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Unit of input acceleration data.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code>sampling_freq_Hz</code></td>
+            <td>
+                  <code>float</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Sampling frequency of the accelerometer data (in Hertz).</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code>thresholds_mg</code></td>
+            <td>
+                  <code>dict</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Dictionary containing threshold values for physical activity detection.</p>
+              </div>
+            </td>
+            <td>
+                  <code>{&#39;sedentary_threshold&#39;: 45, &#39;light_threshold&#39;: 100, &#39;moderate_threshold&#39;: 400}</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code>epoch_duration_sec</code></td>
+            <td>
+                  <code>int</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Duration of each epoch in seconds.</p>
+              </div>
+            </td>
+            <td>
+                  <code>5</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code>plot</code></td>
+            <td>
+                  <code>bool</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If True, generates a plot showing the average Euclidean Norm Minus One (ENMO). Default is True.</p>
+              </div>
+            </td>
+            <td>
+                  <code>True</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="pandas.DataFrame">DataFrame</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>pd.DataFrame: Contains date, sedentary_mean_mg, sedentary_time_min, light_mean_mg, light_time_min,
+          moderate_mean_mg, moderate_time_min, vigorous_mean_mg, vigorous_time_min</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+            <details class="quote">
+              <summary>Source code in <code>kielmat/modules/pam/_pam.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span>
+<span class="normal">234</span>
+<span class="normal">235</span>
+<span class="normal">236</span>
+<span class="normal">237</span>
+<span class="normal">238</span>
+<span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span>
+<span class="normal">242</span>
+<span class="normal">243</span>
+<span class="normal">244</span>
+<span class="normal">245</span>
+<span class="normal">246</span>
+<span class="normal">247</span>
+<span class="normal">248</span>
+<span class="normal">249</span>
+<span class="normal">250</span>
+<span class="normal">251</span>
+<span class="normal">252</span>
+<span class="normal">253</span>
+<span class="normal">254</span>
+<span class="normal">255</span>
+<span class="normal">256</span>
+<span class="normal">257</span>
+<span class="normal">258</span>
+<span class="normal">259</span>
+<span class="normal">260</span>
+<span class="normal">261</span>
+<span class="normal">262</span>
+<span class="normal">263</span>
+<span class="normal">264</span>
+<span class="normal">265</span>
+<span class="normal">266</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">detect</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">data</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+    <span class="n">acceleration_unit</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">sampling_freq_Hz</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">thresholds_mg</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;sedentary_threshold&quot;</span><span class="p">:</span> <span class="mi">45</span><span class="p">,</span>
+        <span class="s2">&quot;light_threshold&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+        <span class="s2">&quot;moderate_threshold&quot;</span><span class="p">:</span> <span class="mi">400</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="n">epoch_duration_sec</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="n">plot</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Detects and classifies physical activity levels.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        data (pd.DataFrame): Input data with time index and accelerometer data (N, 3) for x, y, and z axes.</span>
+<span class="sd">        acceleration_unit (str): Unit of input acceleration data.</span>
+<span class="sd">        sampling_freq_Hz (float): Sampling frequency of the accelerometer data (in Hertz).</span>
+<span class="sd">        thresholds_mg (dict): Dictionary containing threshold values for physical activity detection.</span>
+<span class="sd">        epoch_duration_sec (int): Duration of each epoch in seconds.</span>
+<span class="sd">        plot (bool): If True, generates a plot showing the average Euclidean Norm Minus One (ENMO). Default is True.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        pd.DataFrame: Contains date, sedentary_mean_mg, sedentary_time_min, light_mean_mg, light_time_min,</span>
+<span class="sd">                      moderate_mean_mg, moderate_time_min, vigorous_mean_mg, vigorous_time_min</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Error handling for invalid input data</span>
+
+    <span class="c1"># Check if data is a DataFrame</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Input data must be a DataFrame.&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Check if data has at least 3 columns</span>
+    <span class="k">if</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Input data must have at least 3 columns.&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Create a time index if data does not have a timestamp column</span>
+    <span class="k">if</span> <span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">!=</span> <span class="s2">&quot;timestamp&quot;</span> <span class="ow">or</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span>
+        <span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DatetimeIndex</span>
+    <span class="p">):</span>
+        <span class="c1"># Create a timestamp index with the correct frequency if not already present</span>
+        <span class="n">data</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span>
+            <span class="n">start</span><span class="o">=</span><span class="s2">&quot;2023-01-01 00:00:00&quot;</span><span class="p">,</span>
+            <span class="n">periods</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">),</span>
+            <span class="n">freq</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="mi">1</span><span class="o">/</span><span class="n">sampling_freq_Hz</span><span class="si">}</span><span class="s2">s&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;timestamp&quot;</span>
+
+    <span class="c1"># check if index column in named timestamp</span>
+    <span class="k">if</span> <span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">!=</span> <span class="s2">&quot;timestamp&quot;</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Index column must be named timestamp.&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">sampling_freq_Hz</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">))</span> <span class="ow">or</span> <span class="n">sampling_freq_Hz</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Sampling frequency must be a positive float.&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">thresholds_mg</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Thresholds must be a dictionary.&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">epoch_duration_sec</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">or</span> <span class="n">epoch_duration_sec</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Epoch duration must be a positive integer.&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">plot</span><span class="p">,</span> <span class="nb">bool</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Plot results must be a boolean (True or False).&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Check unit of acceleration data if it is in g or m/s^2</span>
+    <span class="k">if</span> <span class="n">acceleration_unit</span> <span class="o">==</span> <span class="s2">&quot;m/s^2&quot;</span><span class="p">:</span>
+        <span class="c1"># Convert acceleration data from m/s^2 to g (if not already is in g)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">data</span> <span class="o">/=</span> <span class="mf">9.81</span>
+
+    <span class="c1"># Calculate Euclidean Norm (EN)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">data</span><span class="p">[</span><span class="s2">&quot;en&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># Apply 4th order low-pass Butterworth filter with the cutoff frequency of 20Hz</span>
+    <span class="n">data</span><span class="p">[</span><span class="s2">&quot;en&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">lowpass_filter</span><span class="p">(</span>
+        <span class="n">data</span><span class="p">[</span><span class="s2">&quot;en&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
+        <span class="n">method</span><span class="o">=</span><span class="s2">&quot;butter&quot;</span><span class="p">,</span>
+        <span class="n">order</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+        <span class="n">cutoff_freq_hz</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+        <span class="n">sampling_rate_hz</span><span class="o">=</span><span class="n">sampling_freq_Hz</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Calculate Euclidean Norm Minus One (ENMO) value</span>
+    <span class="n">data</span><span class="p">[</span><span class="s2">&quot;enmo&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;en&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span>
+
+    <span class="c1"># Set negative values of ENMO to zero</span>
+    <span class="n">data</span><span class="p">[</span><span class="s2">&quot;truncated_enmo&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;enmo&quot;</span><span class="p">],</span> <span class="mi">0</span><span class="p">)</span>
+
+    <span class="c1"># Convert ENMO from g to milli-g</span>
+    <span class="n">data</span><span class="p">[</span><span class="s2">&quot;enmo&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;truncated_enmo&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">1000</span>
+
+    <span class="c1"># Create a final DataFrame with time index and processed ENMO values</span>
+    <span class="n">processed_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;enmo&quot;</span><span class="p">:</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;enmo&quot;</span><span class="p">]},</span> <span class="n">index</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+
+    <span class="c1"># Classify activities based on thresholds using activity_classification</span>
+    <span class="n">classified_processed_data</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">classify_physical_activity</span><span class="p">(</span>
+        <span class="n">processed_data</span><span class="p">,</span>
+        <span class="n">time_column_name</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+        <span class="n">sedentary_threshold</span><span class="o">=</span><span class="n">thresholds_mg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;sedentary_threshold&quot;</span><span class="p">),</span>
+        <span class="n">light_threshold</span><span class="o">=</span><span class="n">thresholds_mg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;light_threshold&quot;</span><span class="p">),</span>
+        <span class="n">moderate_threshold</span><span class="o">=</span><span class="n">thresholds_mg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;moderate_threshold&quot;</span><span class="p">),</span>
+        <span class="n">epoch_duration</span><span class="o">=</span><span class="n">epoch_duration_sec</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Extract date from the datetime index</span>
+    <span class="n">classified_processed_data</span><span class="p">[</span><span class="s2">&quot;date&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">classified_processed_data</span><span class="p">[</span>
+        <span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span>
+    <span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">date</span>
+
+    <span class="c1"># Calculate time spent in each activity level for each epoch</span>
+    <span class="n">classified_processed_data</span><span class="p">[</span><span class="s2">&quot;sedentary_time_min&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">classified_processed_data</span><span class="p">[</span><span class="s2">&quot;sedentary&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">epoch_duration_sec</span>
+    <span class="p">)</span> <span class="o">/</span> <span class="mi">60</span>
+    <span class="n">classified_processed_data</span><span class="p">[</span><span class="s2">&quot;light_time_min&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">classified_processed_data</span><span class="p">[</span><span class="s2">&quot;light&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">epoch_duration_sec</span>
+    <span class="p">)</span> <span class="o">/</span> <span class="mi">60</span>
+    <span class="n">classified_processed_data</span><span class="p">[</span><span class="s2">&quot;moderate_time_min&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">classified_processed_data</span><span class="p">[</span><span class="s2">&quot;moderate&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">epoch_duration_sec</span>
+    <span class="p">)</span> <span class="o">/</span> <span class="mi">60</span>
+    <span class="n">classified_processed_data</span><span class="p">[</span><span class="s2">&quot;vigorous_time_min&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">classified_processed_data</span><span class="p">[</span><span class="s2">&quot;vigorous&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">epoch_duration_sec</span>
+    <span class="p">)</span> <span class="o">/</span> <span class="mi">60</span>
+
+    <span class="c1"># Group by date and calculate mean and total time spent in each activity level</span>
+    <span class="n">physical_activities_</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">classified_processed_data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;date&quot;</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">agg</span><span class="p">(</span>
+            <span class="n">sedentary_mean_enmo</span><span class="o">=</span><span class="p">(</span>
+                <span class="s2">&quot;enmo&quot;</span><span class="p">,</span>
+                <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span>
+                    <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span>
+                        <span class="n">classified_processed_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="s2">&quot;sedentary&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span>
+                        <span class="n">x</span><span class="p">,</span>
+                        <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span>
+                    <span class="p">)</span>
+                <span class="p">),</span>
+            <span class="p">),</span>
+            <span class="n">sedentary_time_min</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;sedentary_time_min&quot;</span><span class="p">,</span> <span class="s2">&quot;sum&quot;</span><span class="p">),</span>
+            <span class="n">light_mean_enmo</span><span class="o">=</span><span class="p">(</span>
+                <span class="s2">&quot;enmo&quot;</span><span class="p">,</span>
+                <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span>
+                    <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span>
+                        <span class="n">classified_processed_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="s2">&quot;light&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span>
+                        <span class="n">x</span><span class="p">,</span>
+                        <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span>
+                    <span class="p">)</span>
+                <span class="p">),</span>
+            <span class="p">),</span>
+            <span class="n">light_time_min</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;light_time_min&quot;</span><span class="p">,</span> <span class="s2">&quot;sum&quot;</span><span class="p">),</span>
+            <span class="n">moderate_mean_enmo</span><span class="o">=</span><span class="p">(</span>
+                <span class="s2">&quot;enmo&quot;</span><span class="p">,</span>
+                <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span>
+                    <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span>
+                        <span class="n">classified_processed_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="s2">&quot;moderate&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span>
+                        <span class="n">x</span><span class="p">,</span>
+                        <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span>
+                    <span class="p">)</span>
+                <span class="p">),</span>
+            <span class="p">),</span>
+            <span class="n">moderate_time_min</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;moderate_time_min&quot;</span><span class="p">,</span> <span class="s2">&quot;sum&quot;</span><span class="p">),</span>
+            <span class="n">vigorous_mean_enmo</span><span class="o">=</span><span class="p">(</span>
+                <span class="s2">&quot;enmo&quot;</span><span class="p">,</span>
+                <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span>
+                    <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span>
+                        <span class="n">classified_processed_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="s2">&quot;vigorous&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span>
+                        <span class="n">x</span><span class="p">,</span>
+                        <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span>
+                    <span class="p">)</span>
+                <span class="p">),</span>
+            <span class="p">),</span>
+            <span class="n">vigorous_time_min</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;vigorous_time_min&quot;</span><span class="p">,</span> <span class="s2">&quot;sum&quot;</span><span class="p">),</span>
+        <span class="p">)</span>
+        <span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Return physical activities as an output</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">physical_activities_</span> <span class="o">=</span> <span class="n">physical_activities_</span>
+
+    <span class="c1"># Group by date and hour to calculate the average ENMO for each hour</span>
+    <span class="n">hourly_average_data</span> <span class="o">=</span> <span class="n">processed_data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span>
+        <span class="p">[</span><span class="n">processed_data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">date</span><span class="p">,</span> <span class="n">processed_data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">hour</span><span class="p">]</span>
+    <span class="p">)[</span><span class="s2">&quot;enmo&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+    <span class="c1"># Reshape the data to have dates as rows, hours as columns, and average ENMO as values</span>
+    <span class="n">hourly_average_data</span> <span class="o">=</span> <span class="n">hourly_average_data</span><span class="o">.</span><span class="n">unstack</span><span class="p">()</span>
+
+    <span class="c1"># Plot if set to true</span>
+    <span class="k">if</span> <span class="n">plot</span><span class="p">:</span>
+
+        <span class="n">viz_utils</span><span class="o">.</span><span class="n">plot_pam</span><span class="p">(</span><span class="n">hourly_average_data</span><span class="p">,</span> <span class="n">thresholds_mg</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="bp">self</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
+      
+    
+  </body>
+</html>

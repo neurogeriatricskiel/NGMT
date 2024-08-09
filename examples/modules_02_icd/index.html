@@ -1,0 +1,1476 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../modules_01_gsd/">
+      
+      
+        <link rel="next" href="../../modules/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.31">
+    
+    
+      
+        <title>Initial Contact Detection - KielMotionAnalysisToolbox</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.3cba04c6.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../style.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-green" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tutorial-initial-contact-detection" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="KielMotionAnalysisToolbox" class="md-header__button md-logo" aria-label="KielMotionAnalysisToolbox" data-md-component="logo">
+      
+  <img src="../../kielmat_logo_transBG.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            KielMotionAnalysisToolbox
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Initial Contact Detection
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="light-green" data-md-color-accent="purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="blue-grey"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  Examples
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../modules/" class="md-tabs__link">
+          
+  
+  Modules
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../dataclass/" class="md-tabs__link">
+        
+  
+    
+  
+  Dataclass
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../datasets/" class="md-tabs__link">
+          
+  
+  Datasets
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../utils/" class="md-tabs__link">
+          
+  
+  Utilities
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../contributing/" class="md-tabs__link">
+          
+  
+  Contributing
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="KielMotionAnalysisToolbox" class="md-nav__button md-logo" aria-label="KielMotionAnalysisToolbox" data-md-component="logo">
+      
+  <img src="../../kielmat_logo_transBG.png" alt="logo">
+
+    </a>
+    KielMotionAnalysisToolbox
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Examples
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Examples
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basic_00_intro_kielmat/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tutorial basics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basic_01_load_Data/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Load data into KielMAT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basic_02_events/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Events in dataclass
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modules_01_gsd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gait Sequence Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Initial Contact Detection
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Initial Contact Detection
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning objectives
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Modules
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Modules
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/gsd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gait Sequence Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/icd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Initial Contact Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/pam/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Physical Activity Monitoring
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/ptd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Postural Transition Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/td/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Turn Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dataclass/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Dataclass
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Datasets
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Datasets
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../datasets/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../datasets/keepcontrol/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    KeepControl
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../datasets/mobilised/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mobilise-D
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Utilities
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Utilities
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utils/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Index
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utils/preprocessing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data Preprocessing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utils/importers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data Import
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utils/orientation_estimation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Orientation Estimation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Contributing
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Contributing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contributing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning objectives
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="tutorial-initial-contact-detection">Tutorial: Initial Contact Detection</h1>
+<p><strong>Author:</strong> Masoud Abedinifar</p>
+<p><strong>Last update:</strong> Wed 27 Mar 2024</p>
+<h2 id="learning-objectives">Learning objectives</h2>
+<p>By the end of this tutorial, you will be able to: </p>
+<ul>
+<li>You can load data from a recording that belongs to one of the available datasets,</li>
+<li>Apply the Paraschiv-Ionescu initial contact detection algorithm to accelerometer data.  </li>
+<li>Visualize the results of initial contact detection.  </li>
+<li>Interpret the detected initial contacts for further analysis.</li>
+</ul>
+<h1 id="paraschiv-initial-contact-detection">Paraschiv Initial Contact Detection</h1>
+<p>This example can be referenced by citing the package.</p>
+<p>The example illustrates how the Paraschiv initial contact detection algorithm is used to detect initial contacts using body acceleration recorded with a triaxial accelerometer worn or fixed on the lower back. The initial contact detection algorithm is implemented in the main module <a href="https://github.com/neurogeriatricskiel/KielMAT/tree/main/kielmat/modules/icd/_paraschiv.py"><code>kielmat.modules.icd._paraschiv</code></a>. This algorithm is based on the research of Paraschiv-Ionescu et al [<code>1</code>-<code>2</code>].</p>
+<p>The algorithm takes accelerometer data as input, specifically the vertical acceleration component, and processes each specified gait sequence independently. The algorithm requires the start and duration of each gait sequence, in the format provided by the Paraschiv-Ionescu gait sequence detection algorithm (<a href="https://github.com/neurogeriatricskiel/KielMAT/tree/main/kielmat/modules/gsd/_paraschiv.py"><code>kielmat.modules.gsd._paraschiv</code></a>). The sampling frequency of the accelerometer data is also required as another input. Detected gait sequence information is provided as a DataFrame, which consists of the onset and duration of the gait sequences. For each gait sequence, the algorithm applies the Signal Decomposition algorithm for initial contacts. The algorithm handles multiple gait sequences and ensures uniform output by padding the initial contacts lists with NaN values to match the length of the sequence with the maximum number of initial contacts detected among all sequences. Finally, initial contacts information is provided as a DataFrame with columns <code>onset</code>, <code>event_type</code>, <code>tracking_systems</code>, and <code>tracked_points</code>.</p>
+<h4 id="references">References</h4>
+<p>[<code>1</code>] Paraschiv-Ionescu et al. (2019). Locomotion and cadence detection using a single trunk-fixed accelerometer: validity for children with cerebral palsy in daily life-like conditions. Journal of NeuroEngineering and Rehabilitation, 16(1), 24. https://doi.org/10.1186/s12984-019-0494-z</p>
+<p>[<code>2</code>] Paraschiv-Ionescu et al. (2020). Real-world speed estimation using a single trunk IMU: methodological challenges for impaired gait patterns. Annual International Conference of the IEEE Engineering in Medicine and Biology Society. IEEE Engineering in Medicine and Biology Society. https://doi.org/10.1109/EMBC44109.2020.9176281</p>
+<h2 id="import-libraries">Import Libraries</h2>
+<p>The necessary libraries such as numpy, matplotlib.pyplot, dataset (mobilised), Paraschiv-Ionescu gait sequence detection, and Paraschiv-Ionescu initial contact detection algorithms are imported from their corresponding modules. Make sure that you have all the required libraries and modules installed before running this code. You also may need to install the <code>kielmat</code> library and its dependencies if you haven't already.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="kn">from</span> <span class="nn">kielmat.datasets</span> <span class="kn">import</span> <span class="n">keepcontrol</span>
+<span class="kn">from</span> <span class="nn">kielmat.modules.gsd</span> <span class="kn">import</span> <span class="n">ParaschivIonescuGaitSequenceDetection</span>
+<span class="kn">from</span> <span class="nn">kielmat.modules.icd</span> <span class="kn">import</span> <span class="n">ParaschivIonescuInitialContactDetection</span>
+<span class="kn">from</span> <span class="nn">kielmat.config</span> <span class="kn">import</span> <span class="n">cfg_colors</span>
+</code></pre></div>
+<pre><code>c:\Users\User\Desktop\kiel\NGMT\.venv\lib\site-packages\tqdm\auto.py:21: TqdmWarning: IProgress not found. Please update jupyter and ipywidgets. See https://ipywidgets.readthedocs.io/en/stable/user_install.html
+  from .autonotebook import tqdm as notebook_tqdm
+</code></pre>
+<h2 id="data-preparation">Data Preparation</h2>
+<p>To implement the Paraschiv-Ionescu initial contact algorithm, we load example data from a KeepControl, which is publicly available on <a href="https://openneuro.org/datasets/ds005258">OpenNeuro</a>. </p>
+<p>The participant was walking at a slow speed for a distance of 20m.</p>
+<h4 id="refertences">Refertences</h4>
+<p>.. [<code>3</code>] Mazzà, Claudia, et al. "Technical validation of real-world monitoring of gait: a multicentric observational study." BMJ open 11.12 (2021): e050785. http://dx.doi.org/10.1136/bmjopen-2021-050785</p>
+<div class="highlight"><pre><span></span><code><span class="n">recording</span> <span class="o">=</span> <span class="n">keepcontrol</span><span class="o">.</span><span class="n">load_recording</span><span class="p">(</span><span class="n">tracking_systems</span><span class="o">=</span><span class="s2">&quot;imu&quot;</span><span class="p">,</span> <span class="n">tracked_points</span><span class="o">=</span><span class="s2">&quot;pelvis&quot;</span><span class="p">)</span>
+</code></pre></div>
+<pre><code>Warning: The value of the key 'Subject' should be lower case. Converted to lower case.
+Warning: The value of the key 'Task' should be lower case. Converted to lower case.
+</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1"># find the channel with acceleration data</span>
+<span class="n">chns_oi</span> <span class="o">=</span> <span class="p">[</span><span class="n">ch</span> <span class="k">for</span> <span class="n">ch</span> <span class="ow">in</span> <span class="n">recording</span><span class="o">.</span><span class="n">channels</span><span class="p">[</span><span class="s2">&quot;imu&quot;</span><span class="p">][</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="k">if</span> <span class="s2">&quot;accel&quot;</span> <span class="ow">in</span> <span class="n">ch</span><span class="p">]</span>
+<span class="n">acceleration_data</span> <span class="o">=</span> <span class="n">recording</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;imu&quot;</span><span class="p">][</span><span class="n">chns_oi</span><span class="p">]</span>
+
+<span class="c1"># set the sampling frequency</span>
+<span class="n">sampling_frequency</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">recording</span><span class="o">.</span><span class="n">channels</span><span class="p">[</span><span class="s2">&quot;imu&quot;</span><span class="p">][</span><span class="s2">&quot;sampling_frequency&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+</code></pre></div>
+<h2 id="visualisation-of-the-data">Visualisation of the Data</h2>
+<p>The raw acceleration data including components of x, y and z axis is represented.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Calculate the time values in minutes</span>
+<span class="c1"># The &#39;time_in_minute&#39; array represents time values in minutes, computed based on the length of &#39;acceleration_data&#39; and &#39;sampling_frequency&#39;.</span>
+<span class="n">time_in_minute</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">acceleration_data</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="mi">60</span> <span class="o">*</span> <span class="n">sampling_frequency</span><span class="p">)</span>
+
+<span class="c1"># Create a figure with a specified size</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">22</span><span class="p">,</span> <span class="mi">14</span><span class="p">))</span>
+
+<span class="c1"># Get colors for raw</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="n">cfg_colors</span><span class="p">[</span><span class="s2">&quot;raw&quot;</span><span class="p">]</span>
+
+<span class="c1"># A loop is used to plot data for each accelerometer axis, applying different colors from the color map.</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+        <span class="n">time_in_minute</span><span class="p">,</span>
+        <span class="n">acceleration_data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="n">i</span><span class="p">],</span>
+        <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+        <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Acc </span><span class="si">{</span><span class="s1">&#39;xyz&#39;</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+
+<span class="c1"># Add labels and legends</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time [minute]&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Acceleration [g]&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+
+<span class="c1"># Add a title with a specified font size</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span>
+    <span class="s2">&quot;Accelerometer data from lower-back IMU sensor for CHF cohort&quot;</span><span class="p">,</span>
+    <span class="n">fontsize</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># Customize tick font sizes</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+
+<span class="c1"># Display a grid for reference</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">visible</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s2">&quot;both&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s2">&quot;both&quot;</span><span class="p">)</span>
+
+<span class="c1"># Show the plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="png" src="../modules_02_icd_files/modules_02_icd_8_0.png" /></p>
+<p>Let's zoom in on specific time periods in the data, particularly the first 10 seconds, where clear blinks are evident.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Calculate the time values based on the length of the data</span>
+<span class="n">num_samples</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">acceleration_data</span><span class="p">)</span>
+<span class="n">time_seconds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">num_samples</span><span class="p">)</span> <span class="o">/</span> <span class="n">sampling_frequency</span>
+
+<span class="c1"># Create a figure with the specified size</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">22</span><span class="p">,</span> <span class="mi">14</span><span class="p">))</span>
+
+<span class="c1"># Plot acceleration data for each axis with time on the x-axis</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+        <span class="n">time_seconds</span><span class="p">,</span>
+        <span class="n">acceleration_data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="n">i</span><span class="p">],</span>
+        <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+        <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Acc </span><span class="si">{</span><span class="s1">&#39;xyz&#39;</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+
+<span class="c1"># Add labels and legends</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time [seconds]&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Acceleration [g]&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+
+<span class="c1"># Add a title</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span>
+    <span class="s2">&quot;Accelerometer data from lower-back IMU sensor for CHF cohort&quot;</span><span class="p">,</span>
+    <span class="n">fontsize</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># Customize font sizes</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+
+<span class="c1"># Set x-axis and y-axis limits for a specific duration (in seconds) and acceleration range</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>
+
+<span class="c1"># Display a grid for reference</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">visible</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s2">&quot;both&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s2">&quot;both&quot;</span><span class="p">)</span>
+
+<span class="c1"># Show the plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="png" src="../modules_02_icd_files/modules_02_icd_10_0.png" /></p>
+<h2 id="applying-paraschiv-ionescu-initial-contact-detection-algorithm">Applying Paraschiv-Ionescu Initial Contact Detection Algorithm</h2>
+<p>Now, we are running Paraschiv-Ionescu initial contact detection algorithm from icd module <a href="https://github.com/neurogeriatricskiel/KielMAT/tree/main/kielmat/modules/icd/_paraschiv.py"><code>KielMAT.kielmat.modules.icd._paraschiv.ParaschivIonescuInitialContactDetection</code></a> to detect initial contacts throughout the detected gait sequences. For this purpose, we have to first apply Paraschiv-Ionescu gait sequences detection algorithm to identify gait sequences using acceleration data. The gait sequences are detected by Paraschiv gait sequence detection (<a href="https://github.com/neurogeriatricskiel/KielMAT/tree/main/kielmat/modules/gsd/_paraschiv.py"><code>KielMAT.kielmat.modules.gsd._paraschiv.ParaschivIonescuGaitSequenceDetection</code></a>).</p>
+<p>Then, in order to apply Paraschiv-Ionescu initial contact detection algorithm, an instance of the ParaschivIonescuInitialContactDetection class is created using the constructor, <code>ParaschivIonescuInitialContactDetection()</code>. The <code>icd</code> variable holds the instance, allowing us to access its methods. The inputs of Paraschiv-Ionescu initial contact detection algorithm are as follows:</p>
+<ul>
+<li><strong>Input Data:</strong> <code>data</code> consist of accelerometer data (N, 3) for the x, y, and z axes in pandas Dataframe format.</li>
+<li><strong>Gait Sequences:</strong> <code>gait_sequences</code>, consist of gait sequences detected by Paraschiv gait sequence detection (<a href="https://github.com/neurogeriatricskiel/KielMAT/tree/main/kielmat/modules/gsd/_paraschiv.py"><code>KielMAT.kielmat.modules.gsd._paraschiv.ParaschivIonescuGaitSequenceDetection</code></a>).</li>
+<li><strong>Sampling Frequency:</strong> <code>sampling_freq_Hz</code> is the sampling frequency of the data, defined in Hz, with a default value of 100 Hz.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1"># Create an instance of the ParaschivIonescuGaitSequenceDetection class</span>
+<span class="n">gsd</span> <span class="o">=</span> <span class="n">ParaschivIonescuGaitSequenceDetection</span><span class="p">()</span>
+
+<span class="c1"># Call the gait sequence detection using gsd.detect to detect gait sequences</span>
+<span class="n">gsd</span> <span class="o">=</span> <span class="n">gsd</span><span class="o">.</span><span class="n">detect</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">acceleration_data</span><span class="p">,</span> <span class="n">sampling_freq_Hz</span><span class="o">=</span><span class="n">sampling_frequency</span><span class="p">,</span> <span class="n">plot_results</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+
+<span class="c1"># Gait sequences are stored in gait_sequences_ attribute of gsd</span>
+<span class="n">gait_sequences</span> <span class="o">=</span> <span class="n">gsd</span><span class="o">.</span><span class="n">gait_sequences_</span>
+
+<span class="c1"># Now, use Paraschiv-Ionescu initial contact detection algortihm to find initial contacts within detected gait sequences.</span>
+<span class="n">icd</span> <span class="o">=</span> <span class="n">ParaschivIonescuInitialContactDetection</span><span class="p">()</span>
+
+<span class="c1"># Call the initial contact detection using icd.detect</span>
+<span class="n">icd</span> <span class="o">=</span> <span class="n">icd</span><span class="o">.</span><span class="n">detect</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">acceleration_data</span><span class="p">,</span>
+    <span class="n">gait_sequences</span><span class="o">=</span><span class="n">gait_sequences</span><span class="p">,</span>
+    <span class="n">sampling_freq_Hz</span><span class="o">=</span><span class="n">sampling_frequency</span><span class="p">,</span>
+    <span class="n">v_acc_col_name</span><span class="o">=</span><span class="s2">&quot;pelvis_accel_x&quot;</span>
+<span class="p">)</span>
+
+<span class="c1"># Print initial contacts information</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">icd</span><span class="o">.</span><span class="n">initial_contacts_</span><span class="p">)</span>
+</code></pre></div>
+<pre><code>1 gait sequence(s) detected.
+    onset       event_type  duration tracking_systems
+0   0.625  initial contact         0             None
+1   1.200  initial contact         0             None
+2   1.675  initial contact         0             None
+3   2.450  initial contact         0             None
+4   3.150  initial contact         0             None
+5   3.850  initial contact         0             None
+6   4.500  initial contact         0             None
+7   5.175  initial contact         0             None
+8   5.850  initial contact         0             None
+9   6.550  initial contact         0             None
+10  7.200  initial contact         0             None
+11  7.850  initial contact         0             None
+12  8.500  initial contact         0             None
+13  9.175  initial contact         0             None
+14  9.850  initial contact         0             None
+</code></pre>
+<h2 id="visualization-of-the-detected-initial-contacts">Visualization of the Detected Initial Contacts</h2>
+<p>In the following, the raw data of the lower back sensor is plotted with the detected events. The events are plotted as vertical lines. The events are:
+- <strong>Gait onset</strong>: Start of the gait sequence
+- <strong>Gait duration</strong>: Duration of the gait sequence
+- <strong>Initial contacts</strong>: Initial contacts</p>
+<p>The gait onset is represented with the vertical green line and the grey area represents the duration of gait sequence detected by the algorithm. The vertical dashed blue lines are representing detected initial contacts within first gait sequence.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Access the first detected gait sequence</span>
+<span class="n">first_gait_sequence</span> <span class="o">=</span> <span class="n">gsd</span><span class="o">.</span><span class="n">gait_sequences_</span><span class="p">[</span><span class="n">gsd</span><span class="o">.</span><span class="n">gait_sequences_</span><span class="p">[</span><span class="s2">&quot;event_type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;gait sequence&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Print information about the first gait sequence</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;First Gait Sequence:&quot;</span><span class="p">,</span> <span class="n">first_gait_sequence</span><span class="p">)</span>
+
+<span class="c1"># Print information about initial contacts within the first gait sequence</span>
+<span class="n">ic_within_gait</span> <span class="o">=</span> <span class="n">icd</span><span class="o">.</span><span class="n">initial_contacts_</span><span class="p">[</span>
+    <span class="n">icd</span><span class="o">.</span><span class="n">initial_contacts_</span><span class="p">[</span><span class="s2">&quot;onset&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">between</span><span class="p">(</span>
+        <span class="n">first_gait_sequence</span><span class="p">[</span><span class="s2">&quot;onset&quot;</span><span class="p">],</span>
+        <span class="n">first_gait_sequence</span><span class="p">[</span><span class="s2">&quot;onset&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">first_gait_sequence</span><span class="p">[</span><span class="s2">&quot;duration&quot;</span><span class="p">],</span>
+    <span class="p">)</span>
+<span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Initial Contacts within the First Gait Sequence:&quot;</span><span class="p">,</span> <span class="n">ic_within_gait</span><span class="p">)</span>
+
+<span class="c1"># Plot the raw data from the lower back</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">22</span><span class="p">,</span> <span class="mi">14</span><span class="p">))</span>
+
+<span class="c1"># Plot raw acceleration data</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+        <span class="n">time_seconds</span><span class="p">,</span>
+        <span class="n">acceleration_data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="n">i</span><span class="p">],</span>
+        <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+        <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Acc </span><span class="si">{</span><span class="s1">&#39;xyz&#39;</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+
+<span class="c1"># Plot the first element of gait sequences</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">first_gait_sequence</span><span class="p">[</span><span class="s2">&quot;onset&quot;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;g&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Gait onset&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axvspan</span><span class="p">(</span>
+    <span class="n">first_gait_sequence</span><span class="p">[</span><span class="s2">&quot;onset&quot;</span><span class="p">],</span>
+    <span class="n">first_gait_sequence</span><span class="p">[</span><span class="s2">&quot;onset&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">first_gait_sequence</span><span class="p">[</span><span class="s2">&quot;duration&quot;</span><span class="p">],</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Gait duration&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># Plot the initial contacts within the first gait sequence</span>
+<span class="k">for</span> <span class="n">ic_time</span> <span class="ow">in</span> <span class="n">ic_within_gait</span><span class="p">[</span><span class="s2">&quot;onset&quot;</span><span class="p">]:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">ic_time</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
+
+<span class="c1"># Customize plot</span>
+<span class="n">start_limit</span> <span class="o">=</span> <span class="n">first_gait_sequence</span><span class="p">[</span><span class="s2">&quot;onset&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="n">end_limit</span> <span class="o">=</span> <span class="n">first_gait_sequence</span><span class="p">[</span><span class="s2">&quot;onset&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">first_gait_sequence</span><span class="p">[</span><span class="s2">&quot;duration&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">start_limit</span><span class="p">,</span> <span class="n">end_limit</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Time (seconds)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Acceleration (g)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span>
+    <span class="p">[</span><span class="s2">&quot;Acc x&quot;</span><span class="p">,</span> <span class="s2">&quot;Acc y&quot;</span><span class="p">,</span> <span class="s2">&quot;Acc z&quot;</span><span class="p">,</span> <span class="s2">&quot;Gait onset&quot;</span><span class="p">,</span> <span class="s2">&quot;Gait duration&quot;</span><span class="p">,</span> <span class="s2">&quot;Initial contacts&quot;</span><span class="p">],</span>
+    <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+    <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper right&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<pre><code>First Gait Sequence: onset                        0.0
+duration                    11.0
+event_type         gait sequence
+tracking_system             None
+Name: 0, dtype: object
+
+Initial Contacts within the First Gait Sequence:     onset       event_type  duration tracking_systems
+0   0.625  initial contact         0             None
+1   1.200  initial contact         0             None
+2   1.675  initial contact         0             None
+3   2.450  initial contact         0             None
+4   3.150  initial contact         0             None
+5   3.850  initial contact         0             None
+6   4.500  initial contact         0             None
+7   5.175  initial contact         0             None
+8   5.850  initial contact         0             None
+9   6.550  initial contact         0             None
+10  7.200  initial contact         0             None
+11  7.850  initial contact         0             None
+12  8.500  initial contact         0             None
+13  9.175  initial contact         0             None
+14  9.850  initial contact         0             None
+</code></pre>
+<p><img alt="png" src="../modules_02_icd_files/modules_02_icd_14_1.png" /></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
+      
+    
+  </body>
+</html>

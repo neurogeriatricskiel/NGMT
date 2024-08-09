@@ -1,0 +1,1380 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.31">
+    
+    
+      
+        <title>Tutorial: Postural Transition Detection - KielMotionAnalysisToolbox</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.3cba04c6.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../style.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-green" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tutorial-postural-transition-detection" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="KielMotionAnalysisToolbox" class="md-header__button md-logo" aria-label="KielMotionAnalysisToolbox" data-md-component="logo">
+      
+  <img src="../../kielmat_logo_transBG.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            KielMotionAnalysisToolbox
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Tutorial: Postural Transition Detection
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="light-green" data-md-color-accent="purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="blue-grey"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../" class="md-tabs__link">
+          
+  
+  Examples
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../modules/" class="md-tabs__link">
+          
+  
+  Modules
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../dataclass/" class="md-tabs__link">
+        
+  
+    
+  
+  Dataclass
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../datasets/" class="md-tabs__link">
+          
+  
+  Datasets
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../utils/" class="md-tabs__link">
+          
+  
+  Utilities
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../contributing/" class="md-tabs__link">
+          
+  
+  Contributing
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="KielMotionAnalysisToolbox" class="md-nav__button md-logo" aria-label="KielMotionAnalysisToolbox" data-md-component="logo">
+      
+  <img src="../../kielmat_logo_transBG.png" alt="logo">
+
+    </a>
+    KielMotionAnalysisToolbox
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Examples
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Examples
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basic_00_intro_kielmat/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tutorial basics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basic_01_load_Data/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Load data into KielMAT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basic_02_events/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Events in dataclass
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modules_01_gsd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gait Sequence Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modules_02_icd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Initial Contact Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Modules
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Modules
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/gsd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gait Sequence Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/icd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Initial Contact Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/pam/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Physical Activity Monitoring
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/ptd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Postural Transition Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/td/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Turn Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dataclass/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Dataclass
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Datasets
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Datasets
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../datasets/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../datasets/keepcontrol/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    KeepControl
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../datasets/mobilised/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mobilise-D
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Utilities
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Utilities
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utils/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Index
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utils/preprocessing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data Preprocessing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utils/importers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data Import
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utils/orientation_estimation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Orientation Estimation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Contributing
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Contributing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contributing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning objectives
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="tutorial-postural-transition-detection">Tutorial: Postural Transition Detection</h1>
+<p><strong>Author:</strong> Masoud Abedinifar</p>
+<p><strong>Last update:</strong> Mon 5 August 2024</p>
+<h2 id="learning-objectives">Learning objectives</h2>
+<p>By the end of this tutorial:</p>
+<ul>
+<li>You can load data from <a href="https://github.com/neurogeriatricskiel/KielMAT/blob/main/kielmat/datasets/keepcontrol.py"><code>keepcontrol</code></a> which is one of available datasets.</li>
+<li>Apply the <a href="https://github.com/neurogeriatricskiel/KielMAT/blob/main/kielmat/modules/ptd/_pham.py"><code>Postural Transition Detection</code></a> algorithm.</li>
+<li>Visualize the results of the algorithm.</li>
+<li>Extract spatio-temporal parameters of the detected postural transitions.</li>
+<li>Interpret the detected postural transitions for further analysis.</li>
+</ul>
+<h1 id="pham-postural-transition-detection">Pham Postural Transition Detection</h1>
+<p>This example can be referenced by citing the package.</p>
+<p>The example illustrates how to use Pham Postural Transition Detection algorithm to detect postural transitions (e.g., sit to stand and stand to sit movements) using body acceleration and gyro data recorded with a lower back IMU sensor. The Pham Postural Transition detection algorithm is implemented using <a href="https://github.com/neurogeriatricskiel/KielMAT/blob/main/kielmat/modules/ptd/_pham.py"><code>kielmat.modules.ptd._pham</code></a>. This algorithm is based on the research of Pham et al [1].</p>
+<p>This algorithm aims to detect postural transitions (e.g., sit to stand or stand to sit movements) using accelerometer and gyroscope data collected from a lower back inertial measurement unit (IMU) sensor.</p>
+<p>The algorithm is designed to be robust in detecting postural transitions using inertial sensor data  and provides detailed information about these transitions. It starts by loading the accelerometer and  gyro data, which includes three columns corresponding to the acceleration and gyro signals across  the x, y, and z axes, along with the sampling frequency of the data. It first checks the validity of  the input data. Then, it calculates the sampling period, selects accelerometer and gyro data. Tilt angle estimation is performed using gyro data in lateral or anteroposterior direction which represent movements or rotations in the mediolateral direction. The tilt angle is decomposed using wavelet transformation to 
+identify stationary periods. Stationary periods are detected using accelerometer variance and gyro variance. Then, peaks in the wavelet-transformed tilt signal are detected as potential postural transition events.</p>
+<p>If there's enough stationary data, further processing is done to estimate the orientation using
+quaternions and to identify the beginning and end of postural transitions using gyro data. Otherwise, if there's insufficient stationary data, direction changes in gyro data are used to infer postural transitions. Finally, the detected postural transitions along with their characteristics (onset, duration, etc.) are stored in a pandas DataFrame (postural_transitions_ attribute).</p>
+<p>In addition, spatial-temporal parameters are calculated using detected postural transitions and their characteristics by the <code>spatio_temporal_parameters</code> method. As a return, the postural transition id along with its spatial-temporal parameters including type of postural transition (sit to stand or stand to sit), angle of postural transition, maximum flexion velocity, and maximum extension velocity are stored in a pandas  DataFrame (<code>parameters_</code> attribute).</p>
+<p>If requested (<code>plot_results</code> set to True), it generates plots of the accelerometer and gyroscope data along with the detected postural transitions.</p>
+<h4 id="references">References</h4>
+<p>[1] Pham et al. (2018). Validation of a Lower Back "Wearable"-Based Sit-to-Stand and  Stand-to-Sit Algorithm for Patients With Parkinson's Disease and Older Adults in a Home-Like  Environment. Frontiers in Neurology, 9, 652. https://doi.org/10.3389/fneur.2018.00652</p>
+<h2 id="import-libraries">Import libraries</h2>
+<p>The necessary libraries such as numpy, matplotlib.pyplot, dataset and Pham Postural Transition Detection algorithm are imported. Make sure that you have all the required libraries and modules installed before running this code. You also may need to install the <code>kielmat</code> library and its dependencies if you haven't already.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">kielmat.datasets</span> <span class="kn">import</span> <span class="n">keepcontrol</span>
+<span class="kn">from</span> <span class="nn">kielmat.modules.ptd</span> <span class="kn">import</span> <span class="n">PhamPosturalTransitionDetection</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+</code></pre></div>
+<h2 id="data-preparation">Data Preparation</h2>
+<p>To implement Pham Postural Transition Detection algorithm, we load example data.</p>
+<p><div class="highlight"><pre><span></span><code><span class="c1"># Dataset path</span>
+<span class="n">dataset_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">())</span> <span class="o">/</span> <span class="s2">&quot;_keepcontrol&quot;</span>
+
+<span class="c1"># Fetch the dataset</span>
+<span class="n">keepcontrol</span><span class="o">.</span><span class="n">fetch_dataset</span><span class="p">(</span><span class="n">dataset_path</span><span class="p">)</span>
+
+<span class="c1"># In this example, we use &quot;imu&quot; as tracking_system and &quot;pelvis&quot; as tracked points.</span>
+<span class="n">tracking_sys</span> <span class="o">=</span> <span class="s2">&quot;imu&quot;</span>
+<span class="n">tracked_points</span> <span class="o">=</span> <span class="p">{</span><span class="n">tracking_sys</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;pelvis&quot;</span><span class="p">]}</span>
+
+<span class="c1"># The &#39;keepcontrol.load_recording&#39; function is used to load the data from the specified file_path</span>
+<span class="n">recording</span> <span class="o">=</span> <span class="n">keepcontrol</span><span class="o">.</span><span class="n">load_recording</span><span class="p">(</span>
+    <span class="n">dataset_path</span><span class="o">=</span><span class="n">dataset_path</span><span class="p">,</span>
+    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;pp002&quot;</span><span class="p">,</span>
+    <span class="n">task</span><span class="o">=</span><span class="s2">&quot;tug&quot;</span><span class="p">,</span>
+    <span class="n">tracking_systems</span><span class="o">=</span><span class="p">[</span><span class="n">tracking_sys</span><span class="p">],</span> 
+    <span class="n">tracked_points</span><span class="o">=</span><span class="n">tracked_points</span>
+<span class="p">)</span>
+
+<span class="c1"># Load lower back acceleration data</span>
+<span class="n">accel_data</span> <span class="o">=</span> <span class="n">recording</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">tracking_sys</span><span class="p">][</span>
+    <span class="p">[</span><span class="s2">&quot;pelvis_ACCEL_x&quot;</span><span class="p">,</span> <span class="s2">&quot;pelvis_ACCEL_y&quot;</span><span class="p">,</span> <span class="s2">&quot;pelvis_ACCEL_z&quot;</span><span class="p">]</span>
+<span class="p">]</span>
+
+<span class="c1"># Get the acceleration data unit from the recording</span>
+<span class="n">accel_data_unit</span> <span class="o">=</span> <span class="n">recording</span><span class="o">.</span><span class="n">channels</span><span class="p">[</span><span class="n">tracking_sys</span><span class="p">][</span>
+    <span class="n">recording</span><span class="o">.</span><span class="n">channels</span><span class="p">[</span><span class="n">tracking_sys</span><span class="p">][</span><span class="s2">&quot;name&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">&quot;ACCEL&quot;</span><span class="p">,</span> <span class="n">case</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="p">][</span><span class="s2">&quot;units&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Load lower back gyro data</span>
+<span class="n">gyro_data</span> <span class="o">=</span> <span class="n">recording</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">tracking_sys</span><span class="p">][</span>
+    <span class="p">[</span><span class="s2">&quot;pelvis_GYRO_x&quot;</span><span class="p">,</span> <span class="s2">&quot;pelvis_GYRO_y&quot;</span><span class="p">,</span> <span class="s2">&quot;pelvis_GYRO_z&quot;</span><span class="p">]</span>
+<span class="p">]</span>
+
+<span class="c1"># Get the gyro data unit from the recording</span>
+<span class="n">gyro_data_unit</span> <span class="o">=</span> <span class="n">recording</span><span class="o">.</span><span class="n">channels</span><span class="p">[</span><span class="n">tracking_sys</span><span class="p">][</span>
+    <span class="n">recording</span><span class="o">.</span><span class="n">channels</span><span class="p">[</span><span class="n">tracking_sys</span><span class="p">][</span><span class="s2">&quot;name&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">&quot;GYRO&quot;</span><span class="p">,</span> <span class="n">case</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="p">][</span><span class="s2">&quot;units&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Print acceleration and gyro data</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;accel_data (</span><span class="si">{</span><span class="n">accel_unit</span><span class="si">}</span><span class="s2">): </span><span class="si">{</span><span class="n">accel_data</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;gyro_data (</span><span class="si">{</span><span class="n">gyro_unit</span><span class="si">}</span><span class="s2">): </span><span class="si">{</span><span class="n">gyro_data</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+accel_data (g):</p>
+<pre><code>                    pelvis_ACCEL_x      pelvis_ACCEL_y      pelvis_ACCEL_z
+        0           0.920901           -0.047850           -0.400888
+        1           0.919441           -0.051282           -0.392583
+        2           0.922828           -0.047359           -0.392093
+        3           0.926741           -0.048830           -0.384279
+        4           0.918973           -0.053218           -0.397947
+        ...         ...                 ...                 ...
+        2903        0.966803           -0.027822           -0.279782
+        2904        0.957517           -0.035152           -0.285636
+        2905        0.960437           -0.034171           -0.291979
+        2906        0.962890           -0.036623           -0.299794
+        2907        0.963883           -0.038584           -0.294921
+</code></pre>
+<p>[2908 rows x 3 columns]</p>
+<p>gyro_data (deg/s):        </p>
+<pre><code>                    pelvis_GYRO_x     pelvis_GYRO_y     pelvis_GYRO_z
+        0           0.000000         -0.614677          0.436291
+        1           0.000000         -0.700049          0.176093
+        2          -0.172905         -0.261807         -0.262826
+        3           0.262815         -0.261807          0.000000
+        4           0.608625         -0.614677         -0.349559
+        ...         ...               ...               ...
+        2903       -0.089911         -1.309034          0.000000
+        2904        0.525631         -0.438242         -0.436291
+        2905        0.871441         -0.961855          0.086733
+        2906        1.051262         -0.700049          0.176093
+        2907        1.134256         -0.347179         -0.525652
+</code></pre>
+<p>[2908 rows x 3 columns]</p>
+<p><div class="highlight"><pre><span></span><code><span class="c1"># Get the corresponding sampling frequency directly from the recording</span>
+<span class="n">sampling_frequency</span> <span class="o">=</span> <span class="n">recording</span><span class="o">.</span><span class="n">channels</span><span class="p">[</span><span class="n">tracking_sys</span><span class="p">][</span>
+    <span class="n">recording</span><span class="o">.</span><span class="n">channels</span><span class="p">[</span><span class="n">tracking_sys</span><span class="p">][</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;pelvis_ACCEL_x&quot;</span>
+<span class="p">][</span><span class="s2">&quot;sampling_frequency&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Print sampling frequency</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;sampling frequency: </span><span class="si">{</span><span class="n">sampling_frequency</span><span class="si">}</span><span class="s2"> Hz&quot;</span><span class="p">)</span>
+</code></pre></div>
+sampling frequency: 200 Hz</p>
+<h2 id="visualisation-of-the-data">Visualisation of the Data</h2>
+<p>The raw acceleration and gyro data including components of x, y and z axis are plotted.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Plot acceleration and gyro in subplots</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="c1"># Font size for all text elements</span>
+<span class="n">font_size</span> <span class="o">=</span> <span class="mi">14</span>
+
+<span class="c1"># Subplot 1: Acceleration data</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">211</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">accel_data</span><span class="p">))</span> <span class="o">/</span> <span class="n">sampling_frequency</span><span class="p">,</span>
+        <span class="n">accel_data</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;pelvis_ACCEL_</span><span class="si">{</span><span class="nb">chr</span><span class="p">(</span><span class="mi">120</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">],</span>
+        <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;ACCEL </span><span class="si">{</span><span class="s1">&#39;xyz&#39;</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Acceleration (</span><span class="si">{</span><span class="n">accel_unit</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">font_size</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Time (s)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">font_size</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">font_size</span><span class="p">)</span>
+<span class="n">accel_min</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">accel_data</span><span class="p">)</span>
+<span class="n">accel_max</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">accel_data</span><span class="p">)</span>
+<span class="n">buffer</span> <span class="o">=</span> <span class="p">(</span><span class="n">accel_max</span> <span class="o">-</span> <span class="n">accel_min</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.1</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">accel_min</span> <span class="o">-</span> <span class="n">buffer</span><span class="p">,</span> <span class="n">accel_max</span> <span class="o">+</span> <span class="n">buffer</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="n">font_size</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="n">font_size</span><span class="p">)</span>
+
+<span class="c1"># Subplot 2: Gyro data</span>
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">212</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">gyro_data</span><span class="p">))</span> <span class="o">/</span> <span class="n">sampling_frequency</span><span class="p">,</span>
+        <span class="n">gyro_data</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;pelvis_GYRO_</span><span class="si">{</span><span class="nb">chr</span><span class="p">(</span><span class="mi">120</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">],</span>
+        <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;GYRO </span><span class="si">{</span><span class="s1">&#39;xyz&#39;</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Gyro (</span><span class="si">{</span><span class="n">gyro_unit</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">font_size</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Time (s)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">font_size</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">font_size</span><span class="p">)</span>
+<span class="n">gyro_min</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">gyro_data</span><span class="p">)</span>
+<span class="n">gyro_max</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">gyro_data</span><span class="p">)</span>
+<span class="n">buffer</span> <span class="o">=</span> <span class="p">(</span><span class="n">gyro_max</span> <span class="o">-</span> <span class="n">gyro_min</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.1</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">gyro_min</span> <span class="o">-</span> <span class="n">buffer</span><span class="p">,</span> <span class="n">gyro_max</span> <span class="o">+</span> <span class="n">buffer</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="n">font_size</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="n">font_size</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="" src="../modules_04_ptd_files/04_tutorial_postural_transition_detection_1.png" /></p>
+<h2 id="applying-pham-postural-transition-detection-algorithm">Applying Pham Postural Transition Detection Algorithm</h2>
+<p>Now, we are running Pham sit to stand and stand to sit detection algorithm from pham module <a href="https://github.com/neurogeriatricskiel/KielMAT/blob/main/kielmat/modules/ptd/_pham.py"><code>PhamPosturalTransitionDetection</code></a> to detect postural transitions.</p>
+<p>The following code first prepares the input data by combining acceleration and gyro data into a single DataFrame called <code>input_data</code>.</p>
+<p>Then, in order to apply pham postural transition algorithm, an instance of the PhamPosturalTransitionDetection class is created using the constructor, <code>PhamPosturalTransitionDetection()</code>. The <code>pham</code> variable holds this instance, allowing us to access its methods. The inputs of the algorithm are as follows:</p>
+<ul>
+<li><strong>Data:</strong> <code>data (pd.DataFrame)</code> includes accelerometer and gyro data (N, 6) for x, y, and z axes. in pandas Dataframe format.</li>
+<li><strong>Mediolateral gyro:</strong> <code>gyro_mediolateral (str)</code> corresponds to the gyroscope component representing movements or rotations in the mediolateral direction. This could correspond to rotation around the y-axis in your coordinate system.</li>
+<li><strong>Unit of acceleration data:</strong> <code>accel_unit (str)</code> is the unit of the acceleation data.</li>
+<li><strong>Unit of gyro data:</strong> <code>gyro_unit (str)</code> is unit of the gyro data.</li>
+<li><strong>Sampling frequency:</strong> <code>sampling_freq_Hz</code> is the sampling frequency of the data, defined in Hz.</li>
+<li><strong>Datetime:</strong> <code>dt_data (pd.Series, optional)</code> is the original datetime in the input data which is optional.</li>
+<li><strong>Tracking system:</strong> <code>tracking_system (str, optional)</code> is the name of tracking system which is optional.</li>
+<li><strong>Tracked Point:</strong> <code>tracked_point (str, optional)</code> is the tracked point name on the body which is optional.</li>
+<li><strong>Plot Results:</strong> <code>plot_results (bool, optional)</code>, if set to True, generates a plot showing the detected turns on the data. The default is False. The onset is represented with the vertical red line and the grey area represents the duration of the turns detected by the algorithm.</li>
+</ul>
+<p><div class="highlight"><pre><span></span><code><span class="c1"># Put acceleration and gyro data in the input data as pandas Dataframe which will be used as input of the algorithm</span>
+<span class="n">input_data</span> <span class="o">=</span> <span class="p">[</span><span class="n">accel_data</span><span class="p">,</span> <span class="n">gyro_data</span><span class="p">]</span>
+
+<span class="c1"># Concatenate acceleration_data and gyro_data along axis=1 (columns)</span>
+<span class="n">input_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">accel_data</span><span class="p">,</span> <span class="n">gyro_data</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Create an instance of the PhamPosturalTransitionDetection class</span>
+<span class="n">pham</span> <span class="o">=</span> <span class="n">PhamPosturalTransitionDetection</span><span class="p">()</span>
+
+<span class="c1"># Call the postural transition detection using pham.detect</span>
+<span class="n">pham</span> <span class="o">=</span> <span class="n">pham</span><span class="o">.</span><span class="n">detect</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">input_data</span><span class="p">,</span>
+    <span class="n">gyro_mediolateral</span><span class="o">=</span><span class="s2">&quot;pelvis_GYRO_y&quot;</span><span class="p">,</span>
+    <span class="n">accel_unit</span><span class="o">=</span><span class="n">accel_unit</span><span class="p">,</span>
+    <span class="n">gyro_unit</span><span class="o">=</span><span class="n">gyro_unit</span><span class="p">,</span>
+    <span class="n">sampling_freq_Hz</span><span class="o">=</span><span class="n">sampling_frequency</span><span class="p">,</span>
+    <span class="n">tracking_system</span><span class="o">=</span><span class="s2">&quot;imu&quot;</span><span class="p">,</span>
+    <span class="n">tracked_point</span><span class="o">=</span><span class="s2">&quot;pelvis&quot;</span><span class="p">,</span>
+    <span class="n">plot_results</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+</code></pre></div>
+<img alt="" src="../modules_04_ptd_files/04_tutorial_postural_transition_detection_2.png" /></p>
+<p>The outputs are stored in the <code>postural_transitions_</code> attribute, which is a pandas DataFrame in BIDS format with the following columns:</p>
+<ul>
+<li><strong>onset</strong>: Start of the turn event in seconds.</li>
+<li><strong>duration</strong>: Duration of the turn event in seconds.</li>
+<li><strong>event_type</strong>: Type of event which is postural transition.</li>
+<li><strong>tracking_systems</strong>: Tracking system which is 'imu' for this example.</li>
+<li><strong>tracked_points</strong>: Tracked points on the body which is 'pelvis' for this example.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1"># Print events and their corresponding information</span>
+<span class="n">postural_transition_events</span> <span class="o">=</span> <span class="n">pham</span><span class="o">.</span><span class="n">postural_transitions_</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;postural_transition_events: </span><span class="si">{</span><span class="n">postural_transition_events</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<pre><code>postural_transition_events:     
+        onset   duration    event_type              tracking_systems    tracked_points
+0       3.39    1.91        postural transition     imu                 pelvis
+1       11.54   2.96        postural transition     imu                 pelvis
+</code></pre>
+<h2 id="extraction-of-spatio-temporal-parameters">Extraction of Spatio-temporal Parameters</h2>
+<p>Next, the spatial-temporal parameters could be extracted using the spatio_temporal_parameters method. The outputs are stored in the <code>parameters_</code> attribute, which is a pandas DataFrame and icnlues postural transition id along with the following parameters:</p>
+<ul>
+<li><strong>type_of_postural_transition</strong>: Type of postural transition which is either "sit to stand" or "stand to sit".</li>
+<li><strong>angel_of_postural_transition</strong>: Angle of the postural transition in degrees.</li>
+<li><strong>maximum_flexion_velocity</strong>: Maximum flexion velocity in deg/s.</li>
+<li><strong>maximum_extension_velocity</strong>: Maximum extension velocity deg/s.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1"># Call the spatio-temporal parameters object for extracting the temporal parameters</span>
+<span class="n">pham</span><span class="o">.</span><span class="n">spatio_temporal_parameters</span><span class="p">()</span>
+
+<span class="c1"># Print temporal parameters for each turn</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pham</span><span class="o">.</span><span class="n">parameters_</span><span class="p">)</span>
+</code></pre></div>
+<pre><code>                        type_of_postural_transition     angle_of_postural_transition        maximum_flexion_velocity        maximum_extension_velocity  
+postural transition id                               
+0                       sit to stand                    71.62                               186                             78   
+1                       stand to sit                    28.25                               97                              113
+</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
+      
+    
+  </body>
+</html>

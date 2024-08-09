@@ -1,0 +1,1438 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+        <link rel="next" href="examples/">
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.31">
+    
+    
+      
+        <title>KielMotionAnalysisToolbox</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.3cba04c6.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="style.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-green" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#overview-of-modules" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="." title="KielMotionAnalysisToolbox" class="md-header__button md-logo" aria-label="KielMotionAnalysisToolbox" data-md-component="logo">
+      
+  <img src="kielmat_logo_transBG.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            KielMotionAnalysisToolbox
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Home
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="light-green" data-md-color-accent="purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="blue-grey"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="examples/" class="md-tabs__link">
+          
+  
+  Examples
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="modules/" class="md-tabs__link">
+          
+  
+  Modules
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="dataclass/" class="md-tabs__link">
+        
+  
+    
+  
+  Dataclass
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="datasets/" class="md-tabs__link">
+          
+  
+  Datasets
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="utils/" class="md-tabs__link">
+          
+  
+  Utilities
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="contributing/" class="md-tabs__link">
+          
+  
+  Contributing
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="." title="KielMotionAnalysisToolbox" class="md-nav__button md-logo" aria-label="KielMotionAnalysisToolbox" data-md-component="logo">
+      
+  <img src="kielmat_logo_transBG.png" alt="logo">
+
+    </a>
+    KielMotionAnalysisToolbox
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="." class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview-of-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview of modules
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data classes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-classes-conceptual-framework" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data classes: conceptual framework
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-classes-in-practice" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data classes: in practice
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contributing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contributing
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#authors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Authors
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Examples
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Examples
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="examples/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="examples/basic_00_intro_kielmat/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tutorial basics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="examples/basic_01_load_Data/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Load data into KielMAT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="examples/basic_02_events/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Events in dataclass
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="examples/modules_01_gsd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gait Sequence Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="examples/modules_02_icd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Initial Contact Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Modules
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Modules
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="modules/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="modules/gsd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gait Sequence Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="modules/icd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Initial Contact Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="modules/pam/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Physical Activity Monitoring
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="modules/ptd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Postural Transition Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="modules/td/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Turn Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="dataclass/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Dataclass
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Datasets
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Datasets
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="datasets/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="datasets/keepcontrol/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    KeepControl
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="datasets/mobilised/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mobilise-D
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Utilities
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Utilities
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="utils/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Index
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="utils/preprocessing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data Preprocessing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="utils/importers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data Import
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="utils/orientation_estimation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Orientation Estimation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Contributing
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Contributing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="contributing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contributing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview-of-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview of modules
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data classes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-classes-conceptual-framework" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data classes: conceptual framework
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-classes-in-practice" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data classes: in practice
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contributing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contributing
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#authors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Authors
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  <h1>Home</h1>
+
+<p><a href="https://codecov.io/gh/neurogeriatricskiel/KielMAT"><img alt="codecov" src="https://codecov.io/gh/neurogeriatricskiel/KielMAT/graph/badge.svg?token=L578RHZ699" /></a>
+<a href="https://github.com/neurogeriatricskiel/KielMAT/actions/workflows/mkdocs.yml"><img alt="build docs" src="https://github.com/neurogeriatricskiel/KielMAT/actions/workflows/mkdocs.yml/badge.svg" /></a>
+<a href="https://github.com/psf/black"><img alt="Code style: black" src="https://img.shields.io/badge/code%20style-black-000000.svg" /></a>
+<img alt="GitHub issues" src="https://img.shields.io/github/issues-raw/neurogeriatricskiel/KielMAT" />
+<img alt="GitHub contributors" src="https://img.shields.io/github/contributors/neurogeriatricskiel/KielMAT" />
+<a href="https://github.com/neurogeriatricskiel/KielMAT/actions/workflows/test-and-lint.yml"><img alt="lint-and-test" src="https://github.com/neurogeriatricskiel/KielMAT/actions/workflows/test-and-lint.yml/badge.svg" /></a>
+<img alt="PyPI - Python Version" src="https://img.shields.io/pypi/pyversions/kielmat" /></p>
+<p><img alt="" src="kielmat_logo_transBG.png" /></p>
+<p>Welcome to the KielMotionAnalysisToolbox (KielMAT). We are a Python based toolbox for processing motion data.</p>
+<p>The toolbox is aimed at motion researchers who want to use Python-based open-source software to process their data. We have implemented validated algorithms in modules to process motion data, as shown in the table below:</p>
+<h2 id="overview-of-modules">Overview of modules</h2>
+<table>
+<thead>
+<tr>
+<th>Module</th>
+<th>Description</th>
+<th>Data</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Gait sequence detection (GSD)</td>
+<td>Detects gaits</td>
+<td>3D accelerations from the lower back</td>
+</tr>
+<tr>
+<td>Initial contact detection (ICD)</td>
+<td>Detects initial contact during gait</td>
+<td>3D accelerations from the lower back</td>
+</tr>
+<tr>
+<td>More to follow...</td>
+<td>Additional modules to be added</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>The idea is that various motion data can be loaded into our dedicated dataclass which rely on principles from the <a href="https://bids-specification.readthedocs.io/en/latest/modality-specific-files/motion.html">Motion-BIDS</a> standard.</p>
+<h2 id="installation">Installation</h2>
+<p>The toolbox has been released on <a href="https://pypi.org/project/kielmat/">pypi</a> and can be installed via pip:
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>kielmat
+</code></pre></div>
+It requires Python 3.10 or higher.</p>
+<h2 id="data-classes">Data classes</h2>
+<h3 id="data-classes-conceptual-framework">Data classes: conceptual framework</h3>
+<p>Motion data is recorded with many different systems and modalities, each with their own proprietary data format. KielMAT deals with this by organizing both data and metadata in a <a href="https://bids-specification.readthedocs.io/en/stable/modality-specific-files/motion.html">BIDS-like format</a>. The BIDS format suggests that <a href="https://bids-specification.readthedocs.io/en/stable/modality-specific-files/motion.html#motion-recording-data">motion recording data</a> from a single tracking system is organized in a single <code>*_tracksys-&lt;label&gt;_motion.tsv</code> file.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A tracking system is defined as a group of motion channels that share hardware properties (the recording device) and software properties (the recording duration and number of samples).</p>
+</div>
+<p>In KielMAT, data from a single tracking system is therefore loaded into a single <code>pandas.DataFrame</code>. The column headers of this <code>pandas.DataFrame</code> refer to the channels, and the corresponding <a href="https://bids-specification.readthedocs.io/en/stable/modality-specific-files/motion.html#channels-description-_channelstsv">channels information</a> is likewise available as a <code>pandas.DataFrame</code>.</p>
+<p>Similarly, if any <a href="https://bids-specification.readthedocs.io/en/stable/modality-specific-files/task-events.html">events</a> are available for the given recording, these are loaded into a single <code>pandas.DataFrame</code> for each tracking system as well. The events derived from the toolbox can be exported to a BIDS like '*_events.tsv' file.</p>
+<h3 id="data-classes-in-practice">Data classes: in practice</h3>
+<p>These concepts are translated into a KielMAT dataclass for each recording: <code>KielMATRecording</code>:
+<pre class="mermaid"><code>classDiagram
+   class KielMATRecording {
+      data: dict[str, pd.DataFrame]
+      channels: dict[str, pd.DataFrame]
+      info: None | dict[str, Any] = None
+      events: None | dict[str, pd.DataFrame] = None
+      events_info: None | dict[str, Any] = None
+      add_events(tracking_system, new_events)
+      add_info(key, value)
+      export_events(file_path, tracking_system=None, file_name=None, bids_compatible_fname=False)
+   }
+</code></pre>
+ A recording consists of the motion data from one or more tracking systems, where each tracking system may consist motion data from one or more tracked points. Therefore, the motion data (<code>KielMATRecording.data</code>) are organized as a dictionary where the dictionary keys refer to the tracking systems, and the corresponding values the actual (raw) data as a <code>pandas.DataFrame</code>. The description of data channels (<code>KielMATRecording.channels</code>) is availabe as a dictionary with the same keys, and the values contain the channels description.
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">kielmat.datasets</span> <span class="kn">import</span> <span class="n">mobilised</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;/mnt/neurogeriatrics_data/Mobilise-D/rawdata/sub-3011/Free-living/data.mat&quot;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">recording</span> <span class="o">=</span> <span class="n">mobilised</span><span class="o">.</span><span class="n">load_recording</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">tracking_systems</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;SU&quot;</span><span class="p">,</span> <span class="s2">&quot;SU_INDIP&quot;</span><span class="p">],</span> <span class="n">tracked_points</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;LowerBack&quot;</span><span class="p">])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">recording</span><span class="o">.</span><span class="n">data</span>
+<span class="p">{</span><span class="s1">&#39;SU&#39;</span><span class="p">:</span>         <span class="n">LowerBack_ACCEL_x</span>  <span class="o">...</span>  <span class="n">LowerBack_BARO_n</span><span class="o">/</span><span class="n">a</span>
+<span class="mi">0</span>                <span class="mf">0.967784</span>  <span class="o">...</span>         <span class="mf">1011.628100</span>
+<span class="mi">1</span>                <span class="mf">0.969667</span>  <span class="o">...</span>         <span class="mf">1011.628400</span>
+<span class="o">...</span>                   <span class="o">...</span>  <span class="o">...</span>                 <span class="o">...</span>
+<span class="mi">993022</span>           <span class="mf">0.970579</span>  <span class="o">...</span>         <span class="mf">1012.078703</span>
+<span class="mi">993023</span>           <span class="mf">0.960542</span>  <span class="o">...</span>         <span class="mf">1002.580321</span>
+
+<span class="p">[</span><span class="mi">993024</span> <span class="n">rows</span> <span class="n">x</span> <span class="mi">10</span> <span class="n">columns</span><span class="p">],</span> 
+
+<span class="s1">&#39;SU_INDIP&#39;</span><span class="p">:</span>      <span class="n">LowerBack_ACCEL_x</span>  <span class="o">...</span> <span class="n">LowerBack_MAGN_z</span>
+<span class="mi">0</span>                <span class="mf">0.967986</span>  <span class="o">...</span>         <span class="o">-</span><span class="mf">5.902833</span>
+<span class="mi">1</span>                <span class="mf">0.963671</span>  <span class="o">...</span>          <span class="mf">9.501037</span>
+<span class="o">...</span>                   <span class="o">...</span>  <span class="o">...</span>               <span class="o">...</span>
+<span class="mi">993022</span>           <span class="mf">0.951656</span>  <span class="o">...</span>        <span class="o">-</span><span class="mf">17.987983</span>
+<span class="mi">993023</span>           <span class="mf">0.955107</span>  <span class="o">...</span>        <span class="o">-</span><span class="mf">18.050600</span>
+
+<span class="p">[</span><span class="mi">993024</span> <span class="n">rows</span> <span class="n">x</span> <span class="mi">9</span> <span class="n">columns</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">recording</span><span class="o">.</span><span class="n">channels</span>
+<span class="p">{</span><span class="s1">&#39;SU&#39;</span><span class="p">:</span>                  
+   <span class="n">name</span>                 <span class="nb">type</span>  <span class="n">component</span>   <span class="n">tracked_point</span>  <span class="n">units</span>    <span class="n">sampling_frequency</span>
+<span class="mi">0</span>  <span class="n">LowerBack_ACCEL_x</span>    <span class="n">Acc</span>   <span class="n">x</span>           <span class="n">LowerBack</span>      <span class="n">g</span>        <span class="mf">100.0</span>
+<span class="mi">1</span>  <span class="n">LowerBack_ACCEL_y</span>    <span class="n">Acc</span>   <span class="n">y</span>           <span class="n">LowerBack</span>      <span class="n">g</span>        <span class="mf">100.0</span>
+<span class="mi">2</span>  <span class="n">LowerBack_ACCEL_z</span>    <span class="n">Acc</span>   <span class="n">z</span>           <span class="n">LowerBack</span>      <span class="n">g</span>        <span class="mf">100.0</span>
+<span class="mi">3</span>  <span class="n">LowerBack_ANGVEL_x</span>   <span class="n">Gyr</span>   <span class="n">x</span>           <span class="n">LowerBack</span>      <span class="n">deg</span><span class="o">/</span><span class="n">s</span>    <span class="mf">100.0</span>
+<span class="mi">4</span>  <span class="n">LowerBack_ANGVEL_y</span>   <span class="n">Gyr</span>   <span class="n">y</span>           <span class="n">LowerBack</span>      <span class="n">deg</span><span class="o">/</span><span class="n">s</span>    <span class="mf">100.0</span>
+<span class="mi">5</span>  <span class="n">LowerBack_ANGVEL_z</span>   <span class="n">Gyr</span>   <span class="n">z</span>           <span class="n">LowerBack</span>      <span class="n">deg</span><span class="o">/</span><span class="n">s</span>    <span class="mf">100.0</span>
+<span class="mi">6</span>  <span class="n">LowerBack_MAGN_x</span>     <span class="n">Mag</span>   <span class="n">x</span>           <span class="n">LowerBack</span>      <span class="n">µT</span>       <span class="mf">100.0</span>
+<span class="mi">7</span>  <span class="n">LowerBack_MAGN_y</span>     <span class="n">Mag</span>   <span class="n">y</span>           <span class="n">LowerBack</span>      <span class="n">µT</span>       <span class="mf">100.0</span>
+<span class="mi">8</span>  <span class="n">LowerBack_MAGN_z</span>     <span class="n">Mag</span>   <span class="n">z</span>           <span class="n">LowerBack</span>      <span class="n">µT</span>       <span class="mf">100.0</span>
+<span class="mi">9</span>  <span class="n">LowerBack_BARO_n</span><span class="o">/</span><span class="n">a</span>   <span class="n">Bar</span>   <span class="n">n</span><span class="o">/</span><span class="n">a</span>         <span class="n">LowerBack</span>      <span class="n">hPa</span>      <span class="mf">100.0</span><span class="p">,</span> 
+
+<span class="s1">&#39;SU_INDIP&#39;</span><span class="p">:</span>
+   <span class="n">name</span>                 <span class="nb">type</span>  <span class="n">component</span>   <span class="n">tracked_point</span>  <span class="n">units</span>    <span class="n">sampling_frequency</span>
+<span class="mi">0</span>  <span class="n">LowerBack_ACCEL_x</span>    <span class="n">Acc</span>   <span class="n">x</span>           <span class="n">LowerBack</span>      <span class="n">g</span>        <span class="mf">100.0</span>
+<span class="mi">1</span>  <span class="n">LowerBack_ACCEL_y</span>    <span class="n">Acc</span>   <span class="n">y</span>           <span class="n">LowerBack</span>      <span class="n">g</span>        <span class="mf">100.0</span>
+<span class="mi">2</span>  <span class="n">LowerBack_ACCEL_z</span>    <span class="n">Acc</span>   <span class="n">z</span>           <span class="n">LowerBack</span>      <span class="n">g</span>        <span class="mf">100.0</span>
+<span class="mi">3</span>  <span class="n">LowerBack_ANGVEL_x</span>   <span class="n">Gyr</span>   <span class="n">x</span>           <span class="n">LowerBack</span>      <span class="n">deg</span><span class="o">/</span><span class="n">s</span>    <span class="mf">100.0</span>
+<span class="mi">4</span>  <span class="n">LowerBack_ANGVEL_y</span>   <span class="n">Gyr</span>   <span class="n">y</span>           <span class="n">LowerBack</span>      <span class="n">deg</span><span class="o">/</span><span class="n">s</span>    <span class="mf">100.0</span>
+<span class="mi">5</span>  <span class="n">LowerBack_ANGVEL_z</span>   <span class="n">Gyr</span>   <span class="n">z</span>           <span class="n">LowerBack</span>      <span class="n">deg</span><span class="o">/</span><span class="n">s</span>    <span class="mf">100.0</span>
+<span class="mi">6</span>  <span class="n">LowerBack_MAGN_x</span>     <span class="n">Mag</span>   <span class="n">x</span>           <span class="n">LowerBack</span>      <span class="n">µT</span>       <span class="mf">100.0</span>
+<span class="mi">7</span>  <span class="n">LowerBack_MAGN_y</span>     <span class="n">Mag</span>   <span class="n">y</span>           <span class="n">LowerBack</span>      <span class="n">µT</span>       <span class="mf">100.0</span>
+<span class="mi">8</span>  <span class="n">LowerBack_MAGN_z</span>     <span class="n">Mag</span>   <span class="n">z</span>           <span class="n">LowerBack</span>      <span class="n">µT</span>       <span class="mf">100.0</span>
+<span class="mi">9</span>  <span class="n">LowerBack_BARO_n</span><span class="o">/</span><span class="n">a</span>   <span class="n">Bar</span>   <span class="n">n</span><span class="o">/</span><span class="n">a</span>         <span class="n">LowerBack</span>      <span class="n">hPa</span>      <span class="mf">100.0</span><span class="p">,</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In the examples you find a <a href="https://neurogeriatricskiel.github.io/KielMAT/examples/00_tutorial_basics/">tutorial (the basics of KielMAT)</a> that explains the basics of the dataclass and how to work with them.</p>
+</div>
+<h2 id="contributing">Contributing</h2>
+<p>We welcome contributions to KielMAT! Please refer to our <a href="https://neurogeriatricskiel.github.io/KielMAT/contributing">contributing guide</a> for more details.</p>
+<h2 id="authors">Authors</h2>
+<p><a href="https://github.com/masoudabedinifar">Masoud Abedinifar</a>, <a href="https://github.com/JuliusWelzel">Julius Welzel</a>, <a href="mailto:w.maetzler@neurologie.uni-kiel.de">Walter Maetzler</a>, <a href="mailto:c.hansen@neurologie.uni-kiel.de">Clint Hansen</a> &amp; <a href="https://github.com/rmndrs89">Robbin Romijnders</a></p>
+<p><img alt="NeurogeriatricsLogo" src="ng_logo.png" /></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": ".", "features": ["navigation.tabs"], "search": "assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.fe8b6f2b.min.js"></script>
+      
+    
+  </body>
+</html>

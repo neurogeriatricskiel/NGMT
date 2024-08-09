@@ -1,0 +1,2989 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../icd/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.31">
+    
+    
+      
+        <title>Gait Sequence Detection - KielMotionAnalysisToolbox</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.3cba04c6.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../style.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-green" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#gait-sequence-detection-paraschiv-ionescu" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="KielMotionAnalysisToolbox" class="md-header__button md-logo" aria-label="KielMotionAnalysisToolbox" data-md-component="logo">
+      
+  <img src="../../kielmat_logo_transBG.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            KielMotionAnalysisToolbox
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Gait Sequence Detection
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="light-green" data-md-color-accent="purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="blue-grey"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../examples/" class="md-tabs__link">
+          
+  
+  Examples
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  Modules
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../dataclass/" class="md-tabs__link">
+        
+  
+    
+  
+  Dataclass
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../datasets/" class="md-tabs__link">
+          
+  
+  Datasets
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../utils/" class="md-tabs__link">
+          
+  
+  Utilities
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../contributing/" class="md-tabs__link">
+          
+  
+  Contributing
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="KielMotionAnalysisToolbox" class="md-nav__button md-logo" aria-label="KielMotionAnalysisToolbox" data-md-component="logo">
+      
+  <img src="../../kielmat_logo_transBG.png" alt="logo">
+
+    </a>
+    KielMotionAnalysisToolbox
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Examples
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Examples
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/basic_00_intro_kielmat/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tutorial basics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/basic_01_load_Data/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Load data into KielMAT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/basic_02_events/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Events in dataclass
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/modules_01_gsd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gait Sequence Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/modules_02_icd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Initial Contact Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Modules
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Modules
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Gait Sequence Detection
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Gait Sequence Detection
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#gait-sequence-detection-paraschiv-ionescu" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gait Sequence Detection (Paraschiv-Ionescu)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modules.gsd._paraschiv.ParaschivIonescuGaitSequenceDetection" class="md-nav__link">
+    <span class="md-ellipsis">
+      ParaschivIonescuGaitSequenceDetection
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modules.gsd._paraschiv.ParaschivIonescuGaitSequenceDetection.__init__" class="md-nav__link">
+    <span class="md-ellipsis">
+      __init__
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modules.gsd._paraschiv.ParaschivIonescuGaitSequenceDetection.detect" class="md-nav__link">
+    <span class="md-ellipsis">
+      detect
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../icd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Initial Contact Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pam/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Physical Activity Monitoring
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ptd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Postural Transition Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../td/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Turn Detection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dataclass/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Dataclass
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Datasets
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Datasets
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../datasets/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../datasets/keepcontrol/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    KeepControl
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../datasets/mobilised/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mobilise-D
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Utilities
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Utilities
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utils/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Index
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utils/preprocessing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data Preprocessing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utils/importers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data Import
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../utils/orientation_estimation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Orientation Estimation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Contributing
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Contributing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contributing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#gait-sequence-detection-paraschiv-ionescu" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gait Sequence Detection (Paraschiv-Ionescu)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modules.gsd._paraschiv.ParaschivIonescuGaitSequenceDetection" class="md-nav__link">
+    <span class="md-ellipsis">
+      ParaschivIonescuGaitSequenceDetection
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modules.gsd._paraschiv.ParaschivIonescuGaitSequenceDetection.__init__" class="md-nav__link">
+    <span class="md-ellipsis">
+      __init__
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modules.gsd._paraschiv.ParaschivIonescuGaitSequenceDetection.detect" class="md-nav__link">
+    <span class="md-ellipsis">
+      detect
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  <h1>Gait Sequence Detection</h1>
+
+<h2 id="gait-sequence-detection-paraschiv-ionescu">Gait Sequence Detection (Paraschiv-Ionescu)</h2>
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<a id="modules.gsd._paraschiv.ParaschivIonescuGaitSequenceDetection"></a>
+    <div class="doc doc-contents first">
+
+
+      <p>The Paraschiv-Ionescu gait sequence detection algorithm identifies gait sequences in accelerometer data from a lower back sensor.</p>
+<p>The algorithm detects gait sequences based on identified steps. It starts by loading the accelerometer data, which includes three
+columns corresponding to the acceleration signals across the x, y, and z axes, along with the sampling frequency of the data. To
+simplify the analysis, the norm of acceleration is computed. Next, the signal is resampled at a 40 Hz sampling frequency using
+interpolation. Smoothing is then applied through a Savitzky-Golay filter and a Finite Impulse Response (FIR) low-pass filter to
+remove noise and drifts from the signal. The continuous wavelet transform is applied to capture gait-related features, followed by
+additional smoothing using successive Gaussian-weighted filters. The processed data is then analyzed to detect gait sequences.</p>
+<p>The algorithm continues by identifying the envelope of the processed acceleration signal. Active periods of the signal are identified
+using the Hilbert envelope. The statistical distribution of the amplitude of the peaks in these active periods is used to derive an
+adaptive threshold. In case the Hilbert envelope algorithm fails to detect active periods, a fixed threshold value (0.15 g) is used
+for peak detection in the signal. Mid-swing peaks are detected based on this threshold. Pulse trains in the local maximum and minimum
+of the peaks are identified, with those having fewer than four steps filtered out. The intersection of pulse trains from local maximum
+and minimum peaks is detected as walking periods. These periods are then organized and grouped to update the start and end times of
+detected walking bouts.</p>
+<p>Next, the algorithm takes the last steps to detect walking bouts in the signal. For this purpose, walking bouts with five or more steps
+are detected, and their start and end times are added to the list. Walking labels are generated as an array of zeros, and the intervals
+corresponding to the walking bouts are labeled as 1. Groups of consecutive zeros in the walking labels are identified, and if breaks
+between walking bouts are less than three seconds, they are merged. If gait sequences are found, the output is printed; otherwise, a
+message indicating that no gait sequences are detected is displayed.</p>
+<p>Finally, the gait sequence information is stored in the 'gait_sequences_' attribute in BIDS compatible format with columns <code>onset</code>,
+<code>duration</code>, <code>event_type</code>, <code>tracking_system</code> as Pandas DataFrame.</p>
+
+
+<p><span class="doc-section-title">Methods:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="modules.gsd._paraschiv.ParaschivIonescuGaitSequenceDetection.detect" href="#modules.gsd._paraschiv.ParaschivIonescuGaitSequenceDetection.detect">detect</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Detects gait sequences in the provided accelerometer data.</p>
+                </div>
+              </td>
+            </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Examples:</span></p>
+    <div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="n">gsd</span> <span class="o">=</span> <span class="n">ParaschivIonescuGaitSequenceDetection</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gsd</span><span class="o">.</span><span class="n">detect</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">acceleration_data</span><span class="p">,</span> <span class="n">sampling_freq_Hz</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">plot_results</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">gsd</span><span class="o">.</span><span class="n">gait_sequences_</span><span class="p">)</span>
+<span class="go">        onset   duration    event_type      tracking_systems</span>
+<span class="go">    0   4.500   5.25        gait sequence   SU</span>
+<span class="go">    1   90.225  10.30       gait sequence   SU</span>
+</code></pre></div>
+
+
+<details class="references" open>
+  <summary>References</summary>
+  <p>[1] Paraschiv-Ionescu et al. (2019). Locomotion and cadence detection using a single trunk-fixed accelerometer...</p>
+<p>[2] Paraschiv-Ionescu et al. (2020). Real-world speed estimation using single trunk IMU...</p>
+</details>
+              <details class="quote">
+                <summary>Source code in <code>kielmat/modules/gsd/_paraschiv.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">  9</span>
+<span class="normal"> 10</span>
+<span class="normal"> 11</span>
+<span class="normal"> 12</span>
+<span class="normal"> 13</span>
+<span class="normal"> 14</span>
+<span class="normal"> 15</span>
+<span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span>
+<span class="normal">234</span>
+<span class="normal">235</span>
+<span class="normal">236</span>
+<span class="normal">237</span>
+<span class="normal">238</span>
+<span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span>
+<span class="normal">242</span>
+<span class="normal">243</span>
+<span class="normal">244</span>
+<span class="normal">245</span>
+<span class="normal">246</span>
+<span class="normal">247</span>
+<span class="normal">248</span>
+<span class="normal">249</span>
+<span class="normal">250</span>
+<span class="normal">251</span>
+<span class="normal">252</span>
+<span class="normal">253</span>
+<span class="normal">254</span>
+<span class="normal">255</span>
+<span class="normal">256</span>
+<span class="normal">257</span>
+<span class="normal">258</span>
+<span class="normal">259</span>
+<span class="normal">260</span>
+<span class="normal">261</span>
+<span class="normal">262</span>
+<span class="normal">263</span>
+<span class="normal">264</span>
+<span class="normal">265</span>
+<span class="normal">266</span>
+<span class="normal">267</span>
+<span class="normal">268</span>
+<span class="normal">269</span>
+<span class="normal">270</span>
+<span class="normal">271</span>
+<span class="normal">272</span>
+<span class="normal">273</span>
+<span class="normal">274</span>
+<span class="normal">275</span>
+<span class="normal">276</span>
+<span class="normal">277</span>
+<span class="normal">278</span>
+<span class="normal">279</span>
+<span class="normal">280</span>
+<span class="normal">281</span>
+<span class="normal">282</span>
+<span class="normal">283</span>
+<span class="normal">284</span>
+<span class="normal">285</span>
+<span class="normal">286</span>
+<span class="normal">287</span>
+<span class="normal">288</span>
+<span class="normal">289</span>
+<span class="normal">290</span>
+<span class="normal">291</span>
+<span class="normal">292</span>
+<span class="normal">293</span>
+<span class="normal">294</span>
+<span class="normal">295</span>
+<span class="normal">296</span>
+<span class="normal">297</span>
+<span class="normal">298</span>
+<span class="normal">299</span>
+<span class="normal">300</span>
+<span class="normal">301</span>
+<span class="normal">302</span>
+<span class="normal">303</span>
+<span class="normal">304</span>
+<span class="normal">305</span>
+<span class="normal">306</span>
+<span class="normal">307</span>
+<span class="normal">308</span>
+<span class="normal">309</span>
+<span class="normal">310</span>
+<span class="normal">311</span>
+<span class="normal">312</span>
+<span class="normal">313</span>
+<span class="normal">314</span>
+<span class="normal">315</span>
+<span class="normal">316</span>
+<span class="normal">317</span>
+<span class="normal">318</span>
+<span class="normal">319</span>
+<span class="normal">320</span>
+<span class="normal">321</span>
+<span class="normal">322</span>
+<span class="normal">323</span>
+<span class="normal">324</span>
+<span class="normal">325</span>
+<span class="normal">326</span>
+<span class="normal">327</span>
+<span class="normal">328</span>
+<span class="normal">329</span>
+<span class="normal">330</span>
+<span class="normal">331</span>
+<span class="normal">332</span>
+<span class="normal">333</span>
+<span class="normal">334</span>
+<span class="normal">335</span>
+<span class="normal">336</span>
+<span class="normal">337</span>
+<span class="normal">338</span>
+<span class="normal">339</span>
+<span class="normal">340</span>
+<span class="normal">341</span>
+<span class="normal">342</span>
+<span class="normal">343</span>
+<span class="normal">344</span>
+<span class="normal">345</span>
+<span class="normal">346</span>
+<span class="normal">347</span>
+<span class="normal">348</span>
+<span class="normal">349</span>
+<span class="normal">350</span>
+<span class="normal">351</span>
+<span class="normal">352</span>
+<span class="normal">353</span>
+<span class="normal">354</span>
+<span class="normal">355</span>
+<span class="normal">356</span>
+<span class="normal">357</span>
+<span class="normal">358</span>
+<span class="normal">359</span>
+<span class="normal">360</span>
+<span class="normal">361</span>
+<span class="normal">362</span>
+<span class="normal">363</span>
+<span class="normal">364</span>
+<span class="normal">365</span>
+<span class="normal">366</span>
+<span class="normal">367</span>
+<span class="normal">368</span>
+<span class="normal">369</span>
+<span class="normal">370</span>
+<span class="normal">371</span>
+<span class="normal">372</span>
+<span class="normal">373</span>
+<span class="normal">374</span>
+<span class="normal">375</span>
+<span class="normal">376</span>
+<span class="normal">377</span>
+<span class="normal">378</span>
+<span class="normal">379</span>
+<span class="normal">380</span>
+<span class="normal">381</span>
+<span class="normal">382</span>
+<span class="normal">383</span>
+<span class="normal">384</span>
+<span class="normal">385</span>
+<span class="normal">386</span>
+<span class="normal">387</span>
+<span class="normal">388</span>
+<span class="normal">389</span>
+<span class="normal">390</span>
+<span class="normal">391</span>
+<span class="normal">392</span>
+<span class="normal">393</span>
+<span class="normal">394</span>
+<span class="normal">395</span>
+<span class="normal">396</span>
+<span class="normal">397</span>
+<span class="normal">398</span>
+<span class="normal">399</span>
+<span class="normal">400</span>
+<span class="normal">401</span>
+<span class="normal">402</span>
+<span class="normal">403</span>
+<span class="normal">404</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">ParaschivIonescuGaitSequenceDetection</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The Paraschiv-Ionescu gait sequence detection algorithm identifies gait sequences in accelerometer data from a lower back sensor.</span>
+
+<span class="sd">    The algorithm detects gait sequences based on identified steps. It starts by loading the accelerometer data, which includes three</span>
+<span class="sd">    columns corresponding to the acceleration signals across the x, y, and z axes, along with the sampling frequency of the data. To</span>
+<span class="sd">    simplify the analysis, the norm of acceleration is computed. Next, the signal is resampled at a 40 Hz sampling frequency using</span>
+<span class="sd">    interpolation. Smoothing is then applied through a Savitzky-Golay filter and a Finite Impulse Response (FIR) low-pass filter to</span>
+<span class="sd">    remove noise and drifts from the signal. The continuous wavelet transform is applied to capture gait-related features, followed by</span>
+<span class="sd">    additional smoothing using successive Gaussian-weighted filters. The processed data is then analyzed to detect gait sequences.</span>
+
+<span class="sd">    The algorithm continues by identifying the envelope of the processed acceleration signal. Active periods of the signal are identified</span>
+<span class="sd">    using the Hilbert envelope. The statistical distribution of the amplitude of the peaks in these active periods is used to derive an</span>
+<span class="sd">    adaptive threshold. In case the Hilbert envelope algorithm fails to detect active periods, a fixed threshold value (0.15 g) is used</span>
+<span class="sd">    for peak detection in the signal. Mid-swing peaks are detected based on this threshold. Pulse trains in the local maximum and minimum</span>
+<span class="sd">    of the peaks are identified, with those having fewer than four steps filtered out. The intersection of pulse trains from local maximum</span>
+<span class="sd">    and minimum peaks is detected as walking periods. These periods are then organized and grouped to update the start and end times of</span>
+<span class="sd">    detected walking bouts.</span>
+
+<span class="sd">    Next, the algorithm takes the last steps to detect walking bouts in the signal. For this purpose, walking bouts with five or more steps</span>
+<span class="sd">    are detected, and their start and end times are added to the list. Walking labels are generated as an array of zeros, and the intervals</span>
+<span class="sd">    corresponding to the walking bouts are labeled as 1. Groups of consecutive zeros in the walking labels are identified, and if breaks</span>
+<span class="sd">    between walking bouts are less than three seconds, they are merged. If gait sequences are found, the output is printed; otherwise, a</span>
+<span class="sd">    message indicating that no gait sequences are detected is displayed.</span>
+
+<span class="sd">    Finally, the gait sequence information is stored in the &#39;gait_sequences_&#39; attribute in BIDS compatible format with columns `onset`,</span>
+<span class="sd">    `duration`, `event_type`, `tracking_system` as Pandas DataFrame.</span>
+
+<span class="sd">    Methods:</span>
+<span class="sd">        detect(data, sampling_freq_Hz, plot_results=False):</span>
+<span class="sd">            Detects gait sequences in the provided accelerometer data.</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; gsd = ParaschivIonescuGaitSequenceDetection()</span>
+<span class="sd">        &gt;&gt;&gt; gsd.detect(data=acceleration_data, sampling_freq_Hz=100, plot_results=True)</span>
+<span class="sd">        &gt;&gt;&gt; print(gsd.gait_sequences_)</span>
+<span class="sd">                onset   duration    event_type      tracking_systems</span>
+<span class="sd">            0   4.500   5.25        gait sequence   SU</span>
+<span class="sd">            1   90.225  10.30       gait sequence   SU</span>
+
+<span class="sd">    References:</span>
+<span class="sd">        [1] Paraschiv-Ionescu et al. (2019). Locomotion and cadence detection using a single trunk-fixed accelerometer...</span>
+
+<span class="sd">        [2] Paraschiv-Ionescu et al. (2020). Real-world speed estimation using single trunk IMU...</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initializes the ParaschivIonescuGaitSequenceDetection instance.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gait_sequences_</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">detect</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">data</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+        <span class="n">sampling_freq_Hz</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+        <span class="n">plot_results</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">dt_data</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">tracking_system</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Detects gait sequences based on the input accelerometer data.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            data (pd.DataFrame): Input accelerometer data (N, 3) for x, y, and z axes.</span>
+<span class="sd">            sampling_freq_Hz (float): Sampling frequency of the accelerometer data.</span>
+<span class="sd">            plot_results (bool, optional): If True, generates a plot showing the pre-processed acceleration data</span>
+<span class="sd">                and the detected gait sequences. Default is False.</span>
+<span class="sd">            dt_data (pd.Series, optional): Original datetime in the input data. If original datetime is provided, the output onset will be based on that.</span>
+<span class="sd">            tracking_system (str, optional): Tracking system the data is from to be used for events df. Default is None.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            pd.DataFrame: The gait sequence information stored in the &#39;gait_sequences_&#39; attribute,</span>
+<span class="sd">                which is a pandas DataFrame in BIDS format with the following columns:</span>
+<span class="sd">                    - onset: Start time of the gait sequence.</span>
+<span class="sd">                    - duration: Duration of the gait sequence.</span>
+<span class="sd">                    - event_type: Type of the event (default is &#39;gait sequence&#39;).</span>
+<span class="sd">                    - tracking_system: Tracking systems used the events are derived from.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Error handling for invalid input data</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="ow">or</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;Input accelerometer data must be a DataFrame with 3 columns for x, y, and z axes.&quot;</span>
+            <span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">sampling_freq_Hz</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">))</span> <span class="ow">or</span> <span class="n">sampling_freq_Hz</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Sampling frequency must be a positive float.&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">plot_results</span><span class="p">,</span> <span class="nb">bool</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Plot results must be a boolean (True or False).&quot;</span><span class="p">)</span>
+
+        <span class="c1"># check if tracking_system is a string</span>
+        <span class="k">if</span> <span class="n">tracking_system</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">tracking_system</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;tracking_system must be a string&quot;</span><span class="p">)</span>
+
+        <span class="c1"># check if dt_data is a pandas Series with datetime values</span>
+        <span class="k">if</span> <span class="n">dt_data</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="p">(</span>
+            <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dt_data</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">)</span>
+            <span class="ow">or</span> <span class="ow">not</span> <span class="n">pd</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">is_datetime64_any_dtype</span><span class="p">(</span><span class="n">dt_data</span><span class="p">)</span>
+        <span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;dt_data must be a pandas Series with datetime values&quot;</span><span class="p">)</span>
+
+        <span class="c1"># check if dt_data is provided and if it is a series with the same length as data</span>
+        <span class="k">if</span> <span class="n">dt_data</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">dt_data</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;dt_data must be a series with the same length as data&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Calculate the norm of acceleration</span>
+        <span class="n">acceleration_norm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="c1"># Resample acceleration_norm to target sampling frequency</span>
+        <span class="n">initial_sampling_frequency</span> <span class="o">=</span> <span class="n">sampling_freq_Hz</span>
+        <span class="n">target_sampling_freq_Hz</span> <span class="o">=</span> <span class="mi">40</span>
+        <span class="n">resampled_acceleration</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">resample_interpolate</span><span class="p">(</span>
+            <span class="n">acceleration_norm</span><span class="p">,</span> <span class="n">initial_sampling_frequency</span><span class="p">,</span> <span class="n">target_sampling_freq_Hz</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Applying low-pass Savitzky-Golay filter to smoothen the resampled data</span>
+        <span class="n">smoothed_acceleration</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">lowpass_filter</span><span class="p">(</span>
+            <span class="n">resampled_acceleration</span><span class="p">,</span>
+            <span class="n">method</span><span class="o">=</span><span class="s2">&quot;savgol&quot;</span><span class="p">,</span>
+            <span class="n">window_length</span><span class="o">=</span><span class="mi">21</span><span class="p">,</span>
+            <span class="n">polynomial_order</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Remove 40Hz drift from the filtered data</span>
+        <span class="n">drift_removed_acceleration</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">highpass_filter</span><span class="p">(</span>
+            <span class="n">signal</span><span class="o">=</span><span class="n">smoothed_acceleration</span><span class="p">,</span>
+            <span class="n">sampling_frequency</span><span class="o">=</span><span class="n">target_sampling_freq_Hz</span><span class="p">,</span>
+            <span class="n">method</span><span class="o">=</span><span class="s2">&quot;iir&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Filter data using the fir low-pass filter</span>
+        <span class="n">filtered_acceleration</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">lowpass_filter</span><span class="p">(</span>
+            <span class="n">drift_removed_acceleration</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;fir&quot;</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Perform the continuous wavelet transform on the filtered acceleration data</span>
+        <span class="n">wavelet_transform_result</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">apply_continuous_wavelet_transform</span><span class="p">(</span>
+            <span class="n">filtered_acceleration</span><span class="p">,</span>
+            <span class="n">scales</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+            <span class="n">desired_scale</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+            <span class="n">wavelet</span><span class="o">=</span><span class="s2">&quot;gaus2&quot;</span><span class="p">,</span>
+            <span class="n">sampling_frequency</span><span class="o">=</span><span class="n">target_sampling_freq_Hz</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Applying Savitzky-Golay filter to further smoothen the wavelet transformed data</span>
+        <span class="n">smoothed_wavelet_result</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">lowpass_filter</span><span class="p">(</span>
+            <span class="n">wavelet_transform_result</span><span class="p">,</span> <span class="n">window_length</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">polynomial_order</span><span class="o">=</span><span class="mi">5</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Perform continuous wavelet transform</span>
+        <span class="n">further_smoothed_wavelet_result</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">preprocessing</span><span class="o">.</span><span class="n">apply_continuous_wavelet_transform</span><span class="p">(</span>
+                <span class="n">smoothed_wavelet_result</span><span class="p">,</span>
+                <span class="n">scales</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+                <span class="n">desired_scale</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+                <span class="n">wavelet</span><span class="o">=</span><span class="s2">&quot;gaus2&quot;</span><span class="p">,</span>
+                <span class="n">sampling_frequency</span><span class="o">=</span><span class="n">target_sampling_freq_Hz</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+        <span class="n">further_smoothed_wavelet_result</span> <span class="o">=</span> <span class="n">further_smoothed_wavelet_result</span><span class="o">.</span><span class="n">T</span>
+
+        <span class="c1"># Smoothing the data using successive Gaussian filters</span>
+        <span class="n">filtered_signal</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">apply_successive_gaussian_filters</span><span class="p">(</span>
+            <span class="n">further_smoothed_wavelet_result</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Use pre-processsed signal for post-processing purposes</span>
+        <span class="n">detected_activity_signal</span> <span class="o">=</span> <span class="n">filtered_signal</span>
+
+        <span class="c1"># Compute the envelope of the processed acceleration data</span>
+        <span class="n">envelope</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">calculate_envelope_activity</span><span class="p">(</span>
+            <span class="n">detected_activity_signal</span><span class="p">,</span>
+            <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">target_sampling_freq_Hz</span><span class="p">)),</span>
+            <span class="mi">1</span><span class="p">,</span>
+            <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">target_sampling_freq_Hz</span><span class="p">)),</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Initialize a list for walking bouts</span>
+        <span class="n">walking_bouts</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="c1"># Process alarm data to identify walking bouts</span>
+        <span class="k">if</span> <span class="n">envelope</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">index_ranges</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">find_consecutive_groups</span><span class="p">(</span><span class="n">envelope</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">index_ranges</span><span class="p">)):</span>
+                <span class="k">if</span> <span class="p">(</span>
+                    <span class="n">index_ranges</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">index_ranges</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+                    <span class="o">&lt;=</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">target_sampling_freq_Hz</span>
+                <span class="p">):</span>
+                    <span class="n">envelope</span><span class="p">[</span><span class="n">index_ranges</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="p">:</span> <span class="n">index_ranges</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">walking_bouts</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span>
+                        <span class="n">detected_activity_signal</span><span class="p">[</span>
+                            <span class="n">index_ranges</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="p">:</span> <span class="n">index_ranges</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+                        <span class="p">]</span>
+                    <span class="p">)</span>
+
+            <span class="c1"># Convert walk_low_back list to a NumPy array</span>
+            <span class="n">walking_bouts_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">walking_bouts</span><span class="p">)</span>
+
+            <span class="c1"># Find positive peaks in the walk_low_back_array</span>
+            <span class="n">positive_peak_indices</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">signal</span><span class="o">.</span><span class="n">find_peaks</span><span class="p">(</span><span class="n">walking_bouts_array</span><span class="p">)</span>
+
+            <span class="c1"># Get the corresponding y-axis data values for the positive peak</span>
+            <span class="n">positive_peaks</span> <span class="o">=</span> <span class="n">walking_bouts_array</span><span class="p">[</span><span class="n">positive_peak_indices</span><span class="p">]</span>
+
+            <span class="c1"># Find negative peaks in the inverted walk_low_back array</span>
+            <span class="n">negative_peak_indices</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">signal</span><span class="o">.</span><span class="n">find_peaks</span><span class="p">(</span><span class="o">-</span><span class="n">walking_bouts_array</span><span class="p">)</span>
+
+            <span class="c1"># Get the corresponding y-axis data values for the positive peak</span>
+            <span class="n">negative_peaks</span> <span class="o">=</span> <span class="o">-</span><span class="n">walking_bouts_array</span><span class="p">[</span><span class="n">negative_peak_indices</span><span class="p">]</span>
+
+            <span class="c1"># Combine positive and negative peaks</span>
+            <span class="n">combined_peaks</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">positive_peaks</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span>
+                <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">negative_peaks</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span>
+            <span class="p">]</span>
+
+            <span class="c1"># Calculate the data adaptive threshold using the 5th percentile of the combined peaks</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">threshold</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">combined_peaks</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+
+            <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+                <span class="c1"># If combined_peaks is empty, set threshold to default value</span>
+                <span class="n">threshold</span> <span class="o">=</span> <span class="mf">0.15</span>
+                <span class="n">selected_signal</span> <span class="o">=</span> <span class="n">smoothed_wavelet_result</span>
+
+            <span class="c1"># Set selected_signal to detected_activity_signal</span>
+            <span class="n">selected_signal</span> <span class="o">=</span> <span class="n">detected_activity_signal</span>
+
+        <span class="c1"># Detect mid-swing peaks</span>
+        <span class="n">min_peaks</span><span class="p">,</span> <span class="n">max_peaks</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">find_local_min_max</span><span class="p">(</span>
+            <span class="n">selected_signal</span><span class="p">,</span> <span class="n">threshold</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Find pulse trains in max_peaks and remove ones with steps less than 4</span>
+        <span class="n">pulse_trains_max</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">identify_pulse_trains</span><span class="p">(</span><span class="n">max_peaks</span><span class="p">)</span>
+
+        <span class="c1"># Access the fields of the struct-like array</span>
+        <span class="n">pulse_trains_max</span> <span class="o">=</span> <span class="p">[</span><span class="n">train</span> <span class="k">for</span> <span class="n">train</span> <span class="ow">in</span> <span class="n">pulse_trains_max</span> <span class="k">if</span> <span class="n">train</span><span class="p">[</span><span class="s2">&quot;steps&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">4</span><span class="p">]</span>
+
+        <span class="c1"># Find pulse trains in min_peaks and remove ones with steps less than 4</span>
+        <span class="n">pulse_trains_min</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">identify_pulse_trains</span><span class="p">(</span><span class="n">min_peaks</span><span class="p">)</span>
+
+        <span class="c1"># Access the fields of the struct-like array</span>
+        <span class="n">pulse_trains_min</span> <span class="o">=</span> <span class="p">[</span><span class="n">train</span> <span class="k">for</span> <span class="n">train</span> <span class="ow">in</span> <span class="n">pulse_trains_min</span> <span class="k">if</span> <span class="n">train</span><span class="p">[</span><span class="s2">&quot;steps&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">4</span><span class="p">]</span>
+
+        <span class="c1"># Convert t1 and t2 to sets and find their intersection</span>
+        <span class="n">walking_periods</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">find_interval_intersection</span><span class="p">(</span>
+            <span class="n">preprocessing</span><span class="o">.</span><span class="n">convert_pulse_train_to_array</span><span class="p">(</span><span class="n">pulse_trains_max</span><span class="p">),</span>
+            <span class="n">preprocessing</span><span class="o">.</span><span class="n">convert_pulse_train_to_array</span><span class="p">(</span><span class="n">pulse_trains_min</span><span class="p">),</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Check if walking_periods is empty</span>
+        <span class="k">if</span> <span class="n">walking_periods</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">walking_bouts</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Call the organize_and_pack_results function with walking_periods and MaxPeaks</span>
+            <span class="n">walking_bouts</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">organize_and_pack_results</span><span class="p">(</span>
+                <span class="n">walking_periods</span><span class="p">,</span> <span class="n">max_peaks</span>
+            <span class="p">)</span>
+            <span class="k">if</span> <span class="n">walking_bouts</span><span class="p">:</span>
+                <span class="c1"># Update the start value of the first element</span>
+                <span class="n">walking_bouts</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;start&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="n">walking_bouts</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;start&quot;</span><span class="p">]])</span>
+
+                <span class="c1"># Update the end value of the last element</span>
+                <span class="n">walking_bouts</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;end&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span>
+                    <span class="p">[</span><span class="n">walking_bouts</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;end&quot;</span><span class="p">],</span> <span class="nb">len</span><span class="p">(</span><span class="n">detected_activity_signal</span><span class="p">)]</span>
+                <span class="p">)</span>
+
+        <span class="c1"># Calculate the length of walking bouts</span>
+        <span class="n">walking_bouts_length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">walking_bouts</span><span class="p">)</span>
+
+        <span class="c1"># Initialize an empty list for filtered walking bouts</span>
+        <span class="n">filtered_walking_bouts</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="c1"># Initialize a counter variable to count walking bouts</span>
+        <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="c1"># Iterate through walking bouts to filter those with steps less than 5</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">walking_bouts_length</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">walking_bouts</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="s2">&quot;steps&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">:</span>
+                <span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="n">filtered_walking_bouts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                    <span class="p">{</span><span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="n">walking_bouts</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="s2">&quot;start&quot;</span><span class="p">],</span> <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="n">walking_bouts</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="s2">&quot;end&quot;</span><span class="p">]}</span>
+                <span class="p">)</span>
+
+        <span class="c1"># If no walking bouts are detected, print a message</span>
+        <span class="k">if</span> <span class="n">counter</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No gait sequences detected due to insufficient steps in the data.&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="bp">self</span>
+
+        <span class="c1"># Initialize an array of zeros with the length of detected_activity_signal</span>
+        <span class="n">walking_labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">detected_activity_signal</span><span class="p">))</span>
+
+        <span class="c1"># Calculate the length of the filtered_walking_bouts</span>
+        <span class="n">filtered_walking_bouts_length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">filtered_walking_bouts</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">filtered_walking_bouts_length</span><span class="p">):</span>
+            <span class="n">walking_labels</span><span class="p">[</span>
+                <span class="n">filtered_walking_bouts</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="s2">&quot;start&quot;</span><span class="p">]</span> <span class="p">:</span> <span class="n">filtered_walking_bouts</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="s2">&quot;end&quot;</span><span class="p">]</span>
+                <span class="o">+</span> <span class="mi">1</span>
+            <span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+
+        <span class="c1"># Call the find_consecutive_groups function with the walking_labels variable</span>
+        <span class="n">ind_noWk</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">ind_noWk</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">find_consecutive_groups</span><span class="p">(</span><span class="n">walking_labels</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+
+        <span class="c1"># Merge walking bouts if break less than 3 seconds</span>
+        <span class="k">if</span> <span class="n">ind_noWk</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ind_noWk</span><span class="p">)):</span>
+                <span class="k">if</span> <span class="n">ind_noWk</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">ind_noWk</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">target_sampling_freq_Hz</span> <span class="o">*</span> <span class="mi">3</span><span class="p">:</span>
+                    <span class="n">walking_labels</span><span class="p">[</span><span class="n">ind_noWk</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="p">:</span> <span class="n">ind_noWk</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+
+        <span class="c1"># Merge walking bouts if break less than 3 seconds</span>
+        <span class="n">ind_Wk</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">walkLabel_1_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">walking_labels</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">GSD_Output</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">if</span> <span class="n">walkLabel_1_indices</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">ind_Wk</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">find_consecutive_groups</span><span class="p">(</span><span class="n">walking_labels</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="c1"># Create an empty list to store &#39;walk&#39; dictionaries</span>
+            <span class="n">walk</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">if</span> <span class="n">ind_Wk</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ind_Wk</span><span class="p">)):</span>
+                    <span class="n">walk</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="p">(</span><span class="n">ind_Wk</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span> <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="n">ind_Wk</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="mi">1</span><span class="p">]})</span>
+
+            <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">walk</span><span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+                <span class="n">GSD_Output</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                    <span class="p">{</span>
+                        <span class="s2">&quot;Start&quot;</span><span class="p">:</span> <span class="n">walk</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="s2">&quot;start&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">target_sampling_freq_Hz</span><span class="p">,</span>
+                        <span class="s2">&quot;End&quot;</span><span class="p">:</span> <span class="n">walk</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="s2">&quot;end&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">target_sampling_freq_Hz</span><span class="p">,</span>
+                        <span class="s2">&quot;fs&quot;</span><span class="p">:</span> <span class="n">sampling_freq_Hz</span><span class="p">,</span>
+                    <span class="p">}</span>
+                <span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2"> gait sequence(s) detected.&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No gait sequence(s) detected.&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Create a DataFrame from the gait sequence data</span>
+        <span class="n">gait_sequences_</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">GSD_Output</span><span class="p">)</span>
+        <span class="n">gait_sequences_</span><span class="p">[</span><span class="s2">&quot;onset&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gait_sequences_</span><span class="p">[</span><span class="s2">&quot;Start&quot;</span><span class="p">]</span>
+        <span class="n">gait_sequences_</span><span class="p">[</span><span class="s2">&quot;duration&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gait_sequences_</span><span class="p">[</span><span class="s2">&quot;End&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">gait_sequences_</span><span class="p">[</span><span class="s2">&quot;Start&quot;</span><span class="p">]</span>
+        <span class="n">gait_sequences_</span><span class="p">[</span><span class="s2">&quot;event_type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;gait sequence&quot;</span>
+        <span class="n">gait_sequences_</span><span class="p">[</span><span class="s2">&quot;tracking_system&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tracking_system</span>
+
+        <span class="c1"># Check if the indices in ind_Wk are within the range of dt_data&#39;s index</span>
+        <span class="k">if</span> <span class="n">ind_Wk</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">dt_data</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">valid_indices</span> <span class="o">=</span> <span class="p">[</span><span class="n">index</span> <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="n">ind_Wk</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="n">index</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">dt_data</span><span class="p">)]</span>
+            <span class="n">invalid_indices</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ind_Wk</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">valid_indices</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">invalid_indices</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Warning: </span><span class="si">{</span><span class="n">invalid_indices</span><span class="si">}</span><span class="s2"> invalid index/indices found.&quot;</span><span class="p">)</span>
+
+            <span class="c1"># Only use valid indices to access dt_data</span>
+            <span class="n">valid_dt_data</span> <span class="o">=</span> <span class="n">dt_data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">valid_indices</span><span class="p">]</span>
+
+            <span class="c1"># Create a DataFrame from the gait sequence data</span>
+            <span class="n">gait_sequences_</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">GSD_Output</span><span class="p">)</span>
+            <span class="n">gait_sequences_</span><span class="p">[</span><span class="s2">&quot;onset&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gait_sequences_</span><span class="p">[</span><span class="s2">&quot;Start&quot;</span><span class="p">]</span>
+            <span class="n">gait_sequences_</span><span class="p">[</span><span class="s2">&quot;duration&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">gait_sequences_</span><span class="p">[</span><span class="s2">&quot;End&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">gait_sequences_</span><span class="p">[</span><span class="s2">&quot;Start&quot;</span><span class="p">]</span>
+            <span class="p">)</span>
+            <span class="n">gait_sequences_</span><span class="p">[</span><span class="s2">&quot;event_type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;gait sequence&quot;</span>
+            <span class="n">gait_sequences_</span><span class="p">[</span><span class="s2">&quot;tracking_system&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tracking_system</span>
+
+            <span class="c1"># If original datetime is available, update the &#39;onset&#39; column</span>
+            <span class="n">gait_sequences_</span><span class="p">[</span><span class="s2">&quot;onset&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">valid_dt_data</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="c1"># Create a DataFrame from the gait sequence data</span>
+        <span class="n">gait_sequences_</span> <span class="o">=</span> <span class="n">gait_sequences_</span><span class="p">[</span>
+            <span class="p">[</span><span class="s2">&quot;onset&quot;</span><span class="p">,</span> <span class="s2">&quot;duration&quot;</span><span class="p">,</span> <span class="s2">&quot;event_type&quot;</span><span class="p">,</span> <span class="s2">&quot;tracking_system&quot;</span><span class="p">]</span>
+        <span class="p">]</span>
+
+        <span class="c1"># Return gait_sequences_ as an output</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gait_sequences_</span> <span class="o">=</span> <span class="n">gait_sequences_</span>
+
+        <span class="c1"># If Plot_results set to true</span>
+        <span class="c1"># currently no plotting for datetime values</span>
+        <span class="k">if</span> <span class="n">dt_data</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">plot_results</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No plotting for datetime values.&quot;</span><span class="p">)</span>
+            <span class="n">plot_results</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="k">return</span> <span class="bp">self</span>
+
+        <span class="c1"># Plot results if set to true</span>
+        <span class="k">if</span> <span class="n">plot_results</span><span class="p">:</span>
+
+            <span class="n">viz_utils</span><span class="o">.</span><span class="n">plot_gait</span><span class="p">(</span>
+                <span class="n">target_sampling_freq_Hz</span><span class="p">,</span> <span class="n">detected_activity_signal</span><span class="p">,</span> <span class="n">gait_sequences_</span>
+            <span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span>
+</code></pre></div></td></tr></table></div>
+              </details>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="modules.gsd._paraschiv.ParaschivIonescuGaitSequenceDetection.__init__" class="doc doc-heading">
+            <code class="highlight language-python"><span class="fm">__init__</span><span class="p">()</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+      <p>Initializes the ParaschivIonescuGaitSequenceDetection instance.</p>
+
+            <details class="quote">
+              <summary>Source code in <code>kielmat/modules/gsd/_paraschiv.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Initializes the ParaschivIonescuGaitSequenceDetection instance.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">gait_sequences_</span> <span class="o">=</span> <span class="kc">None</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="modules.gsd._paraschiv.ParaschivIonescuGaitSequenceDetection.detect" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">detect</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">sampling_freq_Hz</span><span class="p">,</span> <span class="n">plot_results</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">dt_data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">tracking_system</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+      <p>Detects gait sequences based on the input accelerometer data.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code>data</code></td>
+            <td>
+                  <code><span title="pandas.DataFrame">DataFrame</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Input accelerometer data (N, 3) for x, y, and z axes.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code>sampling_freq_Hz</code></td>
+            <td>
+                  <code>float</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Sampling frequency of the accelerometer data.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code>plot_results</code></td>
+            <td>
+                  <code>bool</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If True, generates a plot showing the pre-processed acceleration data
+and the detected gait sequences. Default is False.</p>
+              </div>
+            </td>
+            <td>
+                  <code>False</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code>dt_data</code></td>
+            <td>
+                  <code><span title="pandas.Series">Series</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Original datetime in the input data. If original datetime is provided, the output onset will be based on that.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code>tracking_system</code></td>
+            <td>
+                  <code>str</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Tracking system the data is from to be used for events df. Default is None.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="pandas.DataFrame">DataFrame</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>pd.DataFrame: The gait sequence information stored in the 'gait_sequences_' attribute,
+which is a pandas DataFrame in BIDS format with the following columns:
+    - onset: Start time of the gait sequence.
+    - duration: Duration of the gait sequence.
+    - event_type: Type of the event (default is 'gait sequence').
+    - tracking_system: Tracking systems used the events are derived from.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+            <details class="quote">
+              <summary>Source code in <code>kielmat/modules/gsd/_paraschiv.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span>
+<span class="normal">234</span>
+<span class="normal">235</span>
+<span class="normal">236</span>
+<span class="normal">237</span>
+<span class="normal">238</span>
+<span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span>
+<span class="normal">242</span>
+<span class="normal">243</span>
+<span class="normal">244</span>
+<span class="normal">245</span>
+<span class="normal">246</span>
+<span class="normal">247</span>
+<span class="normal">248</span>
+<span class="normal">249</span>
+<span class="normal">250</span>
+<span class="normal">251</span>
+<span class="normal">252</span>
+<span class="normal">253</span>
+<span class="normal">254</span>
+<span class="normal">255</span>
+<span class="normal">256</span>
+<span class="normal">257</span>
+<span class="normal">258</span>
+<span class="normal">259</span>
+<span class="normal">260</span>
+<span class="normal">261</span>
+<span class="normal">262</span>
+<span class="normal">263</span>
+<span class="normal">264</span>
+<span class="normal">265</span>
+<span class="normal">266</span>
+<span class="normal">267</span>
+<span class="normal">268</span>
+<span class="normal">269</span>
+<span class="normal">270</span>
+<span class="normal">271</span>
+<span class="normal">272</span>
+<span class="normal">273</span>
+<span class="normal">274</span>
+<span class="normal">275</span>
+<span class="normal">276</span>
+<span class="normal">277</span>
+<span class="normal">278</span>
+<span class="normal">279</span>
+<span class="normal">280</span>
+<span class="normal">281</span>
+<span class="normal">282</span>
+<span class="normal">283</span>
+<span class="normal">284</span>
+<span class="normal">285</span>
+<span class="normal">286</span>
+<span class="normal">287</span>
+<span class="normal">288</span>
+<span class="normal">289</span>
+<span class="normal">290</span>
+<span class="normal">291</span>
+<span class="normal">292</span>
+<span class="normal">293</span>
+<span class="normal">294</span>
+<span class="normal">295</span>
+<span class="normal">296</span>
+<span class="normal">297</span>
+<span class="normal">298</span>
+<span class="normal">299</span>
+<span class="normal">300</span>
+<span class="normal">301</span>
+<span class="normal">302</span>
+<span class="normal">303</span>
+<span class="normal">304</span>
+<span class="normal">305</span>
+<span class="normal">306</span>
+<span class="normal">307</span>
+<span class="normal">308</span>
+<span class="normal">309</span>
+<span class="normal">310</span>
+<span class="normal">311</span>
+<span class="normal">312</span>
+<span class="normal">313</span>
+<span class="normal">314</span>
+<span class="normal">315</span>
+<span class="normal">316</span>
+<span class="normal">317</span>
+<span class="normal">318</span>
+<span class="normal">319</span>
+<span class="normal">320</span>
+<span class="normal">321</span>
+<span class="normal">322</span>
+<span class="normal">323</span>
+<span class="normal">324</span>
+<span class="normal">325</span>
+<span class="normal">326</span>
+<span class="normal">327</span>
+<span class="normal">328</span>
+<span class="normal">329</span>
+<span class="normal">330</span>
+<span class="normal">331</span>
+<span class="normal">332</span>
+<span class="normal">333</span>
+<span class="normal">334</span>
+<span class="normal">335</span>
+<span class="normal">336</span>
+<span class="normal">337</span>
+<span class="normal">338</span>
+<span class="normal">339</span>
+<span class="normal">340</span>
+<span class="normal">341</span>
+<span class="normal">342</span>
+<span class="normal">343</span>
+<span class="normal">344</span>
+<span class="normal">345</span>
+<span class="normal">346</span>
+<span class="normal">347</span>
+<span class="normal">348</span>
+<span class="normal">349</span>
+<span class="normal">350</span>
+<span class="normal">351</span>
+<span class="normal">352</span>
+<span class="normal">353</span>
+<span class="normal">354</span>
+<span class="normal">355</span>
+<span class="normal">356</span>
+<span class="normal">357</span>
+<span class="normal">358</span>
+<span class="normal">359</span>
+<span class="normal">360</span>
+<span class="normal">361</span>
+<span class="normal">362</span>
+<span class="normal">363</span>
+<span class="normal">364</span>
+<span class="normal">365</span>
+<span class="normal">366</span>
+<span class="normal">367</span>
+<span class="normal">368</span>
+<span class="normal">369</span>
+<span class="normal">370</span>
+<span class="normal">371</span>
+<span class="normal">372</span>
+<span class="normal">373</span>
+<span class="normal">374</span>
+<span class="normal">375</span>
+<span class="normal">376</span>
+<span class="normal">377</span>
+<span class="normal">378</span>
+<span class="normal">379</span>
+<span class="normal">380</span>
+<span class="normal">381</span>
+<span class="normal">382</span>
+<span class="normal">383</span>
+<span class="normal">384</span>
+<span class="normal">385</span>
+<span class="normal">386</span>
+<span class="normal">387</span>
+<span class="normal">388</span>
+<span class="normal">389</span>
+<span class="normal">390</span>
+<span class="normal">391</span>
+<span class="normal">392</span>
+<span class="normal">393</span>
+<span class="normal">394</span>
+<span class="normal">395</span>
+<span class="normal">396</span>
+<span class="normal">397</span>
+<span class="normal">398</span>
+<span class="normal">399</span>
+<span class="normal">400</span>
+<span class="normal">401</span>
+<span class="normal">402</span>
+<span class="normal">403</span>
+<span class="normal">404</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">detect</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">data</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+    <span class="n">sampling_freq_Hz</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">plot_results</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">dt_data</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">tracking_system</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Detects gait sequences based on the input accelerometer data.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        data (pd.DataFrame): Input accelerometer data (N, 3) for x, y, and z axes.</span>
+<span class="sd">        sampling_freq_Hz (float): Sampling frequency of the accelerometer data.</span>
+<span class="sd">        plot_results (bool, optional): If True, generates a plot showing the pre-processed acceleration data</span>
+<span class="sd">            and the detected gait sequences. Default is False.</span>
+<span class="sd">        dt_data (pd.Series, optional): Original datetime in the input data. If original datetime is provided, the output onset will be based on that.</span>
+<span class="sd">        tracking_system (str, optional): Tracking system the data is from to be used for events df. Default is None.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        pd.DataFrame: The gait sequence information stored in the &#39;gait_sequences_&#39; attribute,</span>
+<span class="sd">            which is a pandas DataFrame in BIDS format with the following columns:</span>
+<span class="sd">                - onset: Start time of the gait sequence.</span>
+<span class="sd">                - duration: Duration of the gait sequence.</span>
+<span class="sd">                - event_type: Type of the event (default is &#39;gait sequence&#39;).</span>
+<span class="sd">                - tracking_system: Tracking systems used the events are derived from.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Error handling for invalid input data</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="ow">or</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="s2">&quot;Input accelerometer data must be a DataFrame with 3 columns for x, y, and z axes.&quot;</span>
+        <span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">sampling_freq_Hz</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">))</span> <span class="ow">or</span> <span class="n">sampling_freq_Hz</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Sampling frequency must be a positive float.&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">plot_results</span><span class="p">,</span> <span class="nb">bool</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Plot results must be a boolean (True or False).&quot;</span><span class="p">)</span>
+
+    <span class="c1"># check if tracking_system is a string</span>
+    <span class="k">if</span> <span class="n">tracking_system</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">tracking_system</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;tracking_system must be a string&quot;</span><span class="p">)</span>
+
+    <span class="c1"># check if dt_data is a pandas Series with datetime values</span>
+    <span class="k">if</span> <span class="n">dt_data</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="p">(</span>
+        <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dt_data</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">)</span>
+        <span class="ow">or</span> <span class="ow">not</span> <span class="n">pd</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">is_datetime64_any_dtype</span><span class="p">(</span><span class="n">dt_data</span><span class="p">)</span>
+    <span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;dt_data must be a pandas Series with datetime values&quot;</span><span class="p">)</span>
+
+    <span class="c1"># check if dt_data is provided and if it is a series with the same length as data</span>
+    <span class="k">if</span> <span class="n">dt_data</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">dt_data</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;dt_data must be a series with the same length as data&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Calculate the norm of acceleration</span>
+    <span class="n">acceleration_norm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># Resample acceleration_norm to target sampling frequency</span>
+    <span class="n">initial_sampling_frequency</span> <span class="o">=</span> <span class="n">sampling_freq_Hz</span>
+    <span class="n">target_sampling_freq_Hz</span> <span class="o">=</span> <span class="mi">40</span>
+    <span class="n">resampled_acceleration</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">resample_interpolate</span><span class="p">(</span>
+        <span class="n">acceleration_norm</span><span class="p">,</span> <span class="n">initial_sampling_frequency</span><span class="p">,</span> <span class="n">target_sampling_freq_Hz</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Applying low-pass Savitzky-Golay filter to smoothen the resampled data</span>
+    <span class="n">smoothed_acceleration</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">lowpass_filter</span><span class="p">(</span>
+        <span class="n">resampled_acceleration</span><span class="p">,</span>
+        <span class="n">method</span><span class="o">=</span><span class="s2">&quot;savgol&quot;</span><span class="p">,</span>
+        <span class="n">window_length</span><span class="o">=</span><span class="mi">21</span><span class="p">,</span>
+        <span class="n">polynomial_order</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Remove 40Hz drift from the filtered data</span>
+    <span class="n">drift_removed_acceleration</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">highpass_filter</span><span class="p">(</span>
+        <span class="n">signal</span><span class="o">=</span><span class="n">smoothed_acceleration</span><span class="p">,</span>
+        <span class="n">sampling_frequency</span><span class="o">=</span><span class="n">target_sampling_freq_Hz</span><span class="p">,</span>
+        <span class="n">method</span><span class="o">=</span><span class="s2">&quot;iir&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Filter data using the fir low-pass filter</span>
+    <span class="n">filtered_acceleration</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">lowpass_filter</span><span class="p">(</span>
+        <span class="n">drift_removed_acceleration</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;fir&quot;</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Perform the continuous wavelet transform on the filtered acceleration data</span>
+    <span class="n">wavelet_transform_result</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">apply_continuous_wavelet_transform</span><span class="p">(</span>
+        <span class="n">filtered_acceleration</span><span class="p">,</span>
+        <span class="n">scales</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+        <span class="n">desired_scale</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+        <span class="n">wavelet</span><span class="o">=</span><span class="s2">&quot;gaus2&quot;</span><span class="p">,</span>
+        <span class="n">sampling_frequency</span><span class="o">=</span><span class="n">target_sampling_freq_Hz</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Applying Savitzky-Golay filter to further smoothen the wavelet transformed data</span>
+    <span class="n">smoothed_wavelet_result</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">lowpass_filter</span><span class="p">(</span>
+        <span class="n">wavelet_transform_result</span><span class="p">,</span> <span class="n">window_length</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">polynomial_order</span><span class="o">=</span><span class="mi">5</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Perform continuous wavelet transform</span>
+    <span class="n">further_smoothed_wavelet_result</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">preprocessing</span><span class="o">.</span><span class="n">apply_continuous_wavelet_transform</span><span class="p">(</span>
+            <span class="n">smoothed_wavelet_result</span><span class="p">,</span>
+            <span class="n">scales</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+            <span class="n">desired_scale</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+            <span class="n">wavelet</span><span class="o">=</span><span class="s2">&quot;gaus2&quot;</span><span class="p">,</span>
+            <span class="n">sampling_frequency</span><span class="o">=</span><span class="n">target_sampling_freq_Hz</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">further_smoothed_wavelet_result</span> <span class="o">=</span> <span class="n">further_smoothed_wavelet_result</span><span class="o">.</span><span class="n">T</span>
+
+    <span class="c1"># Smoothing the data using successive Gaussian filters</span>
+    <span class="n">filtered_signal</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">apply_successive_gaussian_filters</span><span class="p">(</span>
+        <span class="n">further_smoothed_wavelet_result</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Use pre-processsed signal for post-processing purposes</span>
+    <span class="n">detected_activity_signal</span> <span class="o">=</span> <span class="n">filtered_signal</span>
+
+    <span class="c1"># Compute the envelope of the processed acceleration data</span>
+    <span class="n">envelope</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">calculate_envelope_activity</span><span class="p">(</span>
+        <span class="n">detected_activity_signal</span><span class="p">,</span>
+        <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">target_sampling_freq_Hz</span><span class="p">)),</span>
+        <span class="mi">1</span><span class="p">,</span>
+        <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">target_sampling_freq_Hz</span><span class="p">)),</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Initialize a list for walking bouts</span>
+    <span class="n">walking_bouts</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="c1"># Process alarm data to identify walking bouts</span>
+    <span class="k">if</span> <span class="n">envelope</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">index_ranges</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">find_consecutive_groups</span><span class="p">(</span><span class="n">envelope</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">index_ranges</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="p">(</span>
+                <span class="n">index_ranges</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">index_ranges</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+                <span class="o">&lt;=</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">target_sampling_freq_Hz</span>
+            <span class="p">):</span>
+                <span class="n">envelope</span><span class="p">[</span><span class="n">index_ranges</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="p">:</span> <span class="n">index_ranges</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">walking_bouts</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span>
+                    <span class="n">detected_activity_signal</span><span class="p">[</span>
+                        <span class="n">index_ranges</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="p">:</span> <span class="n">index_ranges</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+                    <span class="p">]</span>
+                <span class="p">)</span>
+
+        <span class="c1"># Convert walk_low_back list to a NumPy array</span>
+        <span class="n">walking_bouts_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">walking_bouts</span><span class="p">)</span>
+
+        <span class="c1"># Find positive peaks in the walk_low_back_array</span>
+        <span class="n">positive_peak_indices</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">signal</span><span class="o">.</span><span class="n">find_peaks</span><span class="p">(</span><span class="n">walking_bouts_array</span><span class="p">)</span>
+
+        <span class="c1"># Get the corresponding y-axis data values for the positive peak</span>
+        <span class="n">positive_peaks</span> <span class="o">=</span> <span class="n">walking_bouts_array</span><span class="p">[</span><span class="n">positive_peak_indices</span><span class="p">]</span>
+
+        <span class="c1"># Find negative peaks in the inverted walk_low_back array</span>
+        <span class="n">negative_peak_indices</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">signal</span><span class="o">.</span><span class="n">find_peaks</span><span class="p">(</span><span class="o">-</span><span class="n">walking_bouts_array</span><span class="p">)</span>
+
+        <span class="c1"># Get the corresponding y-axis data values for the positive peak</span>
+        <span class="n">negative_peaks</span> <span class="o">=</span> <span class="o">-</span><span class="n">walking_bouts_array</span><span class="p">[</span><span class="n">negative_peak_indices</span><span class="p">]</span>
+
+        <span class="c1"># Combine positive and negative peaks</span>
+        <span class="n">combined_peaks</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">positive_peaks</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span>
+            <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">negative_peaks</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span>
+        <span class="p">]</span>
+
+        <span class="c1"># Calculate the data adaptive threshold using the 5th percentile of the combined peaks</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">threshold</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">combined_peaks</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+
+        <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+            <span class="c1"># If combined_peaks is empty, set threshold to default value</span>
+            <span class="n">threshold</span> <span class="o">=</span> <span class="mf">0.15</span>
+            <span class="n">selected_signal</span> <span class="o">=</span> <span class="n">smoothed_wavelet_result</span>
+
+        <span class="c1"># Set selected_signal to detected_activity_signal</span>
+        <span class="n">selected_signal</span> <span class="o">=</span> <span class="n">detected_activity_signal</span>
+
+    <span class="c1"># Detect mid-swing peaks</span>
+    <span class="n">min_peaks</span><span class="p">,</span> <span class="n">max_peaks</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">find_local_min_max</span><span class="p">(</span>
+        <span class="n">selected_signal</span><span class="p">,</span> <span class="n">threshold</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Find pulse trains in max_peaks and remove ones with steps less than 4</span>
+    <span class="n">pulse_trains_max</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">identify_pulse_trains</span><span class="p">(</span><span class="n">max_peaks</span><span class="p">)</span>
+
+    <span class="c1"># Access the fields of the struct-like array</span>
+    <span class="n">pulse_trains_max</span> <span class="o">=</span> <span class="p">[</span><span class="n">train</span> <span class="k">for</span> <span class="n">train</span> <span class="ow">in</span> <span class="n">pulse_trains_max</span> <span class="k">if</span> <span class="n">train</span><span class="p">[</span><span class="s2">&quot;steps&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">4</span><span class="p">]</span>
+
+    <span class="c1"># Find pulse trains in min_peaks and remove ones with steps less than 4</span>
+    <span class="n">pulse_trains_min</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">identify_pulse_trains</span><span class="p">(</span><span class="n">min_peaks</span><span class="p">)</span>
+
+    <span class="c1"># Access the fields of the struct-like array</span>
+    <span class="n">pulse_trains_min</span> <span class="o">=</span> <span class="p">[</span><span class="n">train</span> <span class="k">for</span> <span class="n">train</span> <span class="ow">in</span> <span class="n">pulse_trains_min</span> <span class="k">if</span> <span class="n">train</span><span class="p">[</span><span class="s2">&quot;steps&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">4</span><span class="p">]</span>
+
+    <span class="c1"># Convert t1 and t2 to sets and find their intersection</span>
+    <span class="n">walking_periods</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">find_interval_intersection</span><span class="p">(</span>
+        <span class="n">preprocessing</span><span class="o">.</span><span class="n">convert_pulse_train_to_array</span><span class="p">(</span><span class="n">pulse_trains_max</span><span class="p">),</span>
+        <span class="n">preprocessing</span><span class="o">.</span><span class="n">convert_pulse_train_to_array</span><span class="p">(</span><span class="n">pulse_trains_min</span><span class="p">),</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Check if walking_periods is empty</span>
+    <span class="k">if</span> <span class="n">walking_periods</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">walking_bouts</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># Call the organize_and_pack_results function with walking_periods and MaxPeaks</span>
+        <span class="n">walking_bouts</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">organize_and_pack_results</span><span class="p">(</span>
+            <span class="n">walking_periods</span><span class="p">,</span> <span class="n">max_peaks</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="n">walking_bouts</span><span class="p">:</span>
+            <span class="c1"># Update the start value of the first element</span>
+            <span class="n">walking_bouts</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;start&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="n">walking_bouts</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;start&quot;</span><span class="p">]])</span>
+
+            <span class="c1"># Update the end value of the last element</span>
+            <span class="n">walking_bouts</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;end&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span>
+                <span class="p">[</span><span class="n">walking_bouts</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;end&quot;</span><span class="p">],</span> <span class="nb">len</span><span class="p">(</span><span class="n">detected_activity_signal</span><span class="p">)]</span>
+            <span class="p">)</span>
+
+    <span class="c1"># Calculate the length of walking bouts</span>
+    <span class="n">walking_bouts_length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">walking_bouts</span><span class="p">)</span>
+
+    <span class="c1"># Initialize an empty list for filtered walking bouts</span>
+    <span class="n">filtered_walking_bouts</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1"># Initialize a counter variable to count walking bouts</span>
+    <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="c1"># Iterate through walking bouts to filter those with steps less than 5</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">walking_bouts_length</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">walking_bouts</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="s2">&quot;steps&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">:</span>
+            <span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">filtered_walking_bouts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="p">{</span><span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="n">walking_bouts</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="s2">&quot;start&quot;</span><span class="p">],</span> <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="n">walking_bouts</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="s2">&quot;end&quot;</span><span class="p">]}</span>
+            <span class="p">)</span>
+
+    <span class="c1"># If no walking bouts are detected, print a message</span>
+    <span class="k">if</span> <span class="n">counter</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No gait sequences detected due to insufficient steps in the data.&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="c1"># Initialize an array of zeros with the length of detected_activity_signal</span>
+    <span class="n">walking_labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">detected_activity_signal</span><span class="p">))</span>
+
+    <span class="c1"># Calculate the length of the filtered_walking_bouts</span>
+    <span class="n">filtered_walking_bouts_length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">filtered_walking_bouts</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">filtered_walking_bouts_length</span><span class="p">):</span>
+        <span class="n">walking_labels</span><span class="p">[</span>
+            <span class="n">filtered_walking_bouts</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="s2">&quot;start&quot;</span><span class="p">]</span> <span class="p">:</span> <span class="n">filtered_walking_bouts</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="s2">&quot;end&quot;</span><span class="p">]</span>
+            <span class="o">+</span> <span class="mi">1</span>
+        <span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="c1"># Call the find_consecutive_groups function with the walking_labels variable</span>
+    <span class="n">ind_noWk</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">ind_noWk</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">find_consecutive_groups</span><span class="p">(</span><span class="n">walking_labels</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+
+    <span class="c1"># Merge walking bouts if break less than 3 seconds</span>
+    <span class="k">if</span> <span class="n">ind_noWk</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ind_noWk</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="n">ind_noWk</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">ind_noWk</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">target_sampling_freq_Hz</span> <span class="o">*</span> <span class="mi">3</span><span class="p">:</span>
+                <span class="n">walking_labels</span><span class="p">[</span><span class="n">ind_noWk</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="p">:</span> <span class="n">ind_noWk</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="c1"># Merge walking bouts if break less than 3 seconds</span>
+    <span class="n">ind_Wk</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">walkLabel_1_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">walking_labels</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">GSD_Output</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">if</span> <span class="n">walkLabel_1_indices</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">ind_Wk</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">find_consecutive_groups</span><span class="p">(</span><span class="n">walking_labels</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="c1"># Create an empty list to store &#39;walk&#39; dictionaries</span>
+        <span class="n">walk</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="n">ind_Wk</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ind_Wk</span><span class="p">)):</span>
+                <span class="n">walk</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="p">(</span><span class="n">ind_Wk</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span> <span class="s2">&quot;end&quot;</span><span class="p">:</span> <span class="n">ind_Wk</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="mi">1</span><span class="p">]})</span>
+
+        <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">walk</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+            <span class="n">GSD_Output</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;Start&quot;</span><span class="p">:</span> <span class="n">walk</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="s2">&quot;start&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">target_sampling_freq_Hz</span><span class="p">,</span>
+                    <span class="s2">&quot;End&quot;</span><span class="p">:</span> <span class="n">walk</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="s2">&quot;end&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">target_sampling_freq_Hz</span><span class="p">,</span>
+                    <span class="s2">&quot;fs&quot;</span><span class="p">:</span> <span class="n">sampling_freq_Hz</span><span class="p">,</span>
+                <span class="p">}</span>
+            <span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2"> gait sequence(s) detected.&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No gait sequence(s) detected.&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Create a DataFrame from the gait sequence data</span>
+    <span class="n">gait_sequences_</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">GSD_Output</span><span class="p">)</span>
+    <span class="n">gait_sequences_</span><span class="p">[</span><span class="s2">&quot;onset&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gait_sequences_</span><span class="p">[</span><span class="s2">&quot;Start&quot;</span><span class="p">]</span>
+    <span class="n">gait_sequences_</span><span class="p">[</span><span class="s2">&quot;duration&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gait_sequences_</span><span class="p">[</span><span class="s2">&quot;End&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">gait_sequences_</span><span class="p">[</span><span class="s2">&quot;Start&quot;</span><span class="p">]</span>
+    <span class="n">gait_sequences_</span><span class="p">[</span><span class="s2">&quot;event_type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;gait sequence&quot;</span>
+    <span class="n">gait_sequences_</span><span class="p">[</span><span class="s2">&quot;tracking_system&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tracking_system</span>
+
+    <span class="c1"># Check if the indices in ind_Wk are within the range of dt_data&#39;s index</span>
+    <span class="k">if</span> <span class="n">ind_Wk</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">dt_data</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">valid_indices</span> <span class="o">=</span> <span class="p">[</span><span class="n">index</span> <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="n">ind_Wk</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="n">index</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">dt_data</span><span class="p">)]</span>
+        <span class="n">invalid_indices</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ind_Wk</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">valid_indices</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">invalid_indices</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Warning: </span><span class="si">{</span><span class="n">invalid_indices</span><span class="si">}</span><span class="s2"> invalid index/indices found.&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Only use valid indices to access dt_data</span>
+        <span class="n">valid_dt_data</span> <span class="o">=</span> <span class="n">dt_data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">valid_indices</span><span class="p">]</span>
+
+        <span class="c1"># Create a DataFrame from the gait sequence data</span>
+        <span class="n">gait_sequences_</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">GSD_Output</span><span class="p">)</span>
+        <span class="n">gait_sequences_</span><span class="p">[</span><span class="s2">&quot;onset&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gait_sequences_</span><span class="p">[</span><span class="s2">&quot;Start&quot;</span><span class="p">]</span>
+        <span class="n">gait_sequences_</span><span class="p">[</span><span class="s2">&quot;duration&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">gait_sequences_</span><span class="p">[</span><span class="s2">&quot;End&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">gait_sequences_</span><span class="p">[</span><span class="s2">&quot;Start&quot;</span><span class="p">]</span>
+        <span class="p">)</span>
+        <span class="n">gait_sequences_</span><span class="p">[</span><span class="s2">&quot;event_type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;gait sequence&quot;</span>
+        <span class="n">gait_sequences_</span><span class="p">[</span><span class="s2">&quot;tracking_system&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tracking_system</span>
+
+        <span class="c1"># If original datetime is available, update the &#39;onset&#39; column</span>
+        <span class="n">gait_sequences_</span><span class="p">[</span><span class="s2">&quot;onset&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">valid_dt_data</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># Create a DataFrame from the gait sequence data</span>
+    <span class="n">gait_sequences_</span> <span class="o">=</span> <span class="n">gait_sequences_</span><span class="p">[</span>
+        <span class="p">[</span><span class="s2">&quot;onset&quot;</span><span class="p">,</span> <span class="s2">&quot;duration&quot;</span><span class="p">,</span> <span class="s2">&quot;event_type&quot;</span><span class="p">,</span> <span class="s2">&quot;tracking_system&quot;</span><span class="p">]</span>
+    <span class="p">]</span>
+
+    <span class="c1"># Return gait_sequences_ as an output</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">gait_sequences_</span> <span class="o">=</span> <span class="n">gait_sequences_</span>
+
+    <span class="c1"># If Plot_results set to true</span>
+    <span class="c1"># currently no plotting for datetime values</span>
+    <span class="k">if</span> <span class="n">dt_data</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">plot_results</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No plotting for datetime values.&quot;</span><span class="p">)</span>
+        <span class="n">plot_results</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="c1"># Plot results if set to true</span>
+    <span class="k">if</span> <span class="n">plot_results</span><span class="p">:</span>
+
+        <span class="n">viz_utils</span><span class="o">.</span><span class="n">plot_gait</span><span class="p">(</span>
+            <span class="n">target_sampling_freq_Hz</span><span class="p">,</span> <span class="n">detected_activity_signal</span><span class="p">,</span> <span class="n">gait_sequences_</span>
+        <span class="p">)</span>
+
+    <span class="k">return</span> <span class="bp">self</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
+      
+    
+  </body>
+</html>
